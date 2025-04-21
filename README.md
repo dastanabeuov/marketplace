@@ -1,24 +1,25 @@
-# README
+# Marketplace
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+**Marketplace** — это веб-приложение на Ruby on Rails 8, использующее Postgres, Hotwire, Importmap и другие современные инструменты Rails 8.
 
-Things you may want to cover:
+## ⚙️ Стек технологий
 
-* Ruby version
+- **Ruby** 3.4.3
+- **Rails** 8.0.2
+- **PostgreSQL** в качестве базы данных
+- **Importmap** для управления JavaScript-зависимостями без Node.js
+- **Hotwire (Turbo + Stimulus)** для реактивного фронтенда
+- **Propshaft** как современный asset pipeline
+- **Solid Cache, Solid Queue, Solid Cable** — фоновые задачи, кэш и WebSockets
+- **Puma** как веб-сервер
+- **JBuilder** для построения JSON API
+- **Kamal** для Docker-деплоймента
+- **Thruster** для ускорения Puma с HTTP кешем и сжатием
 
-* System dependencies
+## 🚀 Установка
 
-* Configuration
+1. Клонируйте репозиторий:
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```bash
+git clone https://github.com/dastanabeuov/marketplace.git
+cd my_rails_app
