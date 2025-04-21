@@ -10,6 +10,11 @@ module Marketplace
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 8.0
+    config.time_zone = "Almaty"
+    config.i18n.fallbacks = true
+    config.i18n.default_locale = :ru
+    config.i18n.available_locales = %i[ru kz en]
+
 
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
@@ -23,5 +28,18 @@ module Marketplace
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    config.generators do |g|
+      g.test_framework :rspec,
+                       fixtures: true,
+                       model_specs: true,
+                       controller_specs: true,
+
+                       view_specs: false,
+                       helper_specs: false,
+                       request_specs: false,
+                       routing_specs: false
+      g.fixture_replacement :factory_bot, dir: "spec/factories"
+    end
   end
 end
