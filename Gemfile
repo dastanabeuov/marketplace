@@ -4,6 +4,8 @@ source "https://rubygems.org"
 gem "rails", "~> 8.0.2"
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft", "~> 1.1.0"
+# precompile scss sass sintaxis [https://github.com/rails/dartsass-rails]
+gem "dartsass-rails", "~> 0.5.1"
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
 # Use the Puma web server [https://github.com/puma/puma]
@@ -43,6 +45,37 @@ gem "thruster", "~> 0.1.12", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
+# Decorate object from views [https://github.com/drapergem/draper]
+gem "draper", "~> 4.0.4"
+
+# Bootstrap custom style [https://github.com/twbs/bootstrap-rubygem/blob/main/assets/stylesheets/_bootstrap.scss]
+gem "bootstrap", "~> 5.3.5"
+gem "popper_js"
+
+# Search indexis ibject from find object to form [https://github.com/pat/thinking-sphinx]
+gem "mysql2",          "~> 0.4",    platform: :ruby
+gem "jdbc-mysql",      "~> 5.1.35", platform: :jruby
+gem "thinking-sphinx", "~> 5.5"
+
+# Cron jobs in Ruby [https://github.com/javan/whenever]
+gem "whenever", "~> 1.0.0", require: false
+
+# Inernationalization locale [https://github.com/svenfuchs/rails-i18n]
+gem "rails-i18n", "~> 8.0.0"
+
+# Authenticate build [https://github.com/heartcombo/devise]
+gem "devise-i18n", "~> 1.12"
+gem "devise", "~> 4.9"
+
+# Authorize user to resource [https://github.com/CanCanCommunity/cancancan]
+gem "cancancan", "~> 3.6"
+
+# Security data table migration structure [https://github.com/ankane/strong_migrations]
+gem "strong_migrations", "1.0.0"
+
+# Strong veribles from secret key [https://github.com/bkeepers/dotenv]
+gem "dotenv-rails", "~> 3.1.4"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw mswin x64_mingw ], require: "debug/prelude"
@@ -58,6 +91,9 @@ group :development, :test do
 
   # Fabrica bot [https://github.com/thoughtbot/factory_bot_rails]
   gem "factory_bot_rails", "~> 6.4"
+
+  # Open and imulate email send [https://github.com/ryanb/letter_opener]
+  gem "letter_opener", "~> 1.10"
 end
 
 group :development do
@@ -79,4 +115,7 @@ group :test do
   gem "database_cleaner-active_record", "~> 2.2.0"
 
   gem "selenium-webdriver", "~> 4.31.0"
+
+  # Save and open page from test [https://github.com/copiousfreetime/launchy]
+  gem "launchy", "~> 3.1"
 end
