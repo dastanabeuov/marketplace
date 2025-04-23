@@ -1,0 +1,125 @@
+kz:
+  languages:
+    kz: Қазақша
+    ru: Орысша
+    en: Ағылшынша
+  created: 'Сәтті құрылды.'
+  not_created: 'Құрылмады.'
+  updated: 'Сәтті жаңартылды.'
+  not_updated: 'Жаңартылмады.'
+  destroyed: 'Сәтті жойылды.'
+  access_denied: 'Қатынау рұқсат етілмеген!'
+  first_create_a_company: 'Алдымен компания құрыңыз.'
+  not_authorized: 'Сізде бұл ресурсқа қол жеткізу құқығы жоқ.'
+  user_added_company: 'Пайдаланушы компанияға сәтті қосылды.'
+  user_removed_company: 'Пайдаланушы компаниядан сәтті жойылды.'
+  user_added_owner_company: 'Компания иесі сәтті жаңартылды.'
+  not_added_owner_company: 'Пайдаланушы бұл компанияның мүшесі емес.'
+  uploaded: 'Сурет сәтті жүктелді!'
+  not_uploaded: 'Суретті жүктеу сәтсіз аяқталды.'
+  sample_title: 'Жаңа құжат'
+  sample_content: '<h3>Мазмұнын толтырыңыз...</h3>'
+  open: 'Ашу'
+  save: 'Сақтау'
+  traffic_last_6_months: 'Соңғы 6 айдағы трафик'
+  active_users: 'Белсенді пайдаланушылар'
+  users: 'Пайдаланушылар'
+  only_one_membership: 'компанияда тек бір мүшелік болуы керек'
+  read_tutorial: 'Нұсқаулықты оқу'
+  volt_qna: 'Сұрақ-жауап'
+  coffee_chat: 'Кофе-чат'
+  add_member: 'Мүше қосу'
+  add_owner: 'Иесін қосу'
+  add: 'Қосу'
+  only_admins_can_add_owners: 'Тек әкімшілер иелерді қоса алады'
+  members: 'Мүшелер'
+  email: 'Email'
+  actions: 'Әрекеттер'
+  are_you_sure: 'Сенімдісіз бе?'
+  latest_transactions: 'Соңғы транзакциялар'
+  data: 'Күні'
+  light: 'Жарық'
+  dark: 'Қараңғы'
+  auto: 'Авто'
+  profile: 'Профиль'
+  sign_out: 'Шығу'
+  sign_in: 'Кіру'
+  sign_up: 'Тіркелу'
+  bim_templates: 'Алатау-Техно'
+  create_document_with_template: 'Үлгі бойынша құжат жасау'
+  contacts: 'Байланыстар'
+  terms_and_conditions: 'Қолдану шарттары'
+  privacy_policy: 'Құпиялылық саясаты'
+  subscribe_to_our_newsletter: 'Біздің ақпараттық бюллетеньімізге жазылыңыз'
+  jsc_kazrica: 'ТОО "Алатау-Техно"'
+
+  ###########################
+  dashboard: "Басқару тақтасы"
+  dashboard_description: "Құжатты дайын шаблондар негізінде жасап, не болмаса оны өзіңізден бастап құрастырыңыз. Құжаттарды алдын ала жоспарлап, қажет уақытта барлығы реттелген болуына көз жеткізіңіз. Шаблонды қолданасыз ба немесе бос парақтан бастайсыз ба, құжат жасау процесін толық бақылауға аласыз және барлық мәліметтерді алдын ала ескересіз."
+
+  projects: "Жобалар"
+  templates: "Үлгілер"
+  documents: "Құжаттар"
+  сompany_employees: "Компания қызметкерлері"
+  customers: "Тұтынушылар"
+
+  all_list: "Барлық тізім"
+  back: "Артқа"
+  edit: "Өңдеу"
+  new: "Жаңа"
+  destroy: "Жою"
+  are_you_sure: "Сіз сенімдісіз бе?"
+
+  title: "Тақырып"
+  content: "Мазмұн"
+
+  companies: "Компаниялар"
+  сompany: "Компания"
+  сompany_employees: "Компания қызметкерлері"
+
+  news: "Жаңалықтар"
+  about: "Біз туралы"
+  contact: "Байланыс"
+  faqs: "Көп сұрақтар"
+  pricing: "Бағалар"
+  features: "Мүмкіндіктер"
+
+  subscribe: "Жазылу"
+  subscribe_newsletter: "Біздің хабарландыруымызға жазылу"
+  subscribe_newsletter_description: "Біздің жаңартулардың ежемесячық дайджесті."
+  email_address: "Электрондық пошта мекенжайы"
+
+  all_rights_reserved: "Барлық құқықтар қорғалған."
+  copyright: "Авторлық құқық"
+
+  date:
+    abbr_day_names: [Жк, Дс, Сс, Ср, Бс, Жм, Сб]
+    abbr_month_names: [~, Қаң, Ақп, Нау, Сәу, Мам, Мау, Шіл, Там, Қыр, Қаз, Қар, Жел]
+    day_names: [Жексенбі, Дүйсенбі, Сейсенбі, Сәрсенбі, Бейсенбі, Жұма, Сенбі]
+    month_names: [~, Қаңтар, Ақпан, Наурыз, Сәуір, Мамыр, Маусым, Шілде, Тамыз, Қыркүйек, Қазан, Қараша, Желтоқсан]
+    formats:
+      default: "%d.%m.%Y"
+      long: "%d %B %Y"
+      short: "%d %b"
+      month_year: "%B %Y"
+    order:
+      - :day
+      - :month
+      - :year
+
+  actions: "Әрекеттер"
+  members_count: "Қатысушылар саны"
+  activerecord:
+    attributes:
+      template:
+        updated_at: "Жаңартылған күн"
+        title: "Тақырып"
+      document:
+        updated_at: "Жаңартылған күн"
+        title: "Тақырып"
+      project:
+        updated_at: "Жаңартылған күн"
+        title: "Тақырып"
+      company:
+        updated_at: "Жаңартылған күн"
+        name: "Аты"

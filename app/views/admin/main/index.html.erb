@@ -1,0 +1,13 @@
+<div class="row">
+  <%= render 'nav' %>
+  <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
+    <%= render 'admin/shared/breadcrumbs' %>
+    <%= render 'admin/shared/flash' %>
+    <h1 class="h2"><%= I18n.t('.dashboard') %></h1>
+    <p><%= I18n.t('.dashboard_description') %></p>
+    <div class="row my-4">
+      <%#= render collection: @templates, partial: 'templates/template3', as: :template %>
+    </div>
+    <%= render 'reserved' %>
+  </main>
+</div>
