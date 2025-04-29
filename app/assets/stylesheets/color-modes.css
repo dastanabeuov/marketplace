@@ -136,10 +136,14 @@
   padding: 0.5rem 1rem;
   margin-bottom: 1rem;
   list-style: none;
-  background-color: #e9ecef;
+  background-color: #D4D8DB;
   border-radius: 0.25rem;
 }
-
+[data-bs-theme="light"] .breadcrumb li + li::before {
+  content: "/";
+  margin: 0 4px;
+  color: #343A40; /* или любой другой цвет */
+}
 /* Для темной темы */
 [data-bs-theme="dark"] .breadcrumb {
   display: flex;
@@ -150,7 +154,11 @@
   background-color: #343A40;
   border-radius: 0.25rem;
 }
-
+[data-bs-theme="dark"] .breadcrumb li + li::before {
+  content: "/";
+  margin: 0 4px;
+  color: #DEE2E6; /* или любой другой цвет */
+}
 /* Для темной темы */
 [data-bs-theme="dark"] .content {
   border: 1px solid #495057; /* рамка для визуализации */
@@ -159,4 +167,17 @@
 /* Для светлой темы */
 [data-bs-theme="light"] .content {
   border: 1px solid #dee2e6; /* рамка для визуализации */
+}
+/* Светлая тема */
+[data-bs-theme="light"] div.dt-container .dt-input {
+  background-color: #ffffff; /* белый фон */
+  color: #343A40; /* тёмный текст */
+  border-color: #aaa;
+}
+
+/* Тёмная тема */
+[data-bs-theme="dark"] div.dt-container .dt-input {
+  background-color: #343A40; /* тёмный фон */
+  color: #f8f9fa; /* светлый текст */
+  border-color: #555;
 }

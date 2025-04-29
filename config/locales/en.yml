@@ -57,7 +57,7 @@ en:
 
   ######################
   dashboard: "Dashboard"
-  dashboard_description: "Create your document using pre-made templates or design your own from scratch. Plan your documents ahead of time to ensure everything is organized and ready when you need it. Whether you're using a template or starting fresh, take control of your document creation process and stay ahead with careful planning and foresight."
+  dashboard_description: "A company can consist of many categories, each of which includes its own products. For example, one category may contain compressors, another - pumps, and so on. This allows for convenient organization of products, so that users can quickly find the desired products by category."
 
   projects: "Projects"
   templates: "Templates"
@@ -73,6 +73,8 @@ en:
   are_you_sure: "Are you sure?"
 
   title: "Title"
+  name: "Name"
+  description: "Description"
   content: "Content"
 
   companies: "Companies"

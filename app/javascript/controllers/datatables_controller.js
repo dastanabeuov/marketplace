@@ -36,6 +36,13 @@ export default class extends Controller {
       return
     }
 
+    // Защита от CSRF в Ajax-запросах
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+      }
+    });
+
     // Инициализируем таблицу
     this.initializeDataTable()
     
@@ -49,9 +56,25 @@ export default class extends Controller {
       const language = this.languageValue.toLowerCase()
       const languageData = this.languages[language] || {}
       
+      // Получаем опции из значения атрибута
+      let options = this.optionsValue;
+      
+      // Если опции включают serverSide, настраиваем колонки
+      if (options.serverSide) {
+        options.columns = [
+          { data: 'name' },
+          { data: 'updated_at' },
+          { 
+            data: 'actions', 
+            orderable: false, 
+            searchable: false 
+          }
+        ];
+      }
+      
       // Объединяем пользовательские опции с языковыми настройками
-      const options = {
-        ...this.optionsValue,
+      options = {
+        ...options,
         language: languageData
       }
 
@@ -74,7 +97,7 @@ export default class extends Controller {
     }
   }
 
-  // Метод для обновления данных, если необходимо
+  // Метод для обновления данных
   refresh() {
     if (this.dataTable) {
       this.dataTable.ajax.reload()

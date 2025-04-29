@@ -40,7 +40,7 @@ gem "bootsnap", "~> 1.18.4", require: false
 gem "kamal", "~> 2.5.3", require: false
 
 # Add HTTP asset caching/compression and X-Sendfile acceleration to Puma [https://github.com/basecamp/thruster/]
-gem "thruster", "~> 0.1.12", require: false
+gem "thruster", "~> 0.1.13", require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
@@ -76,6 +76,9 @@ gem "strong_migrations", "1.0.0"
 # Strong veribles from secret key [https://github.com/bkeepers/dotenv]
 gem "dotenv-rails", "~> 3.1.4"
 
+# Breadcrimbs genrated [https://github.com/weppos/breadcrumbs_on_rails]
+gem "breadcrumbs_on_rails", "~> 4.1.0"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw mswin x64_mingw ], require: "debug/prelude"
@@ -87,7 +90,7 @@ group :development, :test do
   gem "rubocop-rails-omakase", "~> 1.1.0", require: false
 
   # Advanced test [https://github.com/rspec/rspec-rails]
-  gem "rspec-rails", "~> 7.0.0"
+  gem "rspec-rails", "~> 7.1.1"
 
   # Fabrica bot [https://github.com/thoughtbot/factory_bot_rails]
   gem "factory_bot_rails", "~> 6.4"
@@ -114,6 +117,7 @@ group :test do
   # Ceaned test db [https://github.com/DatabaseCleaner/database_cleaner-active_record]
   gem "database_cleaner-active_record", "~> 2.2.0"
 
+  # Broser automation framework and ecosystem [https://github.com/SeleniumHQ/selenium/tree/trunk/rb]
   gem "selenium-webdriver", "~> 4.31.0"
 
   # Save and open page from test [https://github.com/copiousfreetime/launchy]
