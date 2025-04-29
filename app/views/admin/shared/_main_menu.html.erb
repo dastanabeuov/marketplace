@@ -1,0 +1,10 @@
+<% @main_menu.each do |key, options| %>
+  <li class="nav-item">
+    <%= link_to options[:path], class: "nav-link #{'active' if options[:active]}", aria: (options[:active] ? { current: "page" } : {}) do %>
+      <% if options[:icon_svg].present? %>
+        <%= options[:icon_svg].html_safe %>
+      <% end %>
+      <span class="ms-2"><%= options[:name] %></span>
+    <% end %>
+  </li>
+<% end %>

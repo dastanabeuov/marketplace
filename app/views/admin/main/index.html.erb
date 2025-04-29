@@ -6,7 +6,7 @@
     <h1 class="h2"><%= I18n.t('.dashboard') %></h1>
     <p><%= I18n.t('.dashboard_description') %></p>
     <div class="row my-4">
-      <%#= render collection: @templates, partial: 'templates/template3', as: :template %>
+      <%= render collection: @companies, partial: 'admin/companies/company', as: :company %>
     </div>
     <%= render 'reserved' %>
   </main>

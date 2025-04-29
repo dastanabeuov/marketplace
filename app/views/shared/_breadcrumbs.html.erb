@@ -1,1 +1,3 @@
-<%= breadcrumbs(@breadcrumbs) if @breadcrumbs %>
+<ol class="breadcrumb">
+  <%= render_breadcrumbs :tag => :li, :separator => "" %>
+</ol>
