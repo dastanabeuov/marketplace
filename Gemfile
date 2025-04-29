@@ -71,7 +71,7 @@ gem "devise", "~> 4.9"
 gem "cancancan", "~> 3.6"
 
 # Security data table migration structure [https://github.com/ankane/strong_migrations]
-gem "strong_migrations", "1.0.0"
+gem "strong_migrations", "2.3.0"
 
 # Strong veribles from secret key [https://github.com/bkeepers/dotenv]
 gem "dotenv-rails", "~> 3.1.4"
