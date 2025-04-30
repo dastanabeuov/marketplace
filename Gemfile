@@ -90,7 +90,7 @@ group :development, :test do
   gem "rubocop-rails-omakase", "~> 1.1.0", require: false
 
   # Advanced test [https://github.com/rspec/rspec-rails]
-  gem "rspec-rails", "~> 7.1.1"
+  gem "rspec-rails", "~> 8.0.0"
 
   # Fabrica bot [https://github.com/thoughtbot/factory_bot_rails]
   gem "factory_bot_rails", "~> 6.4"
