@@ -181,3 +181,69 @@
   color: #f8f9fa; /* светлый текст */
   border-color: #555;
 }
+
+/* SLECT2 */
+/* Базовые стили для Select2 с поддержкой светлой и тёмной темы */
+
+/* Тёмная тема - фон контейнера множественного выбора */
+[data-bs-theme="dark"] .select2-container--default .select2-selection--multiple {
+  background-color: #212529; /* тёмный фон */
+}
+/* Светлая тема - фон контейнера множественного выбора */
+[data-bs-theme="light"] .select2-container--default .select2-selection--multiple {
+  background-color: #FFFFFF; /* светлый фон */
+}
+
+/* Тёмная тема - стиль выбранных элементов (чипсов) */
+[data-bs-theme="dark"] .select2-container--default .select2-selection--multiple .select2-selection__choice {
+  background-color: #343A40; /* тёмный фон */
+}
+/* Светлая тема - стиль выбранных элементов (чипсов) */
+[data-bs-theme="light"] .select2-container--default .select2-selection--multiple .select2-selection__choice {
+  background-color: #D4D8DB; /* светлый фон */
+}
+
+/* Тёмная тема - фон элементов выпадающего списка */
+[data-bs-theme="dark"] .select2-results__option {
+  background-color: #212529; /* тёмный фон */
+}
+
+/* Тёмная тема - стиль для выбранных элементов в выпадающем списке */
+[data-bs-theme="dark"] .select2-container--default .select2-results__option--selected {
+  background-color: #343A40 !important; /* тёмный фон, немного светлее основного */
+  color: #ffffff; /* белый текст */
+  border-left: 3px solid #0d6efd; /* синяя полоса слева для Bootstrap */
+}
+
+/* Светлая тема - стиль для выбранных элементов в выпадающем списке */
+[data-bs-theme="light"] .select2-container--default .select2-results__option--selected {
+  background-color: #e9ecef !important; /* светло-серый фон, стиль Bootstrap */
+  color: #212529; /* тёмный текст */
+  border-left: 3px solid #0d6efd; /* синяя полоса слева для Bootstrap */
+}
+
+/* Тёмная тема - стиль при наведении на выбранный элемент */
+[data-bs-theme="dark"] .select2-container--default .select2-results__option--selected.select2-results__option--highlighted {
+  background-color: #495057 !important; /* более светлый оттенок при наведении */
+  color: #ffffff;
+  border-left: 3px solid #0d6efd;
+}
+
+/* Светлая тема - стиль при наведении на выбранный элемент */
+[data-bs-theme="light"] .select2-container--default .select2-results__option--selected.select2-results__option--highlighted {
+  background-color: #d3d4d5 !important; /* более тёмный оттенок при наведении */
+  color: #212529;
+  border-left: 3px solid #0d6efd;
+}
+
+/* Тёмная тема - стиль при наведении на обычный элемент */
+[data-bs-theme="dark"] .select2-container--default .select2-results__option--highlighted:not(.select2-results__option--selected) {
+  background-color: #495057 !important;
+  color: #ffffff;
+}
+
+/* Светлая тема - стиль при наведении на обычный элемент */
+[data-bs-theme="light"] .select2-container--default .select2-results__option--highlighted:not(.select2-results__option--selected) {
+  background-color: #f8f9fa !important;
+  color: #212529;
+}

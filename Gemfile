@@ -71,13 +71,16 @@ gem "devise", "~> 4.9"
 gem "cancancan", "~> 3.6"
 
 # Security data table migration structure [https://github.com/ankane/strong_migrations]
-gem "strong_migrations", "1.0.0"
+gem "strong_migrations", "~> 2.3.0"
 
 # Strong veribles from secret key [https://github.com/bkeepers/dotenv]
 gem "dotenv-rails", "~> 3.1.4"
 
 # Breadcrimbs genrated [https://github.com/weppos/breadcrumbs_on_rails]
 gem "breadcrumbs_on_rails", "~> 4.1.0"
+
+# Paginator for Ruby webapps [https://github.com/kaminari/kaminari]
+gem "kaminari", "~> 1.2.2"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

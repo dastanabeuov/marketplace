@@ -7,7 +7,14 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: "main#index"
+
     resources :companies
+
+    resources :categories do
+      collection do
+        get :search
+      end
+    end
   end
 
   scope :admin do

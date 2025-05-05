@@ -1,5 +1,5 @@
 class Admin::CompaniesController < Admin::BaseController
-  add_breadcrumb "#{I18n.t('.companies')}", :admin_companies_path
+  add_breadcrumb "<i class='bi bi-buildings'></i> #{I18n.t('.companies')}".html_safe, :admin_companies_path
 
   before_action :set_company, only: [ :show, :edit, :update, :destroy ]
 
@@ -85,7 +85,8 @@ class Admin::CompaniesController < Admin::BaseController
       redirect_to admin_company_path(@company), notice: I18n.t(".created")
     else
       add_breadcrumb "#{I18n.t('.new')}", new_admin_company_path
-      render :new, alert: I18n.t(".not_created"), status: :unprocessable_entity
+      flash.now[:alert] = "#{I18n.t(".not_created")}"
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -95,17 +96,21 @@ class Admin::CompaniesController < Admin::BaseController
 
   def update
     if @company.update(company_params)
-      add_breadcrumb "#{I18n.t('.show')}: #{@company.name}", admin_company_path(@company)
       redirect_to admin_company_path(@company), notice: I18n.t(".updated")
     else
       add_breadcrumb "#{I18n.t('.edit')}: #{@company.name}", admin_company_path(@company)
-      render :edit, alert: I18n.t(".not_updated"), status: :unprocessable_entity
+
+      flash.now[:alert] = "#{I18n.t(".not_updated")}"
+      render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
-    @company.destroy
-    redirect_to admin_companies_path, notice: I18n.t(".destroyed")
+    if @company.destroy
+      redirect_to admin_companies_path, notice: I18n.t(".destroyed")
+    else
+      redirect_to admin_companies_path, alert: I18n.t(".not_destroyed")
+    end
   end
 
   private

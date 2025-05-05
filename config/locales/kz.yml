@@ -1,4 +1,15 @@
 kz:
+  public_status:
+    status: "Күй"
+    public: "Публикалық"
+    private: "Жеке"
+  select2:
+    placeholder: "Компанияларды таңдаңыз..."
+    no_results: "Нәтиже табылмады"
+    searching: "Іздеу..."
+    loading_more: "Нәтижелерді жүктеу..."
+    input_too_short: "Кем дегенде %{count} таңба енгізіңіз"
+    selection_too_long: "Тек %{count} элементті таңдай аласыз"
   languages:
     kz: Қазақша
     ru: Орысша
@@ -8,6 +19,7 @@ kz:
   updated: 'Сәтті жаңартылды.'
   not_updated: 'Жаңартылмады.'
   destroyed: 'Сәтті жойылды.'
+  not_destroyed: 'Жойылмады'
   access_denied: 'Қатынау рұқсат етілмеген!'
   first_create_a_company: 'Алдымен компания құрыңыз.'
   not_authorized: 'Сізде бұл ресурсқа қол жеткізу құқығы жоқ.'
@@ -79,6 +91,8 @@ kz:
   сompany: "Компания"
   сompany_employees: "Компания қызметкерлері"
 
+  categories: "Санаттар"
+
   news: "Жаңалықтар"
   about: "Біз туралы"
   contact: "Байланыс"
@@ -116,12 +130,20 @@ kz:
       template:
         updated_at: "Жаңартылған күн"
         title: "Тақырып"
+        name: "Аты"
       document:
         updated_at: "Жаңартылған күн"
         title: "Тақырып"
+        name: "Аты"
       project:
         updated_at: "Жаңартылған күн"
         title: "Тақырып"
+        name: "Аты"
       company:
         updated_at: "Жаңартылған күн"
+        title: "Тақырып"
+        name: "Аты"
+      category:
+        updated_at: "Жаңартылған күн"
+        title: "Тақырып"
         name: "Аты"

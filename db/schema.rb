@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_24_072612) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_29_090803) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -33,11 +33,40 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_24_072612) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
-  create_table "companies", force: :cascade do |t|
-    t.string "name"
+  create_table "categories", force: :cascade do |t|
+    t.string "name", null: false
     t.text "description"
+    t.integer "public_status", default: 1, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_categories_on_name"
+    t.index ["public_status"], name: "index_categories_on_public_status"
+  end
+
+  create_table "category_companies", force: :cascade do |t|
+    t.bigint "category_id", null: false
+    t.bigint "company_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id", "company_id"], name: "index_category_companies_on_category_id_and_company_id", unique: true
+    t.index ["category_id"], name: "index_category_companies_on_category_id"
+    t.index ["company_id"], name: "index_category_companies_on_company_id"
+  end
+
+  create_table "companies", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "description"
+    t.string "email"
+    t.string "phone"
+    t.string "website"
+    t.string "address"
     t.integer "public_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_companies_on_email"
+    t.index ["name"], name: "index_companies_on_name"
   end
+
+  add_foreign_key "category_companies", "categories"
+  add_foreign_key "category_companies", "companies"
 end
