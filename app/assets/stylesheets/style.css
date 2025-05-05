@@ -136,3 +136,6 @@ main {
   margin-top: 2x;
   margin-bottom: 2px;
 }
+.admin-footer {
+  z-index: 2;
+}

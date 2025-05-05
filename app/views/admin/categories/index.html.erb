@@ -3,12 +3,12 @@
   <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 my-4">
     <%= render 'admin/shared/breadcrumbs' %>
     <h1><%= t('all_list') %></h1>
-    <div class="table-responsive" data-controller="datatables" data-datatables-language-value="<%= I18n.locale %>" data-datatables-options-value="<%= { serverSide: true, ajax: admin_companies_path(format: :json), processing: true }.to_json %>">
+    <div class="table-responsive" data-controller="datatables" data-datatables-language-value="<%= I18n.locale %>" data-datatables-options-value="<%= { serverSide: true, ajax: admin_categories_path(format: :json), processing: true }.to_json %>">
       <table class="table table-hover" data-datatables-target="table">
         <thead>
           <tr>
-            <th scope="col"><%= ::Company.human_attribute_name(:name) %></th>
-            <th scope="col"><%= ::Company.human_attribute_name(:updated_at) %></th>
+            <th scope="col"><%= ::Category.human_attribute_name(:name) %></th>
+            <th scope="col"><%= ::Category.human_attribute_name(:updated_at) %></th>
             <th scope="col" class="text-end"><%= I18n.t('.actions') %></th>
           </tr>
         </thead>
@@ -17,9 +17,9 @@
         </tbody>
       </table>
     </div>
-    <% if can?(:create, Company) %>
+    <% if can?(:create, Category) %>
       <div class="btn-group mt-3">
-        <%= link_to t('new'), new_admin_company_path, method: :post, class: "btn btn-primary" %>
+        <%= link_to t('new'), new_admin_category_path, method: :post, class: "btn btn-primary" %>
       </div>
     <% end %>
   </main>

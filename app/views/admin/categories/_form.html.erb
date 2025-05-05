@@ -1,0 +1,62 @@
+<%= form_for [:admin, category], html: { class: "form" } do |f| %>
+  <div class="form-group mb-3">
+    <%= render "shared/errors", resource: category %>
+  </div>
+
+  <div class="form-group mb-3">
+    <%= f.label :name, class: 'form-label' %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group mb-3"
+      data-controller="select2"
+      data-select2-ajax-url-value="/admin/categories/search"
+      data-select2-placeholder-value="<%= t('select2.placeholder') %>"
+      data-select2-allow-clear-value="true"
+      data-select2-multiple-value="true"
+      data-select2-minimum-input-length-value="1"
+      data-select2-close-on-select-value="false"
+      data-select2-page-size-value="10"
+      data-select2-no-results-value="<%= t('select2.no_results') %>"
+      data-select2-searching-value="<%= t('select2.searching') %>"
+      data-select2-loading-more-value="<%= t('select2.loading_more') %>"
+      data-select2-input-too-short-value="<%= t('select2.input_too_short') %>"
+      data-select2-selection-too-long-value="<%= t('select2.selection_too_long') %>"
+      data-select2-language-value="<%= I18n.locale %>">
+
+    <%= f.label :company_ids, I18n.t('.companies'), class: 'form-label' %>
+    <% if category.company_ids.any? %>
+      <%= f.select :company_ids, [], {},
+        {
+          multiple: true,
+          class: 'form-control',
+          data: { select2_target: "field" }
+        } do %>
+        <% @category&.companies.each do |company| %>
+          <option value="<%= company.id %>" selected><%= company.name %></option>
+        <% end %>
+      <% end %>
+    <% else %>
+      <%= f.select :company_ids, [], {},
+        {
+          multiple: true,
+          class: 'form-control',
+          data: { select2_target: "field" }
+        } %>
+    <% end %>
+  </div>
+
+  <div class="form-group mb-3">
+    <%= f.label :public_status, I18n.t('public_status.status'), class: 'form-label' %>
+    <%= f.select :public_status, [[t('public_status.public'), 1], [t('public_status.private'), 0]], { selected: 1 }, { class: 'form-control' } %>
+  </div>
+
+  <div class="form-group mb-3">
+    <%= f.label :description, I18n.t('.description'),class: 'form-label' %>
+    <%= f.text_area :description, class: 'form-control', rows: 20 %>
+  </div>
+
+  <div class="form-group d-grid">
+    <%= f.submit I18n.t('.save'), class: 'btn btn-sm btn-success' %>
+  </div>
+<% end %>

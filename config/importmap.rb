@@ -30,3 +30,5 @@ pin "katex", to: "https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
 # pin "codemirror/mode/htmlmixed/htmlmixed", to: "https://cdn.jsdelivr.net/npm/codemirror@5.49.0/mode/htmlmixed/htmlmixed.js"
 # pin "codemirror/mode/xml/xml", to: "https://cdn.jsdelivr.net/npm/codemirror@5.49.0/mode/xml/xml.js"
 # pin "codemirror/mode/css/css", to: "https://cdn.jsdelivr.net/npm/codemirror@5.49.0/mode/css/css.js"
+
+pin "select2", to: "select/select2.js"

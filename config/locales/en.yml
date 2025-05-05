@@ -1,4 +1,15 @@
 en:
+  public_status:
+    status: "Status"
+    public: "Public"
+    private: "Private"
+  select2:
+    placeholder: "Select companies..."
+    no_results: "No results found"
+    searching: "Searching..."
+    loading_more: "Loading more results..."
+    input_too_short: "Please enter at least %{count} more character(s)"
+    selection_too_long: "You can only select %{count} item(s)"
   languages:
     kz: Kazakh
     ru: Russian
@@ -8,6 +19,7 @@ en:
   updated: 'Successfully updated.'
   not_updated: 'Not updated.'
   destroyed: 'Successfully destroyed.'
+  not_destroyed: 'Not destroyed'
   access_denied: 'Access denied!'
   first_create_a_company: 'First create a company.'
   not_authorized: 'You are not authorized to access this resource.'
@@ -81,6 +93,8 @@ en:
   сompany: "Company"
   сompany_employees: "Сompany employees"
 
+  categories: "Categories"
+
   news: "News"
   about: "About"
   contact: "Contact"
@@ -103,12 +117,20 @@ en:
       template:
         updated_at: "Date of update"
         title: "Title"
+        name: "Name"
       document:
         updated_at: "Date of update"
         title: "Title"
+        name: "Name"
       project:
         updated_at: "Date of update"
         title: "Title"
+        name: "Name"
       company:
         updated_at: "Date of update"
+        title: "Title"
+        name: "Name"
+      category:
+        updated_at: "Date of update"
+        title: "Title"
         name: "Name"

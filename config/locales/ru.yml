@@ -1,4 +1,15 @@
 ru:
+  public_status:
+    status: "Статус"
+    public: "Публичный"
+    private: "Приватный"
+  select2:
+    placeholder: "Выберите компании..."
+    no_results: "Ничего не найдено"
+    searching: "Поиск..."
+    loading_more: "Загрузка результатов..."
+    input_too_short: "Пожалуйста, введите еще %{count} символ(ов)"
+    selection_too_long: "Вы можете выбрать только %{count} элемент(ов)"
   languages:
     kz: Казахский
     ru: Русский
@@ -8,6 +19,7 @@ ru:
   updated: 'Успешно обновлено.'
   not_updated: 'Не обновлено.'
   destroyed: 'Успешно удалено.'
+  not_destroyed: 'Не удалось удалить.'
   access_denied: 'Доступ запрещен!'
   first_create_a_company: 'Сначала создайте компанию.'
   not_authorized: 'У вас нет прав доступа к этому ресурсу.'
@@ -79,6 +91,8 @@ ru:
   сompany: "Компания"
   сompany_employees: "Сотрудники компании"
 
+  categories: "Категории"
+
   news: "Новости"
   about: "О нас"
   contact: "Контакты"
@@ -101,12 +115,20 @@ ru:
       template:
         updated_at: "Дата обновления"
         title: "Заголовок"
+        name: "Имя"
       document:
         updated_at: "Дата обновления"
         title: "Заголовок"
+        name: "Имя"
       project:
         updated_at: "Дата обновления"
         title: "Заголовок"
+        name: "Имя"
       company:
         updated_at: "Дата обновления"
+        title: "Заголовок"
+        name: "Имя"
+      category:
+        updated_at: "Дата обновления"
+        title: "Заголовок"
         name: "Имя"
