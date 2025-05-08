@@ -63,7 +63,7 @@ kz:
   terms_and_conditions: 'Қолдану шарттары'
   privacy_policy: 'Құпиялылық саясаты'
   subscribe_to_our_newsletter: 'Біздің ақпараттық бюллетеньімізге жазылыңыз'
-  jsc_kazrica: 'ТОО "Алатау-Техно"'
+  company_name: 'ТОО "Алатау-Техно"'
 
   ###########################
   dashboard: "Басқару тақтасы"
@@ -87,12 +87,16 @@ kz:
   description: "Сипаттама"
   content: "Мазмұн"
 
+  products: "Өнімдер"
+  product: "Өнім"
+
   companies: "Компаниялар"
   сompany: "Компания"
   сompany_employees: "Компания қызметкерлері"
 
   categories: "Санаттар"
 
+  vacancy: "Бос орындар"
   news: "Жаңалықтар"
   about: "Біз туралы"
   contact: "Байланыс"
@@ -144,6 +148,10 @@ kz:
         title: "Тақырып"
         name: "Аты"
       category:
+        updated_at: "Жаңартылған күн"
+        title: "Тақырып"
+        name: "Аты"
+      product:
         updated_at: "Жаңартылған күн"
         title: "Тақырып"
         name: "Аты"

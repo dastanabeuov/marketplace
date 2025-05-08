@@ -1,5 +1,5 @@
 class Admin::MainController < Admin::BaseController
-  add_breadcrumb "<i class='bi bi-house'></i> #{I18n.t('.dashboard')}".html_safe, :admin_root_path
+  add_breadcrumb I18n.t(".dashboard"), :admin_root_path
 
   def index
     six_months_ago = 6.months.ago.beginning_of_month

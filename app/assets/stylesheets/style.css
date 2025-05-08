@@ -3,8 +3,23 @@ html, body {
 }
 body {
   --bs-body-font-size: 0.75rem;
+  /* padding-top: 80px; */
   /*font-family: Arial, sans-serif;*/
   /*font-family: Roboto, Roboto Local, -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu, Cantarell, Open Sans, Helvetica Neue, sans-serif;*/
+}
+.padding-layout {
+  padding-top: 80px;
+  
+}
+@media (max-width: 767.98px) {
+  .padding-layout {
+    padding-top: 120px;
+  }
+}
+@media (max-width: 276.98px) {
+  .padding-layout {
+    padding-top: 165px;
+  }
 }
 h1, h2, h3, h4, h5, h6 {
   font-weight: 400; /* Устанавливаем более жирный шрифт */

@@ -65,7 +65,7 @@ en:
   terms_and_conditions: 'Terms and conditions'
   privacy_policy: 'Privacy policy'
   subscribe_to_our_newsletter: 'Subscribe to our newsletter'
-  jsc_kazrica: 'LLP "Alatau-Techno"'
+  company_name: 'LLP "Alatau-Techno"'
 
   ######################
   dashboard: "Dashboard"
@@ -89,12 +89,16 @@ en:
   description: "Description"
   content: "Content"
 
+  products: "Products"
+  product: "Product"
+
   companies: "Companies"
   сompany: "Company"
   сompany_employees: "Сompany employees"
 
   categories: "Categories"
 
+  vacancy: "Vacancy"
   news: "News"
   about: "About"
   contact: "Contact"
@@ -131,6 +135,10 @@ en:
         title: "Title"
         name: "Name"
       category:
+        updated_at: "Date of update"
+        title: "Title"
+        name: "Name"
+      product:
         updated_at: "Date of update"
         title: "Title"
         name: "Name"

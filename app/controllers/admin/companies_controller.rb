@@ -1,5 +1,5 @@
 class Admin::CompaniesController < Admin::BaseController
-  add_breadcrumb "<i class='bi bi-buildings'></i> #{I18n.t('.companies')}".html_safe, :admin_companies_path
+  add_breadcrumb I18n.t(".companies"), :admin_companies_path
 
   before_action :set_company, only: [ :show, :edit, :update, :destroy ]
 
@@ -16,8 +16,17 @@ class Admin::CompaniesController < Admin::BaseController
           length = params[:length].to_i
           search_value = params[:search][:value] if params[:search].present?
 
-          # Основной запрос
-          companies = Company.order(id: :desc)
+          # Получаем параметры сортировки
+          sort_column = params[:sort_column] || "updated_at"
+          sort_direction = params[:sort_direction] || "desc"
+
+          # Проверка безопасности для сортировки (защита от SQL-инъекций)
+          allowed_columns = %w[name updated_at created_at]
+          sort_column = "updated_at" unless allowed_columns.include?(sort_column)
+          sort_direction = sort_direction.to_s.downcase == "asc" ? "asc" : "desc"
+
+          # Основной запрос с сортировкой
+          companies = Company.order("#{sort_column} #{sort_direction}")
 
           # Фильтрация, если есть поисковый запрос
           if search_value.present?
@@ -69,11 +78,11 @@ class Admin::CompaniesController < Admin::BaseController
   end
 
   def show
-    add_breadcrumb "#{@company.name}", admin_company_path(@company)
+    add_breadcrumb @company.name, admin_company_path(@company)
   end
 
   def new
-    add_breadcrumb "#{I18n.t('.new')}", new_admin_company_path
+    add_breadcrumb I18n.t(".new"), new_admin_company_path
 
     @company = Company.new
   end
@@ -84,7 +93,7 @@ class Admin::CompaniesController < Admin::BaseController
     if @company.save
       redirect_to admin_company_path(@company), notice: I18n.t(".created")
     else
-      add_breadcrumb "#{I18n.t('.new')}", new_admin_company_path
+      add_breadcrumb I18n.t(".new"), new_admin_company_path
       flash.now[:alert] = "#{I18n.t(".not_created")}"
       render :new, status: :unprocessable_entity
     end

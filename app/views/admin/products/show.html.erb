@@ -1,0 +1,29 @@
+<div class="row">
+  <%= render 'nav' %>
+  <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 my-4">
+    <%= render 'admin/shared/breadcrumbs' %>
+
+    <div class="product-info">
+      <h1><%= @product.name %></h1>
+      <p><%= @product.description %></p>
+    </div>
+
+    <div class="btn-group mt-3">
+      <%= button_to admin_product_path(@product),
+          method: :delete,
+          data: { turbo_confirm: t('are_you_sure') },
+          class: "btn btn-danger",
+          title: t('destroy') do %>
+        <i class="bi bi-trash3-fill"></i>
+      <% end %>
+
+      <%= link_to edit_admin_product_path(@product), class: "btn btn-warning", title: t('edit') do %>
+        <i class="bi bi-pencil-fill"></i>
+      <% end %>
+
+      <%= link_to admin_products_path, class: "btn btn-secondary", title: t('back') do %>
+        <i class="bi bi-arrow-left-circle-fill"></i>
+      <% end %>
+    </div>
+  </main>
+</div>

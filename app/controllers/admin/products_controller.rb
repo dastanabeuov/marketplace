@@ -1,7 +1,7 @@
-class Admin::CategoriesController < Admin::BaseController
-  add_breadcrumb I18n.t(".categories"), :admin_categories_path
+class Admin::ProductsController < Admin::BaseController
+  add_breadcrumb I18n.t(".products"), :admin_products_path
 
-  before_action :set_category, only: [ :show, :edit, :update, :destroy ]
+  before_action :set_product, only: [ :show, :edit, :update, :destroy ]
 
   load_and_authorize_resource except: [ :search ]
 
@@ -16,23 +16,23 @@ class Admin::CategoriesController < Admin::BaseController
     # Исключим уже выбранные компании, если они переданы
     excluded_ids = params[:excluded_ids].present? ? params[:excluded_ids].map(&:to_i) : []
 
-    query = Company.where("name ILIKE ?", "%#{term}%")
+    query = Category.where("name ILIKE ?", "%#{term}%")
     query = query.where.not(id: excluded_ids) if excluded_ids.any?
 
     # Считаем общее количество
     total_count = query.count
-    Rails.logger.info("Total matching companies: #{total_count}")
+    Rails.logger.info("Total matching categories: #{total_count}")
 
-    companies = query
+    categories = query
                 .order(:name)
                 .offset((page - 1) * per_page)
                 .limit(per_page + 1)
 
-    more = companies.size > per_page
-    companies = companies.first(per_page)
+    more = categories.size > per_page
+    categories = categories.first(per_page)
 
-    results = companies.map { |c| { id: c.id, text: c.name } }
-    Rails.logger.info("Returning #{results.size} companies, more: #{more}")
+    results = categories.map { |c| { id: c.id, text: c.name } }
+    Rails.logger.info("Returning #{results.size} categories, more: #{more}")
 
     render json: {
       results: results,
@@ -56,35 +56,35 @@ class Admin::CategoriesController < Admin::BaseController
           sort_direction = params[:sort_direction] || "desc"
 
           # Проверка безопасности для сортировки (защита от SQL-инъекций)
-          allowed_columns = %w[name updated_at created_at]
+          allowed_columns = %w[name updated_at created_at price]
           sort_column = "updated_at" unless allowed_columns.include?(sort_column)
           sort_direction = sort_direction.to_s.downcase == "asc" ? "asc" : "desc"
 
           # Основной запрос с сортировкой
-          categories = Category.order("#{sort_column} #{sort_direction}")
+          products = Product.order("#{sort_column} #{sort_direction}")
 
           # Фильтрация, если есть поисковый запрос
           if search_value.present?
-            categories = categories.where("name LIKE ?", "%#{search_value}%")
+            products = products.where("name LIKE ?", "%#{search_value}%")
           end
 
-          # Общее количество записей без фильтрации (используем кэширование)
-          total_records = Rails.cache.fetch("categories_count", expires_in: 10.minutes) do
-            Category.count
+          # Общее количество записей без фильтрации
+          total_records = Rails.cache.fetch("products_count", expires_in: 10.minutes) do
+            Product.count
           end
 
           # Общее количество записей после фильтрации
-          filtered_records = search_value.present? ? categories.count : total_records
+          filtered_records = search_value.present? ? products.count : total_records
 
           # Пагинация
-          categories = categories.offset(start).limit(length)
+          products = products.offset(start).limit(length)
 
           # Формируем данные для ответа
-          data = categories.map do |category|
+          data = products.map do |product|
             {
-              name: category.name,
-              updated_at: I18n.l(category.updated_at, format: :long),
-              actions: render_to_string(partial: "admin/categories/actions", locals: { category: category }, formats: [ :html ])
+              name: product.name,
+              updated_at: I18n.l(product.updated_at, format: :long),
+              actions: render_to_string(partial: "admin/products/actions", locals: { product: product }, formats: [ :html ])
             }
           end
 
@@ -113,60 +113,60 @@ class Admin::CategoriesController < Admin::BaseController
   end
 
   def show
-    add_breadcrumb @category.name, admin_category_path(@category)
+    add_breadcrumb @product.name, admin_product_path(@product)
   end
 
   def new
-    add_breadcrumb I18n.t(".new"), new_admin_category_path
+    add_breadcrumb I18n.t(".new"), new_admin_product_path
 
-    @category = Category.new
+    @product = Product.new
   end
 
   def create
-    @category = Category.new(category_params)
+    @product = Product.new(product_params)
 
-    if @category.save
-      redirect_to admin_category_path(@category), notice: I18n.t(".created")
+    if @product.save
+      redirect_to admin_product_path(@product), notice: I18n.t(".created")
     else
-      add_breadcrumb I18n.t(".new"), new_admin_category_path
+      add_breadcrumb I18n.t(".new"), new_admin_product_path
       flash.now[:alert] = "#{I18n.t(".not_created")}"
       render :new, status: :unprocessable_entity
     end
   end
 
   def edit
-    add_breadcrumb "#{I18n.t('.edit')}: #{@category.name}", edit_admin_category_path(@category)
+    add_breadcrumb "#{I18n.t('.edit')}: #{@product.name}", edit_admin_product_path(@product)
   end
 
   def update
-    if @category.update(category_params)
-      redirect_to admin_category_path(@category), notice: I18n.t(".updated")
+    if @product.update(product_params)
+      redirect_to admin_product_path(@product), notice: I18n.t(".updated")
     else
-      add_breadcrumb "#{I18n.t('.edit')}: #{@category.name}", admin_category_path(@category)
+      add_breadcrumb "#{I18n.t('.edit')}: #{@product.name}", admin_product_path(@product)
       flash.now[:alert] = "#{I18n.t(".not_updated")}"
       render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
-    if @category.destroy
-      redirect_to admin_categories_path, notice: I18n.t(".destroyed")
+    if @product.destroy
+      redirect_to admin_products_path, notice: I18n.t(".destroyed")
     else
-      redirect_to admin_categories_path, alert: I18n.t(".not_destroyed")
+      redirect_to admin_products_path, alert: I18n.t(".not_destroyed")
     end
   end
 
   private
 
-    def set_category
-      @category ||= Category.find_by_id(params[:id])
+    def set_product
+      @product ||= Product.find_by_id(params[:id])
     end
 
-    def category_params
-      params.require(:category).permit(:name, :description, :public_status, company_ids: [])
+    def product_params
+      params.require(:product).permit(:name, :description, :public_status, category_ids: [])
     end
 
     def set_active_main_menu_item
-      @main_menu[:categories][:active] = true
+      @main_menu[:products][:active] = true
     end
 end

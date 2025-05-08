@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_29_090803) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_06_063241) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -67,6 +67,32 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_29_090803) do
     t.index ["name"], name: "index_companies_on_name"
   end
 
+  create_table "product_categories", force: :cascade do |t|
+    t.bigint "product_id", null: false
+    t.bigint "category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_product_categories_on_category_id"
+    t.index ["product_id", "category_id"], name: "index_product_categories_on_product_id_and_category_id", unique: true
+    t.index ["product_id"], name: "index_product_categories_on_product_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "price"
+    t.string "producer"
+    t.string "delivery_date"
+    t.text "description"
+    t.integer "public_status", default: 1, null: false
+    t.integer "product_code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_products_on_name"
+    t.index ["public_status"], name: "index_products_on_public_status"
+  end
+
   add_foreign_key "category_companies", "categories"
   add_foreign_key "category_companies", "companies"
+  add_foreign_key "product_categories", "categories"
+  add_foreign_key "product_categories", "products"
 end
