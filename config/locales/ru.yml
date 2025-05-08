@@ -63,7 +63,7 @@ ru:
   terms_and_conditions: 'Условия использования'
   privacy_policy: 'Политика конфиденциальности'
   subscribe_to_our_newsletter: 'Подпишитесь на нашу рассылку'
-  jsc_kazrica: 'ТОО "Алатау-Техно"'
+  company_name: 'ТОО "Алатау-Техно"'
 
   #############################
   dashboard: "Панель управления"
@@ -87,12 +87,16 @@ ru:
   description: "Описание"
   content: "Содержание"
 
+  products: "Продукты"
+  product: "Продукт"
+
   companies: "Компании"
   сompany: "Компания"
   сompany_employees: "Сотрудники компании"
 
   categories: "Категории"
 
+  vacancy: "Вакансия"
   news: "Новости"
   about: "О нас"
   contact: "Контакты"
@@ -129,6 +133,10 @@ ru:
         title: "Заголовок"
         name: "Имя"
       category:
+        updated_at: "Дата обновления"
+        title: "Заголовок"
+        name: "Имя"
+      product:
         updated_at: "Дата обновления"
         title: "Заголовок"
         name: "Имя"

@@ -247,3 +247,13 @@
   background-color: #f8f9fa !important;
   color: #212529;
 }
+
+
+/* темная тема - footer */
+[data-bs-theme="dark"] .admin-footer {
+  background-color: #343A40;
+}
+/* Светлая тема - footer */
+[data-bs-theme="light"] .admin-footer {
+  background-color: #D4D8DB;
+}

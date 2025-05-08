@@ -1,16 +1,16 @@
-<%= form_for [:admin, category], html: { class: "form" } do |f| %>
+<%= form_for [:admin, product], html: { class: "form" } do |f| %>
   <div class="form-group mb-3">
-    <%= render "shared/errors", resource: category %>
+    <%= render "shared/errors", resource: product %>
   </div>
 
   <div class="form-group mb-3">
-    <%= f.label :name, class: 'form-label' %>
+    <%= f.label :name, I18n.t('.name'), class: 'form-label' %>
     <%= f.text_field :name, class: 'form-control' %>
   </div>
 
   <div class="form-group mb-3"
       data-controller="select2"
-      data-select2-ajax-url-value="/admin/categories/search"
+      data-select2-ajax-url-value="/admin/products/search"
       data-select2-placeholder-value="<%= t('select2.placeholder') %>"
       data-select2-allow-clear-value="true"
       data-select2-multiple-value="true"
@@ -24,20 +24,20 @@
       data-select2-selection-too-long-value="<%= t('select2.selection_too_long') %>"
       data-select2-language-value="<%= I18n.locale %>">
 
-    <%= f.label :company_ids, I18n.t('.companies'), class: 'form-label' %>
-    <% if category.company_ids.any? %>
-      <%= f.select :company_ids, [], {},
+    <%= f.label :category_ids, I18n.t('.categories'), class: 'form-label' %>
+    <% if product.category_ids.any? %>
+      <%= f.select :category_ids, [], {},
         {
           multiple: true,
           class: 'form-control',
           data: { select2_target: "field" }
         } do %>
-        <% @category&.companies.each do |company| %>
-          <option value="<%= company.id %>" selected><%= company.name %></option>
+        <% @product&.categories.each do |category| %>
+          <option value="<%= category.id %>" selected><%= category.name %></option>
         <% end %>
       <% end %>
     <% else %>
-      <%= f.select :company_ids, [], {},
+      <%= f.select :category_ids, [], {},
         {
           multiple: true,
           class: 'form-control',

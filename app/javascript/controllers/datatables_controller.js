@@ -62,14 +62,69 @@ export default class extends Controller {
       // Если опции включают serverSide, настраиваем колонки
       if (options.serverSide) {
         options.columns = [
-          { data: 'name' },
-          { data: 'updated_at' },
+          { 
+            data: 'name',
+            name: 'name',
+            orderable: true
+          },
+          { 
+            data: 'updated_at',
+            name: 'updated_at',
+            orderable: true
+          },
           { 
             data: 'actions', 
             orderable: false, 
             searchable: false 
           }
         ];
+        
+        // Добавляем настройки для серверной сортировки
+        options.order = [[1, 'desc']]; // По умолчанию сортируем по дате обновления (desc)
+        
+        // Настраиваем обработку ajax-запросов для передачи параметров сортировки
+        if (options.ajax) {
+          const originalAjax = options.ajax;
+          
+          options.ajax = (data, callback, settings) => {
+            // Если ajax задан как строка, преобразуем её в объект
+            let ajaxOptions = typeof originalAjax === 'string' 
+              ? { url: originalAjax } 
+              : originalAjax;
+            
+            // Проверяем, если у нас есть данные о сортировке
+            if (data.order && data.order.length > 0) {
+              const order = data.order[0];
+              const columnIndex = order.column;
+              const columnName = data.columns[columnIndex].name || data.columns[columnIndex].data;
+              const direction = order.dir; // 'asc' или 'desc'
+              
+              // Добавляем параметры сортировки к запросу
+              data.sort_column = columnName;
+              data.sort_direction = direction;
+            }
+            
+            // Если ajaxOptions — это объект с url
+            if (ajaxOptions.url) {
+              // Выполняем запрос с нашими параметрами
+              $.ajax({
+                url: ajaxOptions.url,
+                data: data,
+                dataType: 'json',
+                method: 'GET',
+                success: callback,
+                error: (xhr, error, thrown) => {
+                  console.error('DataTables Ajax error:', error, thrown);
+                  callback({ data: [] });
+                }
+              });
+            } 
+            // Если ajaxOptions — это функция
+            else if (typeof ajaxOptions === 'function') {
+              ajaxOptions(data, callback, settings);
+            }
+          };
+        }
       }
       
       // Объединяем пользовательские опции с языковыми настройками

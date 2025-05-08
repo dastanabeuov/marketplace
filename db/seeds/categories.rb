@@ -2,7 +2,7 @@ if Category.count.zero?
   if Company.count.zero?
     puts 'No companies found. Please seed companies first.'
   else
-    puts 'Seeding Categories...'
+    puts 'Seeding Categories'
 
     company_ids = Company.pluck(:id)
 
