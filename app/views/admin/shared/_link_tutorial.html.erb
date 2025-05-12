@@ -1,52 +1,49 @@
 <div class="tutorial-links my-5">
+  <!---
   <li class="nav-item my-1">
-    <%= link_to "#", class: "btn btn-sm btn-outline-secondary border border-secondary-subtle ms-3 mt-2" do %>
-      📖 <%= I18n.t('.read_tutorial') %>
+    <%#= link_to "#", class: "btn btn-sm btn-outline-secondary border border-secondary-subtle ms-3 mt-2" do %>
+      📖 <%#= I18n.t('.read_tutorial') %>
+    <%# end %>
+  </li>
+  <li class="nav-item my-1">
+    <%#= link_to "#", class: "btn btn-sm btn-outline-secondary border border-secondary-subtle ms-3 mt-2" do %>
+      ⚡️ <%#= I18n.t('.volt_qna') %>
+    <%# end %>
+  </li>
+  <li class="nav-item my-1">
+    <%#= link_to "#", class: "btn btn-sm btn-outline-secondary border border-secondary-subtle ms-3 mt-2" do %>
+      ☕ <%#= I18n.t('.coffee_chat') %>
+    <%# end %>
+  </li>
+  --->
+  <li class="nav-item my-1">
+    <%= link_to admin_contact_path, class: "btn btn-sm btn-outline-secondary border border-secondary-subtle ms-3 mt-2" do %>
+      📞 <%= I18n.t('.contacts') %>
     <% end %>
   </li>
   <li class="nav-item my-1">
-    <%= link_to "#", class: "btn btn-sm btn-outline-secondary border border-secondary-subtle ms-3 mt-2" do %>
-      ⚡️ <%= I18n.t('.volt_qna') %>
-    <% end %>
-  </li>
-  <li class="nav-item my-1">
-    <%= link_to "#", class: "btn btn-sm btn-outline-secondary border border-secondary-subtle ms-3 mt-2" do %>
-      ☕ <%= I18n.t('.coffee_chat') %>
-    <% end %>
-  </li>
-  <li class="nav-item my-1">
-    <%= link_to "#", class: "btn btn-sm btn-outline-secondary border border-secondary-subtle ms-3 mt-2", target: "_blank" do %>
-      © <%= current_year %> 🏢 <%= I18n.t('.company_name') %>
-    <% end %>
-  </li>
-  <li class="nav-item my-1">
-    <%= link_to "#", class: "btn btn-sm btn-outline-secondary border border-secondary-subtle ms-3 mt-2" do %>
-      🔒 <%= I18n.t('.privacy_policy') %>
-    <% end %>
-  </li>
-  <li class="nav-item my-1">
-    <%= link_to "#", class: "btn btn-sm btn-outline-secondary border border-secondary-subtle ms-3 mt-2" do %>
-      📜 <%= I18n.t('.terms_and_conditions') %>
-    <% end %>
-  </li>
-  <li class="nav-item my-1">
-    <%= link_to "#", class: "btn btn-sm btn-outline-secondary border border-secondary-subtle ms-3 mt-2" do %>
-      💼 <%= I18n.t('.vacancy') %>
-    <% end %>
-  </li>
-  <li class="nav-item my-1">
-    <%= link_to "#", class: "btn btn-sm btn-outline-secondary border border-secondary-subtle ms-3 mt-2" do %>
-      📰 <%= I18n.t('.news') %>
-    <% end %>
-  </li>
-  <li class="nav-item my-1">
-    <%= link_to "#", class: "btn btn-sm btn-outline-secondary border border-secondary-subtle ms-3 mt-2" do %>
+    <%= link_to admin_about_path, class: "btn btn-sm btn-outline-secondary border border-secondary-subtle ms-3 mt-2" do %>
       ℹ️ <%= I18n.t('.about') %>
     <% end %>
   </li>
   <li class="nav-item my-1">
-    <%= link_to "#", class: "btn btn-sm btn-outline-secondary border border-secondary-subtle ms-3 mt-2" do %>
-      📞 <%= I18n.t('.contacts') %>
+    <%= link_to admin_vacancies_path, class: "btn btn-sm btn-outline-secondary border border-secondary-subtle ms-3 mt-2" do %>
+      💼 <%= I18n.t('.vacancy') %>
+    <% end %>
+  </li>
+  <li class="nav-item my-1">
+    <%= link_to admin_privacy_policy_path, class: "btn btn-sm btn-outline-secondary border border-secondary-subtle ms-3 mt-2" do %>
+      🔒 <%= I18n.t('.privacy_policy') %>
+    <% end %>
+  </li>
+  <li class="nav-item my-1">
+    <%= link_to admin_terms_of_use_site_path, class: "btn btn-sm btn-outline-secondary border border-secondary-subtle ms-3 mt-2" do %>
+      📜 <%= I18n.t('.terms_of_use_site') %>
+    <% end %>
+  </li>
+  <li class="nav-item my-1">
+    <%= link_to admin_sitename_path, class: "btn btn-sm btn-outline-secondary border border-secondary-subtle ms-3 mt-2" do %>
+      © <%= current_year %> 🏢 <%= Sitename.first.name unless Sitename.count.zero? %>
     <% end %>
   </li>
 </div>

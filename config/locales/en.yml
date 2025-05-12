@@ -71,6 +71,10 @@ en:
   dashboard: "Dashboard"
   dashboard_description: "A company can consist of many categories, each of which includes its own products. For example, one category may contain compressors, another - pumps, and so on. This allows for convenient organization of products, so that users can quickly find the desired products by category."
 
+  sitename: "Site name"
+  privacy_policy: "Privacy policy"
+  terms_of_use_site: "Terms of use site"
+  check_singleton_limit: "Only one is allowed."
   projects: "Projects"
   templates: "Templates"
   documents: "Documents"
@@ -88,9 +92,16 @@ en:
   name: "Name"
   description: "Description"
   content: "Content"
+  working_hours: "Working hours"
+  phone: "Phone"
+  address: "Address"
+  map_iframe: "Map iframe"
+  email: "E-mail"
 
   products: "Products"
   product: "Product"
+
+  vacancy: "Vacancy"
 
   companies: "Companies"
   сompany: "Company"
@@ -131,6 +142,10 @@ en:
         title: "Title"
         name: "Name"
       company:
+        updated_at: "Date of update"
+        title: "Title"
+        name: "Name"
+      vacancy:
         updated_at: "Date of update"
         title: "Title"
         name: "Name"

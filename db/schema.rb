@@ -10,9 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_06_063241) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_12_112612) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "abouts", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "admin_users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -67,6 +74,24 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_06_063241) do
     t.index ["name"], name: "index_companies_on_name"
   end
 
+  create_table "contacts", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "working_hours", null: false
+    t.string "email", null: false
+    t.string "phone", null: false
+    t.string "address", null: false
+    t.text "map_iframe", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "privacy_policies", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "product_categories", force: :cascade do |t|
     t.bigint "product_id", null: false
     t.bigint "category_id", null: false
@@ -89,6 +114,28 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_06_063241) do
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_products_on_name"
     t.index ["public_status"], name: "index_products_on_public_status"
+  end
+
+  create_table "sitenames", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "terms_of_use_sites", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "vacancies", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "description"
+    t.integer "public_status", default: 1, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "category_companies", "categories"

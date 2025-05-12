@@ -1,0 +1,39 @@
+<%= form_with(model: contact, url: admin_contact_path, local: true) do |f| %>
+  <div class="form-group mb-3">
+    <%= render "shared/errors", resource: contact %>
+  </div>
+
+  <div class="form-group mb-3">
+    <%= f.label :name, I18n.t('.name'), class: 'form-label' %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group mb-3">
+    <%= f.label :working_hours, I18n.t('.working_hours'),class: 'form-label' %>
+    <%= f.text_field :working_hours, class: 'form-control', rows: 10 %>
+  </div>
+
+  <div class="form-group mb-3">
+    <%= f.label :email, I18n.t('.email'),class: 'form-label' %>
+    <%= f.text_field :email, class: 'form-control', rows: 10 %>
+  </div>
+
+  <div class="form-group mb-3">
+    <%= f.label :phone, I18n.t('.phone'),class: 'form-label' %>
+    <%= f.text_field :phone, class: 'form-control', rows: 10 %>
+  </div>
+
+  <div class="form-group mb-3">
+    <%= f.label :address, I18n.t('.address'),class: 'form-label' %>
+    <%= f.text_field :address, class: 'form-control', rows: 10 %>
+  </div>
+
+  <div class="form-group mb-3">
+    <%= f.label :map_iframe, I18n.t('.map_iframe'),class: 'form-label' %>
+    <%= f.text_area :map_iframe, class: 'form-control', rows: 10 %>
+  </div>
+
+  <div class="form-group d-grid">
+    <%= f.submit I18n.t('.save'), class: 'btn btn-sm btn-success' %>
+  </div>
+<% end %>
