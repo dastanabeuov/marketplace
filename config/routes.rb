@@ -21,6 +21,13 @@ Rails.application.routes.draw do
         get :search
       end
     end
+
+    resource :sitename
+    resource :privacy_policy
+    resource :terms_of_use_site
+    resource :contact
+    resource :about
+    resources :vacancies
   end
 
   scope :admin do

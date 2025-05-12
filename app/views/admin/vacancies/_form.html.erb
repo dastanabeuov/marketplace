@@ -1,0 +1,19 @@
+<%= form_for [:admin, vacancy], html: { class: "form" } do |f| %>
+  <div class="form-group mb-3">
+    <%= render "shared/errors", resource: vacancy %>
+  </div>
+
+  <div class="form-group mb-3">
+    <%= f.label :name, class: 'form-label' %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group mb-3">
+    <%= f.label :description, class: 'form-label' %>
+    <%= f.text_area :description, class: 'form-control', rows: 10 %>
+  </div>
+
+  <div class="form-group d-grid">
+    <%= f.submit I18n.t('.save'), class: 'btn btn-sm btn-success' %>
+  </div>
+<% end %>

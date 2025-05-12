@@ -1,0 +1,25 @@
+<div class="row">
+  <%= render 'nav' %>
+  <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 my-4">
+    <%= render 'admin/shared/breadcrumbs' %>
+
+    <div class="privacy-policy-info">
+      <h1><%= @privacy_policy.name %></h1>
+      <p><%= @privacy_policy.description %></p>
+    </div>
+
+    <div class="btn-group mt-3">
+      <%= button_to admin_privacy_policy_path(@privacy_policy),
+          method: :delete,
+          data: { turbo_confirm: t('are_you_sure') },
+          class: "btn btn-danger",
+          title: t('destroy') do %>
+        <i class="bi bi-trash3-fill"></i>
+      <% end %>
+
+      <%= link_to edit_admin_privacy_policy_path(@privacy_policy), class: "btn btn-warning", title: t('edit') do %>
+        <i class="bi bi-pencil-fill"></i>
+      <% end %>
+    </div>
+  </main>
+</div>
