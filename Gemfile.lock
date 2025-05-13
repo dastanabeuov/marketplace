@@ -113,7 +113,7 @@ GEM
     dartsass-rails (0.5.1)
       railties (>= 6.0.0)
       sass-embedded (~> 1.63)
-    database_cleaner-active_record (2.2.0)
+    database_cleaner-active_record (2.2.1)
       activerecord (>= 5.a)
       database_cleaner-core (~> 2.0.0)
     database_cleaner-core (2.0.1)
@@ -505,7 +505,7 @@ DEPENDENCIES
   cancancan (~> 3.6)
   capybara (~> 3.40.0)
   dartsass-rails (~> 0.5.1)
-  database_cleaner-active_record (~> 2.2.0)
+  database_cleaner-active_record (~> 2.2.1)
   debug
   devise (~> 4.9)
   devise-i18n (~> 1.12)
@@ -516,7 +516,7 @@ DEPENDENCIES
   jbuilder (~> 2.13.0)
   jdbc-mysql (~> 5.1.35)
   kamal (~> 2.5.3)
-  kaminari
+  kaminari (~> 1.2.2)
   launchy (~> 3.1)
   letter_opener (~> 1.10)
   mysql2 (~> 0.4)
