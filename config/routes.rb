@@ -12,13 +12,14 @@ Rails.application.routes.draw do
 
     resources :categories do
       collection do
-        get :search
+        get :search_company
       end
     end
 
     resources :products do
       collection do
-        get :search
+        get :search_category
+        get :search_company
       end
     end
 
