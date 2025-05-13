@@ -3,9 +3,9 @@ class Admin::ProductsController < Admin::BaseController
 
   before_action :set_product, only: [ :show, :edit, :update, :destroy ]
 
-  load_and_authorize_resource except: [ :search ]
+  load_and_authorize_resource except: [ :search_company, :search_category ]
 
-  def search
+  def search_category
     term = params[:term].to_s.strip
     page = (params[:page] || 1).to_i
     per_page = (params[:per_page] || 10).to_i
@@ -33,6 +33,41 @@ class Admin::ProductsController < Admin::BaseController
 
     results = categories.map { |c| { id: c.id, text: c.name } }
     Rails.logger.info("Returning #{results.size} categories, more: #{more}")
+
+    render json: {
+      results: results,
+      pagination: { more: more }
+    }
+  end
+
+  def search_company
+    term = params[:term].to_s.strip
+    page = (params[:page] || 1).to_i
+    per_page = (params[:per_page] || 10).to_i
+
+    # Логируем параметры запроса
+    Rails.logger.info("Search params: term=#{term}, page=#{page}, per_page=#{per_page}")
+
+    # Исключим уже выбранные компании, если они переданы
+    excluded_ids = params[:excluded_ids].present? ? params[:excluded_ids].map(&:to_i) : []
+
+    query = Company.where("name ILIKE ?", "%#{term}%")
+    query = query.where.not(id: excluded_ids) if excluded_ids.any?
+
+    # Считаем общее количество
+    total_count = query.count
+    Rails.logger.info("Total matching companies: #{total_count}")
+
+    companies = query
+                .order(:name)
+                .offset((page - 1) * per_page)
+                .limit(per_page + 1)
+
+    more = companies.size > per_page
+    companies = companies.first(per_page)
+
+    results = companies.map { |c| { id: c.id, text: c.name } }
+    Rails.logger.info("Returning #{results.size} companies, more: #{more}")
 
     render json: {
       results: results,
@@ -163,7 +198,7 @@ class Admin::ProductsController < Admin::BaseController
     end
 
     def product_params
-      params.require(:product).permit(:name, :description, :public_status, category_ids: [])
+      params.require(:product).permit(:name, :description, :public_status, category_ids: [], company_ids: [])
     end
 
     def set_active_main_menu_item

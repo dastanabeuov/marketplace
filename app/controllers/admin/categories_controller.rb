@@ -3,9 +3,9 @@ class Admin::CategoriesController < Admin::BaseController
 
   before_action :set_category, only: [ :show, :edit, :update, :destroy ]
 
-  load_and_authorize_resource except: [ :search ]
+  load_and_authorize_resource except: [ :search_company ]
 
-  def search
+  def search_company
     term = params[:term].to_s.strip
     page = (params[:page] || 1).to_i
     per_page = (params[:per_page] || 10).to_i

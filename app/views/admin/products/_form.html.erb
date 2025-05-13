@@ -10,7 +10,7 @@
 
   <div class="form-group mb-3"
       data-controller="select2"
-      data-select2-ajax-url-value="/admin/products/search"
+      data-select2-ajax-url-value="/admin/products/search_category"
       data-select2-placeholder-value="<%= t('select2.placeholder') %>"
       data-select2-allow-clear-value="true"
       data-select2-multiple-value="true"
@@ -38,6 +38,44 @@
       <% end %>
     <% else %>
       <%= f.select :category_ids, [], {},
+        {
+          multiple: true,
+          class: 'form-control',
+          data: { select2_target: "field" }
+        } %>
+    <% end %>
+  </div>
+
+  <div class="form-group mb-3"
+      data-controller="select2"
+      data-select2-ajax-url-value="/admin/products/search_company"
+      data-select2-placeholder-value="<%= t('select2.placeholder') %>"
+      data-select2-allow-clear-value="true"
+      data-select2-multiple-value="true"
+      data-select2-minimum-input-length-value="1"
+      data-select2-close-on-select-value="false"
+      data-select2-page-size-value="10"
+      data-select2-no-results-value="<%= t('select2.no_results') %>"
+      data-select2-searching-value="<%= t('select2.searching') %>"
+      data-select2-loading-more-value="<%= t('select2.loading_more') %>"
+      data-select2-input-too-short-value="<%= t('select2.input_too_short') %>"
+      data-select2-selection-too-long-value="<%= t('select2.selection_too_long') %>"
+      data-select2-language-value="<%= I18n.locale %>">
+
+    <%= f.label :company_ids, I18n.t('.companies'), class: 'form-label' %>
+    <% if product.company_ids.any? %>
+      <%= f.select :company_ids, [], {},
+        {
+          multiple: true,
+          class: 'form-control',
+          data: { select2_target: "field" }
+        } do %>
+        <% @product&.companies.each do |company| %>
+          <option value="<%= company.id %>" selected><%= company.name %></option>
+        <% end %>
+      <% end %>
+    <% else %>
+      <%= f.select :company_ids, [], {},
         {
           multiple: true,
           class: 'form-control',
