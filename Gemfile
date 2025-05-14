@@ -34,7 +34,7 @@ gem "solid_queue", "~> 1.1.5"
 gem "solid_cable", "3.0.7"
 
 # Reduces boot times through caching; required in config/boot.rb
-gem "bootsnap", "~> 1.18.4", require: false
+gem "bootsnap", "~> 1.18.5", require: false
 
 # Deploy this application anywhere as a Docker container [https://kamal-deploy.org]
 gem "kamal", "~> 2.5.3", require: false
