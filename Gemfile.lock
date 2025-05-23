@@ -115,7 +115,7 @@ GEM
     dartsass-rails (0.5.1)
       railties (>= 6.0.0)
       sass-embedded (~> 1.63)
-    database_cleaner-active_record (2.2.0)
+    database_cleaner-active_record (2.2.1)
       activerecord (>= 5.a)
       database_cleaner-core (~> 2.0.0)
     database_cleaner-core (2.0.1)
@@ -523,7 +523,7 @@ DEPENDENCIES
   cancancan (~> 3.6)
   capybara (~> 3.40.0)
   dartsass-rails (~> 0.5.1)
-  database_cleaner-active_record (~> 2.2.0)
+  database_cleaner-active_record (~> 2.2.1)
   debug
   devise (~> 4.9)
   devise-i18n (~> 1.12)
