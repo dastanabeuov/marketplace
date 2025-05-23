@@ -1,4 +1,6 @@
 class Admin::SitenamesController < Admin::BaseController
+  include AttachableImageRemoval
+
   add_breadcrumb I18n.t(".sitename"), :admin_sitename_path
 
   skip_before_action :set_active_main_menu_item
@@ -66,6 +68,6 @@ class Admin::SitenamesController < Admin::BaseController
   end
 
   def sitename_params
-    params.require(:sitename).permit(:name, :description)
+    params.require(:sitename).permit(:image, :name, :description)
   end
 end

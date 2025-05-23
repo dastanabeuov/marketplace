@@ -1,0 +1,23 @@
+<%= form_for [:admin, mechanic], html: { class: "form" } do |f| %>  <div class="form-group mb-3">
+    <%= render "shared/errors", resource: mechanic %>
+  </div>
+
+  <div class="form-group mb-3">
+    <%= f.label :image, class: 'form-label' %>
+    <%= f.file_field :image, class: 'form-control' %>
+  </div>
+
+  <div class="form-group mb-3">
+    <%= f.label :name, I18n.t('.name'), class: 'form-label' %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group mb-3">
+    <%= f.label :description, I18n.t('.description'),class: 'form-label' %>
+    <%= f.rich_text_area :description, class: 'form-control', rows: 10 %>
+  </div>
+
+  <div class="form-group d-grid">
+    <%= f.submit I18n.t('.save'), class: 'btn btn-sm btn-success' %>
+  </div>
+<% end %>

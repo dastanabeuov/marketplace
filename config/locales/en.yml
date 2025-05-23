@@ -1,4 +1,62 @@
 en:
+  errors:
+    messages:
+      invalid_image_type: "must be a PNG, JPG, JPEG or WEBP file"
+      image_too_large: "must be less than 300 KB"
+  info: "Info"
+  company: "Company"
+  support: "Support"
+  and_much_more: "and many others, as well as rare brands"
+  encoder_systems: "Sensors, meters, encoders"
+  electro_systems: "Electric drive, transformers, power electrics, automatics"
+  vacuum_systems: "Vacuum systems"
+  water_supply_systems: "Hydraulic components, pumping stations, water supply systems"
+  main_suppliers: "Our major suppliers, brands and manufacturers"
+  thinking: "Our work is based on a unique approach and a deep understanding of our clients challenges"
+  control_panel: "TOP engineers in digital business and reliability management technologies"
+  logistic_description: "Our team consists of experts in international logistics (foreign economic activity)"
+  no_search_results: "No search results found. Try changing your search parameters."
+  reset_search: "Reset Search"
+  use_filters_to_search: "Use the filters above to search for products"
+  choose_company: "Select Company"
+  choose_category: "Select Category"
+  search_by_products: "Search by products"
+  
+  brands: "Brands"
+  back_to_brand: "Back to brand"
+  back_to_brands: "Back to brands"
+  back_to_catalog: "Back to catalog"
+  name: "Name"
+  working_hours: "Working hours"
+  email: "Email"
+  phone: "Phone"
+  address: "Address"
+  map_iframe: "Map iframe"
+  
+  choose_company: "Choose company"
+  choose_category: "Choose category"
+  search_by_products: "Search by products"
+  find: "Find"
+  add_to_cart: "Add to cart"
+  order_now: "Order now"
+  view: "View"
+  views:
+    pagination:
+      first: "&laquo; First"
+      last: "Last &raquo;"
+      previous: "&lsaquo; Prev"
+      next: "Next &rsaquo;"
+      truncate: "&hellip;"
+  helpers:
+    page_entries_info:
+      one_page:
+        display_entries:
+          zero: "No %{entry_name} found"
+          one: "Displaying <b>1</b> %{entry_name}"
+          other: "Displaying <b>all %{count}</b> %{entry_name}"
+      more_pages:
+        display_entries: "Displaying %{entry_name} <b>%{first}–%{last}</b> of <b>%{total}</b> in total"
+        
   public_status:
     status: "Status"
     public: "Public"
@@ -59,7 +117,7 @@ en:
   sign_out: 'Sign out'
   sign_in: 'Sign in'
   sign_up: 'Sign up'
-  bim_templates: 'Alatau-Techno'
+  marketplace: 'Alatau-Techno'
   create_document_with_template: 'Create document with template'
   contacts: 'Contacts'
   terms_and_conditions: 'Terms and conditions'
@@ -68,6 +126,7 @@ en:
   company_name: 'LLP "Alatau-Techno"'
 
   ######################
+  view_uploaded_files: "View uploaded files"
   dashboard: "Dashboard"
   dashboard_description: "A company can consist of many categories, each of which includes its own products. For example, one category may contain compressors, another - pumps, and so on. This allows for convenient organization of products, so that users can quickly find the desired products by category."
 
@@ -89,6 +148,7 @@ en:
   are_you_sure: "Are you sure?"
 
   title: "Title"
+  image: "Image"
   name: "Name"
   description: "Description"
   content: "Content"
@@ -100,15 +160,17 @@ en:
 
   products: "Products"
   product: "Product"
-
+  catalog: "Catalog"
   vacancy: "Vacancy"
-
+  vacancies: "Vacancies"
   companies: "Companies"
   сompany: "Company"
   сompany_employees: "Сompany employees"
 
   categories: "Categories"
 
+  mechanic: "Mechanic"
+  main_page: "Main"
   vacancy: "Vacancy"
   news: "News"
   about: "About"
@@ -128,6 +190,14 @@ en:
   actions: "Actions"
   members_count: "Members count"
   activerecord:
+  activerecord:
+    errors:
+      models:
+        company:
+          attributes:
+            image:
+              too_big: "is too big. Maximum size is 300 KB."
+              invalid_type: "must be PNG, JPG, JPEG, or WEBP"
     attributes:
       template:
         updated_at: "Date of update"
@@ -142,6 +212,7 @@ en:
         title: "Title"
         name: "Name"
       company:
+        image: "Image"
         updated_at: "Date of update"
         title: "Title"
         name: "Name"

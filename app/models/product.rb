@@ -8,4 +8,8 @@ class Product < ApplicationRecord
   validates :name, presence: true, uniqueness: { case_sensitive: false }
   validates :public_status, presence: true
   # validates :categories, presence: true
+
+  has_rich_text :description
+  has_one_attached :image
+  validates :image, attached_format: true
 end

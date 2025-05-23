@@ -8,10 +8,7 @@ class Ability
     when AdminUser
       can :manage, :all
     when User
-      can :read, Template
-      can :read, Company
-      can :read, Document
-      can :read, Project
+      can :read, :all
     end
   end
 end

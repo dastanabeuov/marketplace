@@ -1,4 +1,6 @@
 class Admin::AboutsController < Admin::BaseController
+  include AttachableImageRemoval
+
   add_breadcrumb I18n.t(".about"), :admin_about_path
 
   skip_before_action :set_active_main_menu_item
@@ -21,7 +23,7 @@ class Admin::AboutsController < Admin::BaseController
   end
 
   def create
-    @about = About.new(sitename_params)
+    @about = About.new(about_params)
     if @about.save
       redirect_to admin_about_path, notice: I18n.t(".created")
     else
@@ -36,7 +38,7 @@ class Admin::AboutsController < Admin::BaseController
   end
 
   def update
-    if @about.update(sitename_params)
+    if @about.update(about_params)
       redirect_to admin_about_path, notice: I18n.t(".updated")
     else
       add_breadcrumb "#{I18n.t('.edit')}: #{@about.name}", admin_about_path(@about)
@@ -65,7 +67,7 @@ class Admin::AboutsController < Admin::BaseController
     end
   end
 
-  def sitename_params
-    params.require(:about).permit(:name, :description)
+  def about_params
+    params.require(:about).permit(:image, :name, :description)
   end
 end

@@ -250,10 +250,35 @@
 
 
 /* темная тема - footer */
-[data-bs-theme="dark"] .admin-footer {
+[data-bs-theme="dark"] .client-footer {
   background-color: #343A40;
 }
 /* Светлая тема - footer */
-[data-bs-theme="light"] .admin-footer {
+[data-bs-theme="light"] .client-footer {
   background-color: #D4D8DB;
+}
+
+
+/* Для светлой темы #e9ecef*/
+[data-bs-theme="light"] .client-footer .nav-link {
+  color: #333;
+}
+[data-bs-theme="light"] .client-footer .nav-link.active {
+  color: #0d6efd;
+  background-color: #E4E7E9;
+}
+[data-bs-theme="light"] .client-footer .nav-link {
+  color: #495057;
+}
+
+/* Для темной темы */
+[data-bs-theme="dark"] .client-footer .nav-link {
+  color: #333;
+}
+[data-bs-theme="dark"] .client-footer .nav-link.active {
+  color: #6ea8fe;
+  background-color: #42474D;
+}
+[data-bs-theme="dark"] .client-footer .nav-link {
+  color: #adb5bd;
 }
