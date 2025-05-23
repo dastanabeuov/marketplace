@@ -1,0 +1,37 @@
+<div class="searching-form mb-1">
+  <form class="search-form" method="get">
+    <div class="row g-3 align-items-stretch">
+      <!-- Селект компаний -->
+      <div class="col-12 col-md-3">
+        <select class="form-select h-100 py-2" name="company_id">
+          <option value=""><%= I18n.t('.choose_company') %></option>
+          <% @company_filters.each do |company| %>
+            <option value="<%= company[0] %>" <%= 'selected' if params[:company_id].to_s == company[0].to_s %>>
+              <%= company[1] %>
+            </option>
+          <% end %>
+        </select>
+      </div>
+
+      <!-- Кнопка поиска -->
+      <div class="col-12 col-md-2">
+        <button type="submit" class="btn btn-primary w-100 h-100 py-2">
+          <i class="bi bi-search me-1"></i> <%= I18n.t('.find') %>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="album py-5 bg-body-tertiary">
+  <div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      <%= render partial: "companies/company", collection: @companies %>
+    </div>
+    <div class="row mt-5">
+      <div class="col d-flex justify-content-center">
+        <%= paginate @companies %>
+      </div>
+    </div>
+  </div>
+</div>

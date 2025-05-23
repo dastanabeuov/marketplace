@@ -1,4 +1,6 @@
 class Admin::ContactsController < Admin::BaseController
+  include AttachableImageRemoval
+
   add_breadcrumb I18n.t(".contact"), :admin_contact_path
 
   skip_before_action :set_active_main_menu_item
@@ -19,7 +21,7 @@ class Admin::ContactsController < Admin::BaseController
   end
 
   def create
-    @contact = Contact.new(sitename_params)
+    @contact = Contact.new(contact_params)
     if @contact.save
       redirect_to admin_contact_path, notice: I18n.t(".created")
     else
@@ -34,7 +36,7 @@ class Admin::ContactsController < Admin::BaseController
   end
 
   def update
-    if @contact.update(sitename_params)
+    if @contact.update(contact_params)
       redirect_to admin_contact_path, notice: I18n.t(".updated")
     else
       add_breadcrumb "#{I18n.t('.edit')}: #{@contact.name}", admin_contact_path(@contact)
@@ -63,7 +65,7 @@ class Admin::ContactsController < Admin::BaseController
     end
   end
 
-  def sitename_params
-    params.require(:contact).permit(:name, :working_hours, :email, :phone, :address, :map_iframe)
+  def contact_params
+    params.require(:contact).permit(:image, :name, :working_hours, :email, :phone, :address, :map_iframe)
   end
 end

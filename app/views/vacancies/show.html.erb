@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="col">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h1 class="text-center card-title h3 mb-3"><%= @vacancy.name %></h1>
+
+        <% if @vacancy.description.present? %>
+          <p class="card-text"><%= simple_format(@vacancy.description) %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

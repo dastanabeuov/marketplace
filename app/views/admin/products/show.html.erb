@@ -4,6 +4,7 @@
     <%= render 'admin/shared/breadcrumbs' %>
 
     <div class="product-info">
+      <%= render "admin/shared/attached_image", object: @product %>
       <h1><%= @product.name %></h1>
       <p><%= @product.description %></p>
     </div>

@@ -43,7 +43,7 @@ gem "kamal", "~> 2.5.3", require: false
 gem "thruster", "~> 0.1.13", require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-# gem "image_processing", "~> 1.2"
+gem "image_processing", "~> 1.2"
 
 # Decorate object from views [https://github.com/drapergem/draper]
 gem "draper", "~> 4.0.4"
@@ -81,6 +81,9 @@ gem "breadcrumbs_on_rails", "~> 4.1.0"
 
 # Paginator for Ruby webapps [https://github.com/kaminari/kaminari]
 gem "kaminari", "~> 1.2.2"
+
+# Analitics ActiveStorage Dashboard [https://github.com/giovapanasiti/active_storage_dashboard]
+gem "active_storage_dashboard", "~> 0.1.7"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

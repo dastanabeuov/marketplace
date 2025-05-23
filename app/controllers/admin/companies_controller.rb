@@ -1,4 +1,6 @@
 class Admin::CompaniesController < Admin::BaseController
+  include AttachableImageRemoval
+
   add_breadcrumb I18n.t(".companies"), :admin_companies_path
 
   before_action :set_company, only: [ :show, :edit, :update, :destroy ]
@@ -129,7 +131,7 @@ class Admin::CompaniesController < Admin::BaseController
     end
 
     def company_params
-      params.require(:company).permit(:name, :description, :public_status)
+      params.require(:company).permit(:image, :name, :description, :public_status)
     end
 
     def set_active_main_menu_item

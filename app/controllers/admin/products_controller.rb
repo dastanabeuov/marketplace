@@ -1,4 +1,6 @@
 class Admin::ProductsController < Admin::BaseController
+  include AttachableImageRemoval
+
   add_breadcrumb I18n.t(".products"), :admin_products_path
 
   before_action :set_product, only: [ :show, :edit, :update, :destroy ]
@@ -198,7 +200,7 @@ class Admin::ProductsController < Admin::BaseController
     end
 
     def product_params
-      params.require(:product).permit(:name, :description, :public_status, category_ids: [], company_ids: [])
+      params.require(:product).permit(:image, :name, :description, :public_status, category_ids: [], company_ids: [])
     end
 
     def set_active_main_menu_item

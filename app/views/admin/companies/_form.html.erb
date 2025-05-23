@@ -4,13 +4,18 @@
   </div>
 
   <div class="form-group mb-3">
+    <%= f.label :image, class: 'form-label' %>
+    <%= f.file_field :image, class: 'form-control' %>
+  </div>
+
+  <div class="form-group mb-3">
     <%= f.label :name, class: 'form-label' %>
     <%= f.text_field :name, class: 'form-control' %>
   </div>
 
   <div class="form-group mb-3">
     <%= f.label :description, class: 'form-label' %>
-    <%= f.text_area :description, class: 'form-control', rows: 10 %>
+    <%= f.rich_text_area :description, class: 'form-control', rows: 10 %>
   </div>
 
   <div class="form-group d-grid">

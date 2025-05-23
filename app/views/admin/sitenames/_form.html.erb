@@ -1,6 +1,11 @@
-<%= form_with(model: sitename, url: admin_sitename_path, local: true) do |f| %>
+<%= form_for [:admin, sitename], html: { class: "form" } do |f| %>
   <div class="form-group mb-3">
     <%= render "shared/errors", resource: sitename %>
+  </div>
+
+  <div class="form-group mb-3">
+    <%= f.label :image, class: 'form-label' %>
+    <%= f.file_field :image, class: 'form-control' %>
   </div>
 
   <div class="form-group mb-3">
@@ -10,7 +15,7 @@
 
   <div class="form-group mb-3">
     <%= f.label :description, I18n.t('.description'),class: 'form-label' %>
-    <%= f.text_area :description, class: 'form-control', rows: 10 %>
+    <%= f.rich_text_area :description, class: 'form-control', rows: 10 %>
   </div>
 
   <div class="form-group d-grid">

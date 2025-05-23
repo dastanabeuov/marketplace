@@ -7,4 +7,6 @@ class Category < ApplicationRecord
 
   validates :name, presence: true, uniqueness: { case_sensitive: false }
   validates :public_status, presence: true
+
+  has_rich_text :description
 end

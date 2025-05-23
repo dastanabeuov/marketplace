@@ -11,7 +11,7 @@ module Localization
 
     def switch_locale(&action)
       locale = locale_from_url || locale_from_headers || I18n.default_locale
-      response.set_header 'Content-Language', locale
+      response.set_header "Content-Language", locale
       I18n.with_locale locale, &action
     end
 
@@ -19,11 +19,11 @@ module Localization
     def locale_from_url
       locale = params[:locale]
 
-      return locale if I18n.available_locales.map(&:to_s).include?(locale)
+      locale if I18n.available_locales.map(&:to_s).include?(locale)
     end
 
     def locale_from_headers
-      header = request.env['HTTP_ACCEPT_LANGUAGE']
+      header = request.env["HTTP_ACCEPT_LANGUAGE"]
 
       return if header.nil?
 
@@ -38,12 +38,12 @@ module Localization
 
     def parse_header(header)
       # rubocop:disable Style/MultilineBlockChain
-      header.gsub(/\s+/, '').split(',').map do |language_tag|
+      header.gsub(/\s+/, "").split(",").map do |language_tag|
         locale, quality = language_tag.split(/;q=/i)
         quality = quality ? quality.to_f : 1.0
-        [locale, quality]
+        [ locale, quality ]
       end.reject do |(locale, quality)|
-        locale == '*' || quality.zero?
+        locale == "*" || quality.zero?
       end.sort_by do |(_, quality)|
         quality
       end.map(&:first)

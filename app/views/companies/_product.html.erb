@@ -1,0 +1,15 @@
+<div class="col">
+  <div class="card shadow-sm">
+    <%= render "shared/attached_image", object: product %>
+    <div class="card-body">
+      <p class="card-text"><%= product.name %></p>
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="btn-group">
+          <button type="button" class="btn btn-sm btn-outline-secondary"><%= I18n.t('.add_to_cart') %></button>
+          <button type="button" class="btn btn-sm btn-outline-secondary"><%= I18n.t('.order_now') %></button>
+        </div>
+        <%= link_to "#{I18n.t('.view')} →", product_company_path(@company, product), class: "text-body-secondary small text-decoration-none" %>
+      </div>
+    </div>
+  </div>
+</div>

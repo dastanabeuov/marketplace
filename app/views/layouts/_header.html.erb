@@ -1,34 +1,71 @@
-<nav class="navbar navbar-expand-lg bg-gray-200 shadow">
+<nav class="navbar navbar-expand-lg bg-gray-200 shadow-sm" style="z-index: 1030;">
   <div class="container">
-    <a class="navbar-brand" href="/">
-      <h1><%= I18n.t('.bim_templates') %></h1>
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <%= link_to (site_name || t('.marketplace')), root_path, class: "navbar-brand fw-bold fs-5" %>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+
+    <div class="collapse navbar-collapse" id="mainNavbar">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <%= link_to "🏠 #{ I18n.t('.main_page') }", root_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "ℹ️ #{ I18n.t('.about') }", about_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "📂 #{ I18n.t('.catalog') }", products_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "🏢 #{ I18n.t('.brands') }", companies_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="mechanicDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            🔧 <%= I18n.t('.mechanic') %>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="mechanicDropdown">
+            <% mechanics.each do |mechanic| %>
+              <li>
+                <%= link_to mechanic.name, mechanic_path(mechanic), class: "dropdown-item" %>
+              </li>
+            <% end %>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <%= link_to "💼 #{ I18n.t('.vacancies') }", vacancies_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "📞 #{ I18n.t('.contacts') }", contact_path, class: 'nav-link' %>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ms-auto d-flex align-items-lg-center gap-2">
         <li class="nav-item">
           <%= render 'shared/lang' %>
         </li>
         <li class="nav-item">
           <%= render 'shared/color_modes' %>
         </li>
-        <%# <li class="nav-item">
-          <input class="form-control form-control-dark" type="text" placeholder="Поиск" aria-label="Search">
-        </li> %>
+
+        <% if user_signed_in? && current_user %>
+          <li class="nav-item dropdown">
+            <a class="btn btn-success dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-person-fill me-1"></i> <%= current_user.decorate.full_name %>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="userDropdown">
+              <li>
+                <%= button_to "<i class='bi bi-door-closed'></i> #{I18n.t('.sign_out')}".html_safe, destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+              </li>
+            </ul>
+          </li>
+        <% else %>
+          <li class="nav-item d-flex flex-column flex-lg-row gap-2 mt-3 mt-lg-0">
+            <%= link_to "<i class='bi bi-door-open'></i> #{I18n.t('.sign_in')}".html_safe, new_user_session_path, class: "btn btn-outline-primary" %>
+            <%= link_to "<i class='bi bi-person-check'></i> #{I18n.t('.sign_up')}".html_safe, new_user_registration_path, class: "btn btn-outline-success" %>
+          </li>
+        <% end %>
       </ul>
-      <%# if user_signed_in? %>
-        <form class="">
-          <%#= link_to "<i class='bi bi-person-vcard'></i> #{current_user.email}".html_safe, edit_user_registration_path, class: "btn btn-outline-success mr-2" %>
-          <%#= link_to "<i class='bi bi-door-closed'></i> #{I18n.t('.sign_out')}".html_safe, destroy_user_session_path, method: :delete, class: "btn btn-outline-danger mr-2" %>
-        </form>
-      <%# else %>
-        <form class="">
-          <%#= link_to "<i class='bi bi-door-open'></i> #{I18n.t('.sign_in')}".html_safe, new_user_session_path, class: "btn btn-outline-primary mr-2" %>
-          <%#= link_to "<i class='bi bi-person-check'></i> #{I18n.t('.sign_up')}".html_safe, new_user_registration_path, class: "btn btn-outline-success" %>
-        </form>
-      <%# end %>
     </div>
   </div>
 </nav>

@@ -6,7 +6,7 @@ if Category.count.zero?
 
     company_ids = Company.pluck(:id)
 
-    1000.times do |i|
+    100.times do |i|
       category = Category.find_or_create_by!(name: "Категория #{i + 1}") do |cat|
         cat.description = "Описание категории #{i + 1}. Содержит подробную информацию о товарах и услугах в данной категории."
         cat.public_status = [ 0, 1 ].sample

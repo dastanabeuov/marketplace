@@ -79,6 +79,10 @@ class Admin::VacanciesController < Admin::BaseController
   end
 
   def show
+    unless @vacancy
+      redirect_to new_admin_vacancy_path and return
+    end
+
     add_breadcrumb @vacancy.name, admin_vacancy_path(@vacancy)
   end
 

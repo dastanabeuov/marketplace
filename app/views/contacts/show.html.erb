@@ -1,0 +1,49 @@
+<div class="row justify-content-center mt-4">
+  <div class="col">
+    <div class="card shadow-sm">
+      <%= render "shared/attached_image", object: @contact %>
+
+      <div class="card-body">
+        <h1 class="text-center card-title h3 mb-3">
+          <%= @contact.name %>
+        </h1>
+
+        <ul class="list-group list-group-flush mb-4">
+          <% if @contact.working_hours.present? %>
+            <li class="list-group-item d-flex justify-content-between">
+              <span class="fw-semibold"><%= t(:working_hours) %>:</span>
+              <span><%= @contact.working_hours %></span>
+            </li>
+          <% end %>
+
+          <% if @contact.email.present? %>
+            <li class="list-group-item d-flex justify-content-between">
+              <span class="fw-semibold"><%= t(:email) %>:</span>
+              <span><a href="mailto:<%= @contact.email %>"><%= @contact.email %></a></span>
+            </li>
+          <% end %>
+
+          <% if @contact.phone.present? %>
+            <li class="list-group-item d-flex justify-content-between">
+              <span class="fw-semibold"><%= t(:phone) %>:</span>
+              <span><a href="tel:<%= @contact.phone %>"><%= @contact.phone %></a></span>
+            </li>
+          <% end %>
+
+          <% if @contact.address.present? %>
+            <li class="list-group-item d-flex justify-content-between">
+              <span class="fw-semibold"><%= t(:address) %>:</span>
+              <span><%= @contact.address %></span>
+            </li>
+          <% end %>
+        </ul>
+
+        <% if @contact.map_iframe.present? %>
+          <div class="ratio ratio-16x9">
+            <%= @contact.map_iframe.html_safe %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

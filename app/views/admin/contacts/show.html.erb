@@ -4,6 +4,7 @@
     <%= render 'admin/shared/breadcrumbs' %>
 
     <div class="contact-info">
+      <%= render "admin/shared/attached_image", object: @contact %>
       <h1><%= @contact.name %></h1>
       <p><%= @contact.working_hours %></p>
       <p><%= @contact.email %></p>

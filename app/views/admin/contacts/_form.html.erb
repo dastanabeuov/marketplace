@@ -1,6 +1,10 @@
-<%= form_with(model: contact, url: admin_contact_path, local: true) do |f| %>
-  <div class="form-group mb-3">
+<%= form_for [:admin, contact], html: { class: "form" } do |f| %>  <div class="form-group mb-3">
     <%= render "shared/errors", resource: contact %>
+  </div>
+
+  <div class="form-group mb-3">
+    <%= f.label :image, class: 'form-label' %>
+    <%= f.file_field :image, class: 'form-control' %>
   </div>
 
   <div class="form-group mb-3">

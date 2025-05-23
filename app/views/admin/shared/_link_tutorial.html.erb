@@ -17,6 +17,11 @@
   </li>
   --->
   <li class="nav-item my-1">
+    <%= link_to "/admin/active-storage-dashboard", class: "btn btn-sm btn-outline-secondary border border-secondary-subtle ms-3 mt-2" do %>
+      ⚡️ <%= I18n.t('.view_uploaded_files') %>
+    <% end %>
+  </li>
+  <li class="nav-item my-1">
     <%= link_to admin_contact_path, class: "btn btn-sm btn-outline-secondary border border-secondary-subtle ms-3 mt-2" do %>
       📞 <%= I18n.t('.contacts') %>
     <% end %>
@@ -24,6 +29,11 @@
   <li class="nav-item my-1">
     <%= link_to admin_about_path, class: "btn btn-sm btn-outline-secondary border border-secondary-subtle ms-3 mt-2" do %>
       ℹ️ <%= I18n.t('.about') %>
+    <% end %>
+  </li>
+  <li class="nav-item my-1">
+    <%= link_to admin_mechanics_path, class: "btn btn-sm btn-outline-secondary border border-secondary-subtle ms-3 mt-2" do %>
+      🔧 <%= I18n.t('.mechanic') %>
     <% end %>
   </li>
   <li class="nav-item my-1">
@@ -43,7 +53,7 @@
   </li>
   <li class="nav-item my-1">
     <%= link_to admin_sitename_path, class: "btn btn-sm btn-outline-secondary border border-secondary-subtle ms-3 mt-2" do %>
-      © <%= current_year %> 🏢 <%= Sitename.first.name unless Sitename.count.zero? %>
+      © <%= current_year %> <%= site_name %>
     <% end %>
   </li>
 </div>

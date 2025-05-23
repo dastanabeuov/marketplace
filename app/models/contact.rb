@@ -5,4 +5,7 @@ class Contact < ApplicationRecord
   validates :phone, presence: true
   validates :address, presence: true
   validates :map_iframe, presence: true
+
+  has_one_attached :image
+  validates :image, attached_format: true
 end

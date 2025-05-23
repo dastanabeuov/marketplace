@@ -1,4 +1,61 @@
 kz:
+  errors:
+    messages:
+      invalid_image_type: "PNG, JPG, JPEG немесе WEBP форматында болуы керек"
+      image_too_large: "өлшемі 300 КБ-тан аспауы керек"
+  info: "Ақпарат"
+  company: "Компания"
+  support: "Қолдау"
+  and_much_more: "және көптеген басқалар, сондай-ақ сирек брендтер"
+  encoder_systems: "Датчиктер, өлшеу құралдары, энкодерлер"
+  electro_systems: "Электр жетегі, трансформаторлар, қуат электроникасы, автоматика"
+  vacuum_systems: "Вакуумдық жүйелер"
+  water_supply_systems: "Гидрокомпоненттер, насос станциялары, су құбырлары жүйелері"
+  main_suppliers: "Біздің негізгі жеткізушілеріміз, брендтеріміз және өндірушілеріміз"
+  thinking: "Біздің жұмысымыздың негізі — бірегей тәсіл және клиенттердің сұранысын терең түсіну"
+  control_panel: "Цифрлық бизнесте және сенімділікті басқару технологияларында ҮЗДІК инженерлер"
+  logistic_description: "Біздің командамыз — Халықаралық сауда логистикасы саласындағы мамандар"
+  no_search_results: "Іздеу нәтиже бермеді. Іздеу параметрлерін өзгертіп көріңіз."
+  reset_search: "Іздеуді қалпына келтіру"
+  use_filters_to_search: "Өнімдерді іздеу үшін жоғарыдағы сүзгілерді пайдаланыңыз"
+  choose_company: "Компанияны таңдаңыз"
+  choose_category: "Санатты таңдаңыз"
+  search_by_products: "Өнімдер бойынша іздеу"
+
+  brands: "Өндірушілер"
+  back_to_brand: "Өндірушіге қайта оралу"
+  back_to_brands: "Өндірушілерге қайта оралу"
+  back_to_catalog: "Каталогқа оралу"
+  name: "Name"
+  working_hours: "Working hours"
+  email: "Email"
+  phone: "Phone"
+  address: "Address"
+  map_iframe: "Map iframe"
+  choose_company: "Компанияны таңдаңыз"
+  choose_category: "Санатты таңдаңыз"
+  search_by_products: "Өнімдер бойынша іздеу"
+  find: "Іздеу"
+  add_to_cart: "Себетке қосу"
+  order_now: "Қазір тапсырыс беру"
+  view: "Көру"
+  views:
+    pagination:
+      first: "&laquo; Басы"
+      last: "Соңы &raquo;"
+      previous: "&lsaquo; Алдыңғы"
+      next: "Келесі &rsaquo;"
+      truncate: "&hellip;"
+  helpers:
+    page_entries_info:
+      one_page:
+        display_entries:
+          zero: "%{entry_name} табылмады"
+          one: "<b>1</b> %{entry_name} көрсетілуде"
+          other: "<b>барлығы %{count}</b> %{entry_name} көрсетілуде"
+      more_pages:
+        display_entries: "%{entry_name} <b>%{first}–%{last}</b> / <b>%{total}</b> көрсетілуде"
+
   public_status:
     status: "Күй"
     public: "Публикалық"
@@ -57,7 +114,7 @@ kz:
   sign_out: 'Шығу'
   sign_in: 'Кіру'
   sign_up: 'Тіркелу'
-  bim_templates: 'Алатау-Техно'
+  marketplace: 'Алатау-Техно'
   create_document_with_template: 'Үлгі бойынша құжат жасау'
   contacts: 'Байланыстар'
   terms_and_conditions: 'Қолдану шарттары'
@@ -66,6 +123,7 @@ kz:
   company_name: 'ТОО "Алатау-Техно"'
 
   ###########################
+  view_uploaded_files: "Жүктелген файлдарды көру"
   dashboard: "Басқару тақтасы"
   dashboard_description: "Кәсіпорын көптеген категориялардан тұруы мүмкін, олардың әрқайсысына өз өнімдері кіреді. Мысалы, бір санатта компрессорлар болуы мүмкін, екіншісінде сорғылар болуы мүмкін және т.б. Бұл пайдаланушылар санат бойынша өздеріне қажетті өнімдерді жылдам таба алатындай өнімдеріңізді ыңғайлы ұйымдастыруға мүмкіндік береді."
 
@@ -87,6 +145,7 @@ kz:
   are_you_sure: "Сіз сенімдісіз бе?"
 
   title: "Тақырып"
+  image: "Кескін"
   name: "Аты"
   description: "Сипаттама"
   content: "Мазмұн"
@@ -100,13 +159,15 @@ kz:
   product: "Өнім"
 
   vacancy: "Бос орын"
-
+  vacancies: "Бос орындар"
   companies: "Компаниялар"
   сompany: "Компания"
   сompany_employees: "Компания қызметкерлері"
 
   categories: "Санаттар"
-
+  catalog: "Каталог"
+  mechanic: "Механикке"
+  main_page: "Басты"
   vacancy: "Бос орындар"
   news: "Жаңалықтар"
   about: "Біз туралы"
@@ -141,6 +202,13 @@ kz:
   actions: "Әрекеттер"
   members_count: "Қатысушылар саны"
   activerecord:
+    errors:
+      models:
+        company:
+          attributes:
+            image:
+              too_big: "өте үлкен. Ең үлкен өлшемі — 300 КБ."
+              invalid_type: "PNG, JPG, JPEG немесе WEBP болуы керек"
     attributes:
       template:
         updated_at: "Жаңартылған күн"
@@ -155,6 +223,7 @@ kz:
         title: "Тақырып"
         name: "Аты"
       company:
+        image: "Кескін"
         updated_at: "Жаңартылған күн"
         title: "Тақырып"
         name: "Аты"

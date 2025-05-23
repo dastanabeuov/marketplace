@@ -1,4 +1,60 @@
 ru:
+  errors:
+    messages:
+      invalid_image_type: "должен быть в формате PNG, JPG, JPEG или WEBP"
+      image_too_large: "должен быть меньше 300 КБ"
+  info: "Информация"
+  company: "Компания"
+  support: "Поддержка"
+  and_much_more: "и многие другие, а также редкие бренды"
+  encoder_systems: "Датчики, измерительные приборы, энкодеры"
+  electro_systems: "Электропривод, трансформаторы, силовая электрика, автоматика"
+  vacuum_systems: "Вакуумные системы"
+  water_supply_systems: "Гидрокомпоненты, насосные станции, системы водоснабжения"
+  main_suppliers: "Наши основные поставщики, бренды и производители"
+  thinking: "В основе нашей работы — уникальный подход и глубокое понимание задач клиентов"
+  control_panel: "ТОПовые инженеры в цифровом бизнесе и технологиях управления надежностью"
+  logistic_description: "Наша команда — эксперты в Логистике ВЭД"
+  no_search_results: "Поиск не дал результатов. Попробуйте изменить параметры поиска."
+  reset_search: "Сбросить поиск"
+  use_filters_to_search: "Используйте фильтры выше для поиска продуктов"
+  choose_company: "Выберите компанию"
+  choose_category: "Выберите категорию"
+  search_by_products: "Поиск по продуктам"
+  brands: "Производители"
+  back_to_brand: "Вернуться к производителю"
+  back_to_brands: "Вернуться к производителям"
+  back_to_catalog: "Вернуться в каталог"
+  name: "Name"
+  working_hours: "Working hours"
+  email: "Email"
+  phone: "Phone"
+  address: "Address"
+  map_iframe: "Map iframe"
+  choose_company: "Выберите компанию"
+  choose_category: "Выберите категорию"
+  search_by_products: "Поиск по продуктам"
+  find: "Найти"
+  add_to_cart: "Добавить в корзину"
+  order_now: "Заказать сейчас"
+  view: "Посмотреть"
+  views:
+    pagination:
+      first: "&laquo; Первая"
+      last: "Последняя &raquo;"
+      previous: "&lsaquo; Назад"
+      next: "Вперёд &rsaquo;"
+      truncate: "&hellip;"
+  helpers:
+    page_entries_info:
+      one_page:
+        display_entries:
+          zero: "%{entry_name} не найдено"
+          one: "Показан <b>1</b> %{entry_name}"
+          other: "Показаны <b>все %{count}</b> %{entry_name}"
+      more_pages:
+        display_entries: "Показаны %{entry_name} <b>%{first}–%{last}</b> из <b>%{total}</b> всего"
+        
   public_status:
     status: "Статус"
     public: "Публичный"
@@ -57,7 +113,7 @@ ru:
   sign_out: 'Выйти'
   sign_in: 'Войти'
   sign_up: 'Регистрация'
-  bim_templates: 'Алатау-Техно'
+  marketplace: 'Алатау-Техно'
   create_document_with_template: 'Создать документ по шаблону'
   contacts: 'Контакты'
   terms_and_conditions: 'Условия использования'
@@ -66,6 +122,7 @@ ru:
   company_name: 'ТОО "Алатау-Техно"'
 
   #############################
+  view_uploaded_files: "Посмотреть загруженные файлы"
   dashboard: "Панель управления"
   dashboard_description: "Компания может состоять из многих категории, каждая из которых включает свои продукты. Например, одна категория может содержать компрессоры, другая — насосы, и так далее. Это позволяет удобно организовывать товары, так что пользователи могут быстро находить нужные продукты по категориям."
 
@@ -87,6 +144,7 @@ ru:
   are_you_sure: "Вы уверены?"
 
   title: "Заголовок"
+  image: "Изображение"
   name: "Название"
   description: "Описание"
   content: "Содержание"
@@ -100,13 +158,15 @@ ru:
   product: "Продукт"
 
   vacancy: "Вакансия"
-
+  vacancies: "Вакансии"
   companies: "Компании"
   сompany: "Компания"
   сompany_employees: "Сотрудники компании"
 
   categories: "Категории"
-
+  catalog: "Каталог"
+  mechanic: "Механику"
+  main_page: "Главная"
   vacancy: "Вакансия"
   news: "Новости"
   about: "О нас"
@@ -126,7 +186,21 @@ ru:
   actions: "Действия"
   members_count: "Количество участников"
   activerecord:
+    errors:
+      models:
+        company:
+          attributes:
+            image:
+              too_big: "слишком большой. Максимальный размер — 300 КБ."
+              invalid_type: "должен быть PNG, JPG, JPEG или WEBP"
     attributes:
+      contact:
+        name: "Название"
+        working_hours: "Часы работы"
+        email: "Электронная почта"
+        phone: "Телефон"
+        address: "Адрес"
+        map_iframe: "Карта (iframe)"
       template:
         updated_at: "Дата обновления"
         title: "Заголовок"
@@ -140,6 +214,7 @@ ru:
         title: "Заголовок"
         name: "Имя"
       company:
+        image: "Изображение"
         updated_at: "Дата обновления"
         title: "Заголовок"
         name: "Имя"

@@ -1,0 +1,43 @@
+<div class="row g-0 bg-body-tertiary position-relative mt-3 shadow">
+  <div class="col-md-6 mb-md-0 p-md-4">
+    <%= render "shared/attached_image", object: @product %>
+  </div>
+
+  <div class="col-md-6 p-4 ps-md-0">
+    <h1 class="mt-0"><%= @product.name %></h1>
+
+    <% if @product.description.present? %>
+      <p><%= @product.description %></p>
+    <% end %>
+    
+    <hr class="dropdown-divider">
+    
+    <% if @product.companies.present? %>
+      <h6 class="mt-3"><%= I18n.t('.companies') %></h6>
+      <ul class="mb-2">
+        <% @product.companies.first(3).each do |company| %>
+          <li><%= company.name %></li>
+        <% end %>
+        <% if @product.companies.count > 3 %>
+          <li>...</li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <% if @product.categories.present? %>
+      <h6 class="mt-3"><%= I18n.t('.categories') %></h6>
+      <ul class="mb-2">
+        <% @product.categories.first(3).each do |category| %>
+          <li><%= category.name %></li>
+        <% end %>
+        <% if @product.categories.count > 3 %>
+          <li>...</li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <div class="mt-4">
+      <%= link_to I18n.t('.back_to_brand'), company_path(@company), class: "text-primary" %>
+    </div>
+  </div>
+</div>
