@@ -20,7 +20,7 @@ gem "stimulus-rails", "~> 1.3.4"
 gem "jbuilder", "~> 2.13.0"
 
 # Bigdecimal set [https://github.com/ruby/bigdecimal]
-gem "bigdecimal", "~> 3.1", ">= 3.1.9"
+gem "bigdecimal", "~> 3.2"
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
