@@ -83,7 +83,7 @@ gem "breadcrumbs_on_rails", "~> 4.1.0"
 gem "kaminari", "~> 1.2.2"
 
 # Analitics ActiveStorage Dashboard [https://github.com/giovapanasiti/active_storage_dashboard]
-gem "active_storage_dashboard", "~> 0.1.7"
+gem "active_storage_dashboard", "~> 0.1.8"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
