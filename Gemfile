@@ -124,7 +124,7 @@ group :test do
   gem "database_cleaner-active_record", "~> 2.2.0"
 
   # Broser automation framework and ecosystem [https://github.com/SeleniumHQ/selenium/tree/trunk/rb]
-  gem "selenium-webdriver", "~> 4.31.0"
+  gem "selenium-webdriver", "~> 4.34.0"
 
   # Save and open page from test [https://github.com/copiousfreetime/launchy]
   gem "launchy", "~> 3.1"
