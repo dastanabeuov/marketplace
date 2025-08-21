@@ -43,10 +43,11 @@
 <%# Проверка, был ли выполнен поиск %>
 <% search_performed = params[:company_id].present? || params[:category_id].present? || params[:query].present? %>
 
-<div class="album py-5 bg-body-tertiary">
+<div class="album py-5 bg-body-tertiary px-2">
   <div class="container">
     <% if @products.present? %>
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+      <!--div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3"-->
         <%= render partial: "products/product", collection: @products %>
       </div>
       <div class="row mt-5">

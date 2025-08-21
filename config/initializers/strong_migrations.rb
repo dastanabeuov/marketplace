@@ -9,7 +9,7 @@ StrongMigrations.statement_timeout = 1.hour
 # Analyze tables after indexes are added
 # Outdated statistics can sometimes hurt performance
 StrongMigrations.auto_analyze = true
-
+StrongMigrations.skip_database(:primary) if Rails.env.development?
 # Set the version of the production database
 # so the right checks are run in development
 # StrongMigrations.target_version = 10

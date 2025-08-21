@@ -5,7 +5,7 @@ class Admin::MainController < Admin::BaseController
     six_months_ago = 6.months.ago.beginning_of_month
     now = Time.zone.now
 
-    users = AdminUser.where(last_sign_in_at: six_months_ago..now)
+    users = User.where(last_sign_in_at: six_months_ago..now)
 
     @admin_users_by_month = users.group_by { |user| user.last_sign_in_at.beginning_of_month }
 
@@ -16,7 +16,7 @@ class Admin::MainController < Admin::BaseController
       [ month, @admin_users_by_month[month]&.count || 0 ]
     end.to_h
 
-    # @latest_products ||= Product.order(created_at: :desc).limit(7)
+    @latest_orders ||= Order.order(created_at: :desc).limit(7)
 
     @companies ||= Company.order("RANDOM()").limit(6)
   end

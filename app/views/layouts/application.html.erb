@@ -18,14 +18,15 @@
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
 
-    <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
   <body class="data-bs-theme">
     <%= render 'layouts/header' %>
     <div class="container my-5">
-      <%= render 'shared/flash' %>
+    <div id="flash_messages">
+      <%= render "shared/flash" %>
+    </div>
       <%= render 'shared/breadcrumbs' if show_breadcrumbs? %>
       <%= yield %>
     </div>

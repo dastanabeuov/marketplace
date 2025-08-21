@@ -1,5 +1,6 @@
-<footer data-controller="footer" data-footer-target="footer"
-  class="client-footer text-center text-sm-start mt-auto pt-4">
+<!--footer data-controller="footer" data-footer-target="footer"
+  class="client-footer text-center text-sm-start mt-auto pt-4"-->
+<footer class="client-footer text-center text-sm-start mt-auto pt-4">
   <div class="container">
     <div class="row">
       <div class="col-6 col-md-2 mb-3">
@@ -33,7 +34,20 @@
         </ul>
       </div>
 
-      <div class="col-md-5 offset-md-1 mb-3">
+      <div class="col-6 col-md-2 mb-3">
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2">
+            <%= link_to root_path, class: 'nav-link p-0' do %>
+              <%= image_tag Sitename.first.image.variant(resize_to_limit: [130, 100]).processed,
+                        alt: site_name,
+                        title: site_name,
+                        class: "rounded" %>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-md-4 mb-3">
         <form>
           <h6 class="text-uppercase fw-bold mb-3"><%= I18n.t('.subscribe') %></h6>
           <div class="d-flex flex-column flex-sm-row gap-2">

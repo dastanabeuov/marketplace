@@ -11,7 +11,7 @@ class CompaniesController < ApplicationController
       @companies = @companies.where(id: params[:company_id])
     end
 
-    @companies = @companies.page(params[:page]).per(9)
+    @companies = @companies.page(params[:page]).per(8)
   end
 
   def show
@@ -19,7 +19,7 @@ class CompaniesController < ApplicationController
       redirect_to companies_path and return
     end
 
-    @products = @company.products.page(params[:page]).per(9) if @company
+    @products = @company.products.page(params[:page]).per(8) if @company
 
     add_breadcrumb @company.name, "#"
   end
@@ -41,7 +41,7 @@ class CompaniesController < ApplicationController
 
   def site_name
     Rails.cache.fetch("site_name", expires_in: 1.day) do
-      Sitename.first&.name || "Default Site Name"
+      Sitename.first&.name || "Default-Site-Name"
     end
   end
 

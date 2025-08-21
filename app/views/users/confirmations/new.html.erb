@@ -2,7 +2,7 @@
   <div class="col-md-6 col-lg-5">
     <div class="card shadow">
       <div class="card-body">
-        <h2 class="text-center mb-4"><%= t('.resend_confirmation', default: 'Resend confirmation instructions') %></h2>
+        <h2 class="text-center mb-4"><%= t('devise.confirmations.new.resend_confirmation_instructions', default: 'Resend confirmation instructions') %></h2>
 
         <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post, class: 'needs-validation', novalidate: true }) do |f| %>
           <%= render "users/shared/error_messages", resource: resource %>
@@ -13,7 +13,7 @@
           </div>
 
           <div class="d-grid">
-            <%= f.submit t('.resend_button', default: "Resend confirmation instructions"), class: 'btn btn-primary' %>
+            <%= f.submit t('devise.confirmations.new.resend_confirmation_instructions', default: "Resend confirmation instructions"), class: 'btn btn-primary' %>
           </div>
         <% end %>
 

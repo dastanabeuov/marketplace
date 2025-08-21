@@ -1,4 +1,4 @@
-<p><%= t('devise.mailer.confirmation_instructions.greeting', email: @resource.email) %></p>
+<p><%= t('devise.mailer.confirmation_instructions.greeting', recipient: @resource.first_name || @resource.email) %></p>
 
 <p><%= t('devise.mailer.confirmation_instructions.message') %></p>
 

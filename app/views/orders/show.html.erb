@@ -1,0 +1,48 @@
+<div class="row justify-content-center mt-4">
+  <div class="col">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h1 class="text-center card-title h4 mb-3 py-2 bg-body-tertiary">
+          <%= I18n.t('.your_order') %> №<%= @order.id %>
+        </h1>
+        
+        <ul class="list-group list-group-flush mb-4">
+          <li class="list-group-item d-flex justify-content-between">
+            <span class="fw-semibold"><%= I18n.t('.status') %>:</span>
+            <span><%= @order.order_status_name %></span>
+          </li>
+
+          <% if @order.user.present? %>
+            <% if @order.user.email.present? %>
+              <li class="list-group-item d-flex justify-content-between">
+                <span class="fw-semibold"><%= I18n.t('.email') %>:</span>
+                <span><a href="mailto:<%= @order.user.email %>"><%= @order.user.email %></a></span>
+              </li>
+            <% end %>
+
+            <% if @order.user.phone_number.present? %>
+              <li class="list-group-item d-flex justify-content-between">
+                <span class="fw-semibold"><%= I18n.t('.phone') %>:</span>
+                <span><a href="tel:<%= @order.user.phone_number %>"><%= @order.user.phone_number %></a></span>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+
+        <h5 class="fw-semibold mb-3 py-2 px-2 bg-body-tertiary"><%= I18n.t('.order_list') %>:</h5>
+        <ul class="list-group list-group-flush mb-4">
+          <% @order.order_items.each do |item| %>
+            <li class="list-group-item d-flex justify-content-between">
+              <span><%= item.product.name %></span>
+              <span><%= item.quantity %> <%= I18n.t('.pcs') %></span>
+            </li>
+          <% end %>
+        </ul>
+
+        <div class="text-center">
+          <%= link_to "#{I18n.t('.all_my_orders')}", orders_path, class: "btn btn-outline-secondary" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

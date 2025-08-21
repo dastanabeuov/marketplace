@@ -1,10 +1,33 @@
-<nav class="navbar navbar-expand-lg bg-gray-200 shadow-sm" style="z-index: 1030;">
+<!-- Topbar - скрывается в мобильной версии -->
+<div class="d-none d-lg-block">
+  <%= render 'shared/topbar' %>
+</div>
+
+<nav class="navbar navbar-expand-lg bg-gray-200 shadow">
   <div class="container">
     <%= link_to (site_name || t('.marketplace')), root_path, class: "navbar-brand fw-bold fs-5" %>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <!-- Кнопка для мобильного меню -->
+    <div class="d-flex align-items-center gap-2 d-lg-none">
+      <!-- Кнопка для топбара в мобильной версии -->
+      <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#mobileTopbar" aria-controls="mobileTopbar" aria-expanded="false" aria-label="Показать контакты">
+        <i class="bi bi-info-circle"></i>
+      </button>
+      
+      <!-- Основная кнопка навигации -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+
+    <!-- Мобильный топбар (скрытый по умолчанию) -->
+    <div class="collapse d-lg-none" id="mobileTopbar">
+      <div class="card mt-2 mb-3">
+        <div class="card-body p-3">
+          <%= render 'shared/topbar_content' %>
+        </div>
+      </div>
+    </div>
 
     <div class="collapse navbar-collapse" id="mainNavbar">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -56,6 +79,9 @@
             <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="userDropdown">
               <li>
                 <%= button_to "<i class='bi bi-door-closed'></i> #{I18n.t('.sign_out')}".html_safe, destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+              </li>
+              <li>
+                <%= link_to "<i class='bi bi-send'></i> #{I18n.t('all_my_orders')}".html_safe, orders_path, class: "dropdown-item" %>
               </li>
             </ul>
           </li>

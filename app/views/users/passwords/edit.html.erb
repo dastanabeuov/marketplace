@@ -2,29 +2,29 @@
   <div class="col-md-6 col-lg-5">
     <div class="card shadow">
       <div class="card-body">
-        <h2 class="text-center mb-4"><%= t('.change_password', default: 'Change your password') %></h2>
+        <h2 class="text-center mb-4"><%= t('devise.passwords.edit.change_your_password', default: 'Change your password') %></h2>
 
         <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, class: 'needs-validation', novalidate: true }) do |f| %>
           <%= render "users/shared/error_messages", resource: resource %>
           <%= f.hidden_field :reset_password_token %>
 
           <div class="mb-3">
-            <%= f.label :password, t('.new_password', default: "New password"), class: 'form-label' %>
+            <%= f.label :password, t('devise.passwords.edit.new_password', default: "New password"), class: 'form-label' %>
             <% if @minimum_password_length %>
               <small class="form-text text-muted">
-                (<%= @minimum_password_length %> characters minimum)
+                (<%= t('devise.shared.minimum_password_length', count: @minimum_password_length, default: "#{@minimum_password_length} characters minimum") %>)
               </small>
             <% end %>
             <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: 'form-control', required: true %>
           </div>
 
           <div class="mb-3">
-            <%= f.label :password_confirmation, t('.confirm_new_password', default: "Confirm new password"), class: 'form-label' %>
+            <%= f.label :password_confirmation, t('devise.passwords.edit.confirm_new_password', default: "Confirm new password"), class: 'form-label' %>
             <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control', required: true %>
           </div>
 
           <div class="d-grid">
-            <%= f.submit t('.change_password', default: "Change my password"), class: 'btn btn-primary' %>
+            <%= f.submit t('devise.passwords.edit.change_my_password', default: "Change my password"), class: 'btn btn-primary' %>
           </div>
         <% end %>
 

@@ -2,6 +2,11 @@ ru:
   activerecord:
     attributes:
       user:
+        first_name: Имя
+        last_name: Фамилия
+        phone_number: Номер телефона
+        company_name: Название компании
+        delivery_address: Адрес доставки
         confirmation_sent_at: Дата отправки подтверждения
         confirmation_token: Токен подтверждения
         confirmed_at: Дата подтверждения

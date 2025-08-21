@@ -2,18 +2,18 @@
   <div class="col-md-6 col-lg-5">
     <div class="card shadow">
       <div class="card-body">
-        <h2 class="text-center mb-4"><%= t('.resend_unlock_instructions', default: 'Resend unlock instructions') %></h2>
+        <h2 class="text-center mb-4"><%= t('devise.unlocks.new.resend_unlock_instructions', default: 'Resend unlock instructions') %></h2>
 
         <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post, class: 'needs-validation', novalidate: true }) do |f| %>
           <%= render "users/shared/error_messages", resource: resource %>
 
           <div class="mb-3">
-            <%= f.label :email, class: 'form-label' %>
+            <%= f.label :email, t('activerecord.attributes.user.email', default: 'Email'), class: 'form-label' %>
             <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', required: true %>
           </div>
 
           <div class="d-grid">
-            <%= f.submit t('.resend_unlock_instructions', default: "Resend unlock instructions"), class: 'btn btn-primary' %>
+            <%= f.submit t('devise.unlocks.new.resend_unlock_instructions', default: "Resend unlock instructions"), class: 'btn btn-primary' %>
           </div>
         <% end %>
 

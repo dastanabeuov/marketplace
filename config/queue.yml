@@ -10,9 +10,31 @@ default: &default
 
 development:
   <<: *default
+  workers:
+    - queues: "*"
+      threads: 2        # Меньше потоков для разработки
+      processes: 1      # Один процесс достаточно
+      polling_interval: 1 # Реже опрашивать
 
 test:
   <<: *default
+  workers:
+    - queues: "*"
+      threads: 1        # Минимум для тестов
+      processes: 1
+      polling_interval: 0.5
 
 production:
   <<: *default
+  dispatchers:
+    - polling_interval: 0.5  # Чуть реже для экономии ресурсов
+      batch_size: 1000       # Больше для продакшена
+  workers:
+    - queues: "critical,default" # Приоритетные очереди
+      threads: 5
+      processes: <%= ENV.fetch("JOB_CONCURRENCY", 2) %>
+      polling_interval: 0.1
+    - queues: "background,mailers" # Фоновые задачи
+      threads: 3
+      processes: 1
+      polling_interval: 1

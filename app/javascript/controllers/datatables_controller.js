@@ -14,7 +14,8 @@ export default class extends Controller {
   // Опции для DataTables
   static values = {
     options: { type: Object, default: {} },
-    language: { type: String, default: "ru" } // Параметр для языка
+    language: { type: String, default: "ru" }, // Параметр для языка
+    columns: { type: Array, default: [] } // Добавляем параметр для колонок
   }
 
   // Словарь доступных языков
@@ -61,26 +62,11 @@ export default class extends Controller {
       
       // Если опции включают serverSide, настраиваем колонки
       if (options.serverSide) {
-        options.columns = [
-          { 
-            data: 'name',
-            name: 'name',
-            orderable: true
-          },
-          { 
-            data: 'updated_at',
-            name: 'updated_at',
-            orderable: true
-          },
-          { 
-            data: 'actions', 
-            orderable: false, 
-            searchable: false 
-          }
-        ];
+        // Используем переданные колонки или определяем по умолчанию
+        options.columns = this.columnsValue.length > 0 ? this.columnsValue : this.getDefaultColumns();
         
         // Добавляем настройки для серверной сортировки
-        options.order = [[1, 'desc']]; // По умолчанию сортируем по дате обновления (desc)
+        options.order = this.getDefaultOrder();
         
         // Настраиваем обработку ajax-запросов для передачи параметров сортировки
         if (options.ajax) {
@@ -140,6 +126,54 @@ export default class extends Controller {
       console.error("Ошибка при инициализации DataTable:", error)
       // Пробуем инициализировать без языковых настроек в случае ошибки
       this.dataTable = $(this.tableTarget).DataTable(this.optionsValue)
+    }
+  }
+
+  // Определяем колонки по умолчанию на основе заголовков таблицы
+  getDefaultColumns() {
+    const tableType = this.getTableType();
+    
+    switch (tableType) {
+      case 'orders':
+        return [
+          { data: 'id', name: 'id', orderable: true },
+          { data: 'user', name: 'user', orderable: true },
+          { data: 'phone_number', name: 'phone_number', orderable: true },
+          { data: 'order_status', name: 'order_status', orderable: true },
+          { data: 'created_at', name: 'created_at', orderable: true },
+          { data: 'actions', orderable: false, searchable: false }
+        ];
+      case 'companies':
+      default:
+        return [
+          { data: 'name', name: 'name', orderable: true },
+          { data: 'updated_at', name: 'updated_at', orderable: true },
+          { data: 'actions', orderable: false, searchable: false }
+        ];
+    }
+  }
+
+  // Определяем тип таблицы по URL или контексту
+  getTableType() {
+    const url = window.location.pathname;
+    if (url.includes('/orders')) {
+      return 'orders';
+    } else if (url.includes('/companies')) {
+      return 'companies';
+    }
+    return 'default';
+  }
+
+  // Определяем сортировку по умолчанию
+  getDefaultOrder() {
+    const tableType = this.getTableType();
+    
+    switch (tableType) {
+      case 'orders':
+        return [[4, 'desc']]; // Сортируем по created_at (5-я колонка, индекс 4)
+      case 'companies':
+      default:
+        return [[1, 'desc']]; // Сортируем по updated_at (2-я колонка, индекс 1)
     }
   }
 

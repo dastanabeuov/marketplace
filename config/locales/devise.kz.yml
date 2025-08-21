@@ -2,6 +2,11 @@ kz:
   activerecord:
     attributes:
       user:
+        first_name: Аты
+        last_name: Тегі
+        phone_number: Телефон нөмірі
+        company_name: Компания атауы
+        delivery_address: Жеткізу мекенжайы
         confirmation_sent_at: Растау жіберілген күн
         confirmation_token: Растау белгісі
         confirmed_at: Растау күні

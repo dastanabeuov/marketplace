@@ -10,10 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_22_102213) do
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "pg_catalog.plpgsql"
-
+ActiveRecord::Schema[8.0].define(version: 2025_05_27_101430) do
   create_table "abouts", force: :cascade do |t|
     t.string "name", null: false
     t.text "description"
@@ -89,8 +86,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_22_102213) do
   end
 
   create_table "category_companies", force: :cascade do |t|
-    t.bigint "category_id", null: false
-    t.bigint "company_id", null: false
+    t.integer "category_id", null: false
+    t.integer "company_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id", "company_id"], name: "index_category_companies_on_category_id_and_company_id", unique: true
@@ -105,11 +102,11 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_22_102213) do
     t.string "phone"
     t.string "website"
     t.string "address"
-    t.integer "public_status"
+    t.integer "public_status", default: 1, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_companies_on_email"
     t.index ["name"], name: "index_companies_on_name"
+    t.index ["public_status"], name: "index_companies_on_public_status"
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -130,6 +127,24 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_22_102213) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "order_items", force: :cascade do |t|
+    t.integer "order_id", null: false
+    t.integer "product_id", null: false
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_items_on_order_id"
+    t.index ["product_id"], name: "index_order_items_on_product_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "order_status", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
   create_table "privacy_policies", force: :cascade do |t|
     t.string "name", null: false
     t.text "description"
@@ -138,8 +153,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_22_102213) do
   end
 
   create_table "product_categories", force: :cascade do |t|
-    t.bigint "product_id", null: false
-    t.bigint "category_id", null: false
+    t.integer "product_id", null: false
+    t.integer "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_product_categories_on_category_id"
@@ -148,8 +163,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_22_102213) do
   end
 
   create_table "product_companies", force: :cascade do |t|
-    t.bigint "product_id", null: false
-    t.bigint "company_id", null: false
+    t.integer "product_id", null: false
+    t.integer "company_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_product_companies_on_company_id"
@@ -159,9 +174,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_22_102213) do
 
   create_table "products", force: :cascade do |t|
     t.string "name", null: false
-    t.string "price"
+    t.string "price", default: "уточните у менеджера", null: false
     t.string "producer"
-    t.string "delivery_date"
+    t.string "delivery_date", default: "уточните у менеджера", null: false
     t.text "description"
     t.integer "public_status", default: 1, null: false
     t.integer "product_code"
@@ -189,6 +204,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_22_102213) do
     t.string "email", default: "", null: false
     t.string "first_name", default: "", null: false
     t.string "last_name", default: "", null: false
+    t.string "phone_number", default: "", null: false
+    t.string "company_name", default: "", null: false
+    t.string "delivery_address", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -225,6 +243,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_22_102213) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "category_companies", "categories"
   add_foreign_key "category_companies", "companies"
+  add_foreign_key "order_items", "orders"
+  add_foreign_key "order_items", "products"
+  add_foreign_key "orders", "users"
   add_foreign_key "product_categories", "categories"
   add_foreign_key "product_categories", "products"
   add_foreign_key "product_companies", "companies"

@@ -1,0 +1,17 @@
+<%# app/views/admin/orders/_order_item_fields.html.erb %>
+<div class="nested-fields d-flex gap-2 align-items-end mt-2">
+  <div class="form-group">
+    <%= f.label :product_id, "#{I18n.t('product')}" %>
+    <%= f.collection_select :product_id, Product.all, :id, :name, { prompt: "#{I18n.t('select_product')}" }, { class: "form-select" } %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :quantity, "#{I18n.t('quantity')}" %>
+    <%= f.number_field :quantity, class: "form-control", min: 1, value: f.object.quantity || 1 %>
+  </div>
+
+  <button type="button" class="btn btn-danger" data-action="order-items#remove">×</button>
+
+  <%= f.hidden_field :id if f.object.persisted? %>
+  <%= f.hidden_field :_destroy, value: "false" %>
+</div>
