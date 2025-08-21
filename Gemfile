@@ -119,7 +119,7 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara", "~> 3.40.0"
   # Use short dsl from test [https://github.com/thoughtbot/shoulda-matchers]
-  gem "shoulda-matchers", "~> 6.0"
+  gem "shoulda-matchers", "~> 6.5"
   gem "rails-controller-testing", "~> 1.0.5"
 
   # Show how many covvere test app [https://github.com/simplecov-ruby/simplecov]
