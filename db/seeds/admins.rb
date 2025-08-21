@@ -1,9 +1,9 @@
 if AdminUser.count.zero?
   puts 'Seeding Admins'
   AdminUser.create!(
-    email: 'admin@alatau-techno.kz',
-    first_name: 'Человек',
-    last_name: 'Паук',
+    email: 'admin@relicom-parts.kz',
+    first_name: 'Relicom',
+    last_name: 'Parts',
     password: 'Admin2025!',
     password_confirmation: 'Admin2025!'
   )

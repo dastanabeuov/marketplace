@@ -22,6 +22,10 @@ module ApplicationHelper
     Sitename.first.name unless Sitename.count.zero?
   end
 
+  def site_description
+    Sitename.first.description unless Sitename.count.zero?
+  end
+
   def mechanics
     @mechanics = Mechanic.first(10)
   end

@@ -1,0 +1,3 @@
+<%= turbo_stream.replace "cart_contents" do %>
+  <%= render partial: "cart_contents", locals: { cart: @cart } %>
+<% end %>

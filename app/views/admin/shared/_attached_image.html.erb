@@ -1,11 +1,13 @@
 <% if object.image.attached? %>
-  <%= image_tag object.image, class: "bd-placeholder-img card-img-top" %>
+  <div class="position-relative mb-3">
+    <%= image_tag object.image, class: "bd-placeholder-img card-img-top w-50" %>
 
-  <%= button_to polymorphic_path([:remove_image, :admin, object]),
-      method: :delete,
-      data: { turbo_confirm: t("are_you_sure") },
-      class: "btn btn-danger my-2",
-      title: t("destroy") do %>
-    <i class="bi bi-trash3-fill"></i>
-  <% end %>
+    <%= button_to polymorphic_path([:remove_image, :admin, object]),
+        method: :delete,
+        data: { turbo_confirm: t("are_you_sure") },
+        class: "btn btn-danger position-absolute bottom-0 start-0 m-2",
+        title: t("destroy") do %>
+      <i class="bi bi-trash3-fill"></i>
+    <% end %>
+  </div>
 <% end %>

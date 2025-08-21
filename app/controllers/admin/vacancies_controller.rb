@@ -71,7 +71,7 @@ class Admin::VacanciesController < Admin::BaseController
             recordsTotal: 0,
             recordsFiltered: 0,
             data: [],
-            error: "Произошла ошибка при загрузке данных"
+            error: "#{I18n.t('error_load_data')}"
           }, status: :internal_server_error
         end
       end

@@ -1,4 +1,5 @@
 <% if object.image.attached? %>
-  <%= image_tag object.image, class: "bd-placeholder-img card-img-top", 
-    title: object.name, alt: object.name %>
+  <%= image_tag url_for(object.image), class: "bd-placeholder-img card-img-top border", 
+      title: object.name, 
+      alt: object.name %>
 <% end %>

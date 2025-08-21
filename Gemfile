@@ -8,6 +8,8 @@ gem "propshaft", "~> 1.1.0"
 gem "dartsass-rails", "~> 0.5.1"
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
+# Use sqlite3 as the database for Active Record
+gem "sqlite3", ">= 2.1"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
@@ -84,6 +86,9 @@ gem "kaminari", "~> 1.2.2"
 
 # Analitics ActiveStorage Dashboard [https://github.com/giovapanasiti/active_storage_dashboard]
 gem "active_storage_dashboard", "~> 0.1.7"
+
+# Additional dinamic fields [https://github.com/nathanvda/cocoon]
+# gem "cocoon", "~> 1.2.15"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

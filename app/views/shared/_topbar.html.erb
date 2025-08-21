@@ -1,0 +1,96 @@
+<!-- app/views/shared/_topbar.html.erb -->
+<div class="bg-dark-subtle border-bottom border-primary-subtle py-2">
+  <div class="container">
+    <div class="row align-items-center justify-content-between">
+      <!-- Address -->
+      <div class="col-12 col-sm-6 col-lg-2 mb-2 mb-sm-0">
+        <div class="d-flex align-items-center text-muted">
+          <i class="bi bi-geo-alt text-primary me-2"></i>
+          <span><%= t('office_location') %></span>
+        </div>
+      </div>
+      
+      <!-- Working Hours -->
+      <div class="col-12 col-sm-6 col-lg-2 mb-2 mb-sm-0">
+        <div class="d-flex align-items-center text-muted">
+          <i class="bi bi-alarm text-primary me-2"></i>
+          <span><%= t('job_hours') %></span>
+        </div>
+      </div>
+
+      <!-- Вариант 3: Dropdown с вариантами карт -->
+      <div class="col-12 col-sm-6 col-lg-2 mb-2 mb-sm-0">
+        <div class="dropdown">
+          <button class="btn btn-link p-0 text-decoration-none text-muted hover-primary border-0 dropdown-toggle" 
+                  type="button" 
+                  data-bs-toggle="dropdown" 
+                  aria-expanded="false">
+            <div class="d-flex align-items-center">
+              <i class="bi bi-pin-map text-primary me-2"></i>
+              <span><%= t('route') %></span>
+            </div>
+          </button>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" 
+                href="https://2gis.kz/almaty/directions/points/%7C76.893239%2C43.239398%3B9430047374985013" 
+                target="_blank">
+                <i class="bi bi-geo-alt me-2"></i>2Gis
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" 
+                href="https://maps.google.com/?q=43.239398,76.893239" 
+                target="_blank">
+                <i class="bi bi-globe me-2"></i>Google Maps
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" 
+                href="https://yandex.kz/maps/?ll=76.893239%2C43.239398&z=16&pt=76.893239%2C43.239398" 
+                target="_blank">
+                <i class="bi bi-geo me-2"></i>Яндекс.Карты
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="col-12 col-sm-6 col-lg-2 mb-2 mb-sm-0">
+        <a href="mailto:relicom-service@mail.ru" class="text-decoration-none text-muted hover-primary">
+          <i class="bi bi-envelope text-primary me-2"></i>
+          <span>relicom-service@mail.ru</span>
+        </a>
+      </div>
+      
+      <!-- Phone -->
+      <div class="col-12 col-sm-6 col-lg-2 mb-2 mb-sm-0">
+        <a href="tel:+77056342728" class="text-decoration-none text-muted hover-primary">
+          <i class="bi bi-telephone-forward-fill text-primary me-2"></i>
+          <span>+7 705 634 27 28</span>
+        </a>
+      </div>
+
+      <!-- Вариант 3: Компактный блок с иконками -->
+      <div class="col-12 col-sm-6 col-lg-2 mb-2 mb-sm-0">
+        <div class="d-flex align-items-center text-muted">
+          <i class="bi bi-chat-dots text-primary me-2"></i>
+          <span class="me-2"><%= t('chat') %>:</span>
+          <div class="d-flex gap-2">
+            <a href="https://wa.me/77056342728?text=Здравствуйте! Обращаюсь с сайта." 
+              target="_blank" 
+              class="text-decoration-none text-success hover-scale">
+              <i class="bi bi-whatsapp fs-6"></i>
+            </a>
+            <a href="https://t.me/+77056342728" 
+              target="_blank" 
+              class="text-decoration-none text-info hover-scale">
+              <i class="bi bi-telegram fs-6"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

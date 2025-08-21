@@ -1,0 +1,52 @@
+<div class="row">
+  <%= render 'nav' %>
+  <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 my-4">
+    <%= render 'admin/shared/breadcrumbs' %>
+
+    <div class="order-info">
+      <h1><%= I18n.t('order') %> №<%= @order.id %></h1>
+      <div class="order-info-body mx-3 my-3">
+        <p><strong><%= I18n.t('user') %>:</strong> <%= @order.user&.email %></p>
+        <p><strong><%= I18n.t('phone') %>:</strong> <%= @order.user&.phone_number.presence %></p>
+        <p><strong><%= I18n.t('company') %>:</strong> <%= @order.user&.company_name.presence %></p>
+        <p><strong><%= I18n.t('address') %>:</strong> <%= @order.user&.delivery_address.presence %></p>
+        <p><strong><%= I18n.t('status') %>:</strong> <%= @order.order_status_name %></p>
+        <p><strong><%= I18n.t('created_at') %>:</strong> <%= l(@order.created_at, format: :short) %></p>
+      </div>
+    </div>
+
+    <div class="order-items mt-4">
+      <h3><%= I18n.t('items_in_order') %></h3>
+      <% if @order.order_items.any? %>
+        <ul class="list-group mx-3 my-3">
+          <% @order.order_items.each do |item| %>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <%= item.product.name %>
+              <span class="badge bg-primary rounded-pill"><%= item.quantity %> <%= I18n.t('pcs') %></span>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p class="text-muted"><%= I18n.t('no_products_in_order') %></p>
+      <% end %>
+    </div>
+
+    <div class="btn-group mt-4">
+      <%= link_to edit_admin_order_path(@order), class: "btn btn-warning", title: t('edit') do %>
+        <i class="bi bi-pencil-fill"></i>
+      <% end %>
+
+      <%= button_to admin_order_path(@order),
+          method: :delete,
+          data: { turbo_confirm: t('are_you_sure') },
+          class: "btn btn-danger",
+          title: t('destroy') do %>
+        <i class="bi bi-trash3-fill"></i>
+      <% end %>
+
+      <%= link_to admin_orders_path, class: "btn btn-secondary", title: t('back') do %>
+        <i class="bi bi-arrow-left-circle-fill"></i>
+      <% end %>
+    </div>
+  </main>
+</div>

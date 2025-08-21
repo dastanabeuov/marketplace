@@ -1,0 +1,33 @@
+<%# /home/adk/rails-studios/marketplace/app/views/admin/orders/index.html.erb %>
+<div class="row">
+  <%= render 'nav' %>
+  <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 my-4">
+    <%= render 'admin/shared/breadcrumbs' %>
+    <h1><%= t('all_list') %></h1>
+    <div class="table-responsive" 
+         data-controller="datatables" 
+         data-datatables-language-value="<%= I18n.locale %>" 
+         data-datatables-options-value="<%= { 
+           serverSide: true, 
+           ajax: admin_orders_path(format: :json), 
+           processing: true,
+           pageLength: 10
+         }.to_json %>">
+      <table class="table table-bordered border-secondary table-hover" data-datatables-target="table">
+        <thead>
+          <tr>
+            <th scope="col"><%= I18n.t('.number') %></th>
+            <th scope="col"><%= I18n.t('user') %></th>
+            <th scope="col"><%= I18n.t('phone') %></th>
+            <th scope="col"><%= I18n.t('status') %></th>
+            <th scope="col"><%= I18n.t('created_at') %></th>
+            <th scope="col" class="text-end"><%= I18n.t('.actions') %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%# Данные будут загружены через Ajax %>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</div>

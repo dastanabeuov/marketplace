@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get "orders/new"
+  get "orders/create"
+  get "orders/show"
   # ⬇️only client resources⬇️
   root to: "home#index"
   get "up" => "rails/health#show", as: :rails_health_check
@@ -17,12 +20,21 @@ Rails.application.routes.draw do
   resource :about, only: :show
   resource :privacy_policy, only: :show
   resource :terms_of_use_site, only: :show
+  resource :cart, only: [ :show ] do
+    patch :update_quantity
+    post "add_item", on: :collection
+    delete "remove_item", on: :collection
+    delete "clear", on: :collection
+  end
   resources :mechanics, only: [ :index, :show ]
   resources :products,  only: [ :index, :show ]
   resources :vacancies, only: [ :index, :show ]
+  resources :orders,    only: [ :index, :create, :show ]
 
   # ⬇️only admin resources⬇️
   namespace :admin do
+    get "orders/index"
+    get "orders/show"
     root to: "main#index"
     mount ActiveStorageDashboard::Engine, at: "/active-storage-dashboard"
 
@@ -42,6 +54,9 @@ Rails.application.routes.draw do
         get :search_category
         get :search_company
       end
+    end
+
+    resources :orders do
     end
 
     resource :sitename, concerns: :removable_image

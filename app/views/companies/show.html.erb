@@ -9,35 +9,23 @@
     <% if @company.description.present? %>
       <p class="card-text"><%= @company.description %></p>
     <% end %>
-    
-    <hr class="dropdown-divider">
-    
-    <% if @products.present? %>
-      <h6 class="mt-3"><%= I18n.t('.products') %>:</h6>
-      <ul class="mb-2">
-        <% @products.first(3).each do |product| %>
-          <li><%= product.name %></li>
-        <% end %>
-        <% if @products.count > 3 %>
-          <li>...</li>
-        <% end %>
-      </ul>
-    <% end %>
-    
-    <hr class="dropdown-divider">
 
     <div class="mt-4">
-      <%= link_to I18n.t('.back_to_brands'), companies_path, class: "text-primary" %>
+      <%= link_to companies_path, class: "btn btn-sm btn-outline-secondary" do %>
+        <i class="bi bi-arrow-left"></i>
+        <span><%= I18n.t('.back_to_brands') %></span>
+      <% end %>      
     </div>
   </div>
 </div>
 
-<div class="album py-5 bg-body-tertiary mt-2">
+<div class="album py-5 bg-body-tertiary mt-2 px-2">
   <div class="container">
     <h3>
-      <small class="text-body-secondary"><mark><%= I18n.t('.products') %>:</mark></small>
+      <small class="text-body-secondary"><mark><%= I18n.t('.products') %> <%= @company.name %>:</mark></small>
     </h3>
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+    <!--div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3"-->
       <%= render partial: "companies/product", collection: @products if @products.present? %>
     </div>
     <div class="row mt-5">

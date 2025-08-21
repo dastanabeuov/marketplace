@@ -7,28 +7,35 @@
           <table class="table">
             <thead>
               <tr>
-                <th scope="col">ID</th>
-                <th scope="col"><%= I18n.t('.documents') %></th>
+                <th scope="col"><%= I18n.t('.orders') %></th>
                 <th scope="col"><%= I18n.t('.users') %></th>
-                <th scope="col"><%= I18n.t('.members') %></th>
+                <th scope="col"><%= I18n.t('.phone') %></th>
                 <th scope="col"><%= I18n.t('.data') %></th>
+                <th scope="col"><%= I18n.t('.actions') %></th>
               </tr>
             </thead>
             <tbody>
-              <%# @latest_products.each do |product| %>
+              <% @latest_orders.each do |order| %>
                 <tr>
-                  <th scope="row"><%#= product.id %></th>
-                  <td><%#= product.image %></td>
-                  <td><%#= product.title %></td>
-                  <td><%#= product.description %></td>
-                  <td><%#= product.created_at %></td>
+                  <th>№ <%= order.id %></th>
+                  <td><%= order.user.email %></td>
+                  <td><%= order.user.phone_number %></td>
+                  <td><%= order.created_at %></td>
+                  <td>
+                    <%= link_to admin_order_path(order), class: "btn btn-sm btn-outline-success" do %>
+                      <span class="ms-2"><%= I18n.t('.open') %></span>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8"/>
+                      </svg>
+                    <% end %>
+                  </td>
                 </tr>
-              <%# end %>
+              <% end %>
             </tbody>
           </table>
         </div>
         <div class="d-grid">
-          <%#= link_to t('all_list'), admin_products_path, class: 'btn btn-outline-success' %>
+          <%= link_to t('all_list'), admin_orders_path, class: 'btn btn-outline-success' %>
         </div>
       </div>
     </div>

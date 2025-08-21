@@ -5,23 +5,21 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [ :show ]
   before_action :load_filters, only: [ :index ]
 
-  def index
-    @products = Product.distinct
+def index
+  @cart = session[:cart] || {}
+  @products = Product.distinct
 
-    if params[:company_id].present?
-      @products = @products.joins(:companies).where(companies: { id: params[:company_id] })
-    end
-
-    if params[:category_id].present?
-      @products = @products.joins(:categories).where(categories: { id: params[:category_id] })
-    end
-
-    if params[:query].present?
-      @products = @products.where("products.name ILIKE ?", "%#{params[:query]}%")
-    end
-
-    @products = @products.page(params[:page]).per(9)
+  if params[:company_id].present?
+    @products = @products.joins(:companies).where(companies: { id: params[:company_id] })
   end
+
+  if params[:category_id].present?
+    @products = @products.joins(:categories).where(categories: { id: params[:category_id] })
+  end
+
+  @products = @products.search_by_name(params[:query])
+  @products = @products.page(params[:page]).per(8)
+end
 
   def show
     unless @product
@@ -34,7 +32,7 @@ class ProductsController < ApplicationController
   private
 
   def set_product
-    @product ||= Product.first
+    @product = Product.find_by_id(params[:id])
   end
 
   def load_filters

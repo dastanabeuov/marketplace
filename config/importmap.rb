@@ -10,6 +10,7 @@ pin "@popperjs/core", to: "popper.js", preload: true
 
 pin "datatables", to: "datatables/datatables.js"
 pin "jquery", to: "jquery/jquery-3.7.1.js"
+# pin "cocoon-js", to: "cocoon/cocoon.js"
 
 # Языковые файлы для DataTables
 pin "datatables-i18n-ru", to: "datatables/i18n/russian.js"
