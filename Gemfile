@@ -126,7 +126,7 @@ group :test do
   gem "simplecov", "~> 0.22.0", require: false
 
   # Ceaned test db [https://github.com/DatabaseCleaner/database_cleaner-active_record]
-  gem "database_cleaner-active_record", "~> 2.2.0"
+  gem "database_cleaner-active_record", "~> 2.2.2"
 
   # Broser automation framework and ecosystem [https://github.com/SeleniumHQ/selenium/tree/trunk/rb]
   gem "selenium-webdriver", "~> 4.31.0"
