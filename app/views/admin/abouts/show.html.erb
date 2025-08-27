@@ -6,7 +6,7 @@
     <div class="about-info">
       <%= render "admin/shared/attached_image", object: @about %>
       <h1><%= @about.name %></h1>
-      <p><%= @about.description %></p>
+      <p><%= @about.send("description_#{I18n.locale}") %></p>
     </div>
 
     <div class="btn-group mt-3">

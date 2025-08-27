@@ -32,7 +32,9 @@ class Admin::CompaniesController < Admin::BaseController
 
           # Фильтрация, если есть поисковый запрос
           if search_value.present?
-            companies = companies.where("name LIKE ?", "%#{search_value}%")
+            companies = companies.joins(:translations).where(
+              Company::Translation.arel_table[:name].matches("%#{search_value}%")
+            ).distinct
           end
 
           # Общее количество записей без фильтрации (используем кэширование)
@@ -131,7 +133,11 @@ class Admin::CompaniesController < Admin::BaseController
     end
 
     def company_params
-      params.require(:company).permit(:image, :name, :description, :public_status)
+      params.require(:company).permit(
+        :image, :public_status,
+        *I18n.available_locales.map { |locale| "description_#{locale}" },
+        translations_attributes: [ :id, :locale, :name ]
+      )
     end
 
     def set_active_main_menu_item

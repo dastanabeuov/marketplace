@@ -6,9 +6,7 @@
   <div class="col-md-6 p-4 ps-md-0">
     <h1 class="mt-0"><%= @product.name %></h1>
 
-    <% if @product.description.present? %>
-      <p><%= @product.description %></p>
-    <% end %>
+    <p><%= @product.send("description_#{I18n.locale}") %></p>
 
     <% if @product.producer.present? %>
       <p class="card-text"><%= I18n.t('producer') %>: <%= @product.producer %></p>

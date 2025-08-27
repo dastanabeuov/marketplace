@@ -66,6 +66,8 @@ class Admin::ContactsController < Admin::BaseController
   end
 
   def contact_params
-    params.require(:contact).permit(:image, :name, :working_hours, :email, :phone, :address, :map_iframe)
+    params.require(:contact).permit(:image, :name, :email, :phone, :map_iframe,
+      translations_attributes: [ :id, :locale, :working_hours, :address ]
+     )
   end
 end

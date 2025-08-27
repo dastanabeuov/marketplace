@@ -1,14 +1,15 @@
-<div class="row">
-  <div class="col">
-    <div class="card shadow-sm">
+<div class="card shadow-sm">
+  <div class="row g-0 align-items-stretch">
+    <!-- Левая колонка с картинкой -->
+    <div class="col-md-6 d-flex">
       <%= render "shared/attached_image", object: @about %>
+    </div>
 
-      <div class="card-body">
+    <!-- Правая колонка с текстом -->
+    <div class="col-md-6 d-flex">
+      <div class="card-body d-flex flex-column justify-content-center h-100">
         <h1 class="text-center card-title h3 mb-3"><%= @about.name %></h1>
-
-        <% if @about.description.present? %>
-          <p class="card-text"><%= @about.description %></p>
-        <% end %>
+        <p class="card-text"><%= @about.send("description_#{I18n.locale}") %></p>
       </div>
     </div>
   </div>

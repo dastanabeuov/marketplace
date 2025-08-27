@@ -5,7 +5,7 @@
 
     <div class="privacy-policy-info">
       <h1><%= @privacy_policy.name %></h1>
-      <p><%= @privacy_policy.description %></p>
+      <p><%= @privacy_policy.send("description_#{I18n.locale}") %></p>
     </div>
 
     <div class="btn-group mt-3">

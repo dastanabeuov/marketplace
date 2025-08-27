@@ -17,7 +17,7 @@ def index
     @products = @products.joins(:categories).where(categories: { id: params[:category_id] })
   end
 
-  @products = @products.search_by_name(params[:query])
+  @products = @products.search_by_column(params[:query], :name)
   @products = @products.page(params[:page]).per(8)
 end
 

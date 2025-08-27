@@ -1,49 +1,60 @@
 <div class="row justify-content-center mt-4">
   <div class="col">
     <div class="card shadow-sm">
-      <%= render "shared/attached_image", object: @contact %>
+      <div class="row g-0 align-items-stretch">
+        <!-- Левая колонка с картинкой -->
+        <div class="col-md-6 d-flex">
+          <%= render "shared/attached_image", object: @contact %>
+        </div>
 
-      <div class="card-body">
-        <h1 class="text-center card-title h3 mb-3">
-          <%= @contact.name %>
-        </h1>
+        <!-- Правая колонка с контактной информацией -->
+        <div class="col-md-6 d-flex">
+          <div class="card-body d-flex flex-column justify-content-center h-100">
+            <h1 class="text-center card-title h3 mb-3">
+              <%= @contact.name %>
+            </h1>
 
-        <ul class="list-group list-group-flush mb-4">
-          <%# if @contact.working_hours.present? %>
-            <li class="list-group-item d-flex justify-content-between">
-              <span class="fw-semibold"><%= t(:working_hours) %>:</span>
-              <span><%= t('job_hours') %><%#= @contact.working_hours %></span>
-            </li>
-          <%# end %>
+            <ul class="list-group list-group-flush mb-4">
+              <%# if @contact.working_hours.present? %>
+                <li class="list-group-item d-flex justify-content-between">
+                  <span class="fw-semibold"><%= t(:working_hours) %>:</span>
+                  <span><%#= t('job_hours') %><%= @contact.working_hours %></span>
+                </li>
+              <%# end %>
 
-          <% if @contact.email.present? %>
-            <li class="list-group-item d-flex justify-content-between">
-              <span class="fw-semibold"><%= t(:email) %>:</span>
-              <span><a href="mailto:<%= @contact.email %>"><%= @contact.email %></a></span>
-            </li>
-          <% end %>
+              <% if @contact.email.present? %>
+                <li class="list-group-item d-flex justify-content-between">
+                  <span class="fw-semibold"><%= t(:email) %>:</span>
+                  <span><a href="mailto:<%= @contact.email %>"><%= @contact.email %></a></span>
+                </li>
+              <% end %>
 
-          <% if @contact.phone.present? %>
-            <li class="list-group-item d-flex justify-content-between">
-              <span class="fw-semibold"><%= t(:phone) %>:</span>
-              <span><a href="tel:<%= @contact.phone %>"><%= @contact.phone %></a></span>
-            </li>
-          <% end %>
+              <% if @contact.phone.present? %>
+                <li class="list-group-item d-flex justify-content-between">
+                  <span class="fw-semibold"><%= t(:phone) %>:</span>
+                  <span><a href="tel:<%= @contact.phone %>"><%= @contact.phone %></a></span>
+                </li>
+              <% end %>
 
-          <%# if @contact.address.present? %>
-            <li class="list-group-item d-flex justify-content-between">
-              <span class="fw-semibold"><%= t(:address) %>:</span>
-              <span><%= t('office_location') %><%#= @contact.address %></span>
-            </li>
-          <%# end %>
-        </ul>
-
-        <% if @contact.map_iframe.present? %>
+              <%# if @contact.address.present? %>
+                <li class="list-group-item d-flex justify-content-between">
+                  <span class="fw-semibold"><%= t(:address) %>:</span>
+                  <span><%#= t('office_location') %><%= @contact.address %></span>
+                </li>
+              <%# end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Карта внизу на всю ширину карточки -->
+      <% if @contact.map_iframe.present? %>
+        <div class="pt-0">
           <div class="ratio ratio-16x9">
             <%= @contact.map_iframe.html_safe %>
           </div>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

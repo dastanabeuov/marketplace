@@ -97,7 +97,7 @@ class Admin::MechanicsController < Admin::BaseController
   def create
     @mechanic = Mechanic.new(mechanic_params)
     if @mechanic.save
-      redirect_to admin_mechanic_path, notice: I18n.t(".created")
+      redirect_to admin_mechanics_path, notice: I18n.t(".created")
     else
       add_breadcrumb I18n.t(".new"), new_admin_mechanic_path
       flash.now[:alert] = "#{I18n.t(".not_created")}"
@@ -111,7 +111,7 @@ class Admin::MechanicsController < Admin::BaseController
 
   def update
     if @mechanic.update(mechanic_params)
-      redirect_to admin_mechanic_path, notice: I18n.t(".updated")
+      redirect_to admin_mechanic_path(@mechanic), notice: I18n.t(".updated")
     else
       add_breadcrumb "#{I18n.t('.edit')}: #{@mechanic.name}", admin_mechanic_path(@mechanic)
       flash.now[:alert] = "#{I18n.t(".not_updated")}"
@@ -121,9 +121,9 @@ class Admin::MechanicsController < Admin::BaseController
 
   def destroy
     if @mechanic.destroy
-      redirect_to new_admin_mechanic_path, notice: I18n.t(".destroyed")
+      redirect_to admin_mechanics_path, notice: I18n.t(".destroyed")
     else
-      redirect_to new_admin_mechanic_path, alert: I18n.t(".not_destroyed")
+      redirect_to admin_mechanic_path(@mechanic), alert: I18n.t(".not_destroyed")
     end
   end
 
@@ -140,6 +140,10 @@ class Admin::MechanicsController < Admin::BaseController
   # end
 
   def mechanic_params
-    params.require(:mechanic).permit(:image, :name, :description)
+    params.require(:mechanic).permit(
+      :image,
+      *I18n.available_locales.map { |locale| "description_#{locale}" },
+      translations_attributes: [ :id, :locale, :name ]
+    )
   end
 end

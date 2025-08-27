@@ -10,23 +10,21 @@ class Admin::CategoriesController < Admin::BaseController
     page = (params[:page] || 1).to_i
     per_page = (params[:per_page] || 10).to_i
 
-    # Логируем параметры запроса
     Rails.logger.info("Search params: term=#{term}, page=#{page}, per_page=#{per_page}")
 
-    # Исключим уже выбранные компании, если они переданы
     excluded_ids = params[:excluded_ids].present? ? params[:excluded_ids].map(&:to_i) : []
 
-    query = Company.where("name ILIKE ?", "%#{term}%")
+    query = Company.joins(:translations)
+                   .where(Company::Translation.arel_table[:name].matches("%#{term}%"))
+                   .distinct
     query = query.where.not(id: excluded_ids) if excluded_ids.any?
 
-    # Считаем общее количество
     total_count = query.count
     Rails.logger.info("Total matching companies: #{total_count}")
 
-    companies = query
-                .order(:name)
-                .offset((page - 1) * per_page)
-                .limit(per_page + 1)
+    companies = query.order("company_translations.name")
+                     .offset((page - 1) * per_page)
+                     .limit(per_page + 1)
 
     more = companies.size > per_page
     companies = companies.first(per_page)
@@ -60,15 +58,17 @@ class Admin::CategoriesController < Admin::BaseController
           sort_column = "updated_at" unless allowed_columns.include?(sort_column)
           sort_direction = sort_direction.to_s.downcase == "asc" ? "asc" : "desc"
 
-          # Основной запрос с сортировкой
+          # Основной запрос
           categories = Category.order("#{sort_column} #{sort_direction}")
 
-          # Фильтрация, если есть поисковый запрос
+          # Фильтрация по переводу (Globalize)
           if search_value.present?
-            categories = categories.where("name LIKE ?", "%#{search_value}%")
+            categories = categories.joins(:translations).where(
+              Category::Translation.arel_table[:name].matches("%#{search_value}%")
+            ).distinct
           end
 
-          # Общее количество записей без фильтрации (используем кэширование)
+          # Общее количество записей без фильтрации (кэш)
           total_records = Rails.cache.fetch("categories_count", expires_in: 10.minutes) do
             Category.count
           end
@@ -79,16 +79,20 @@ class Admin::CategoriesController < Admin::BaseController
           # Пагинация
           categories = categories.offset(start).limit(length)
 
-          # Формируем данные для ответа
+          # Формируем данные
           data = categories.map do |category|
             {
-              name: category.name,
+              name: category.name, # globalize сам подставит правильный перевод
               updated_at: I18n.l(category.updated_at, format: :long),
-              actions: render_to_string(partial: "admin/categories/actions", locals: { category: category }, formats: [ :html ])
+              actions: render_to_string(
+                partial: "admin/categories/actions",
+                locals: { category: category },
+                formats: [ :html ]
+              )
             }
           end
 
-          # Формируем ответ в формате, ожидаемом DataTables
+          # Ответ для DataTables
           render json: {
             draw: draw,
             recordsTotal: total_records,
@@ -96,16 +100,14 @@ class Admin::CategoriesController < Admin::BaseController
             data: data
           }
         rescue => e
-          # Логирование ошибки
           Rails.logger.error("DataTables error: #{e.message}\n#{e.backtrace.join("\n")}")
 
-          # Возвращаем ошибку клиенту
           render json: {
             draw: params[:draw].to_i,
             recordsTotal: 0,
             recordsFiltered: 0,
             data: [],
-            error: "#{I18n.t('error_load_data')}"
+            error: I18n.t("error_load_data")
           }, status: :internal_server_error
         end
       end
@@ -163,7 +165,12 @@ class Admin::CategoriesController < Admin::BaseController
     end
 
     def category_params
-      params.require(:category).permit(:name, :description, :public_status, company_ids: [])
+      params.require(:category).permit(
+        :public_status,
+        *I18n.available_locales.map { |locale| "description_#{locale}" },
+        translations_attributes: [ :id, :locale, :name ],
+        company_ids: []
+      )
     end
 
     def set_active_main_menu_item

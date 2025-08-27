@@ -33,7 +33,7 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 # Use the database-backed adapters for Rails.cache, Active Job, and Action Cable
 gem "solid_cache", "~> 1.0.7"
 gem "solid_queue", "~> 1.1.5"
-gem "solid_cable", "3.0.7"
+gem "solid_cable", "3.0.12"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", "~> 1.18.4", require: false
@@ -90,6 +90,9 @@ gem "active_storage_dashboard", "~> 0.1.7"
 # Additional dinamic fields [https://github.com/nathanvda/cocoon]
 # gem "cocoon", "~> 1.2.15"
 
+# Additional dynamic fields with globalize [https://github.com/globalize/globalize]
+gem "globalize", "~> 7.0"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw mswin x64_mingw ], require: "debug/prelude"
@@ -101,7 +104,7 @@ group :development, :test do
   gem "rubocop-rails-omakase", "~> 1.1.0", require: false
 
   # Advanced test [https://github.com/rspec/rspec-rails]
-  gem "rspec-rails", "~> 7.1.1"
+  gem "rspec-rails", "~> 8.0.2"
 
   # Fabrica bot [https://github.com/thoughtbot/factory_bot_rails]
   gem "factory_bot_rails", "~> 6.4"
@@ -126,10 +129,10 @@ group :test do
   gem "simplecov", "~> 0.22.0", require: false
 
   # Ceaned test db [https://github.com/DatabaseCleaner/database_cleaner-active_record]
-  gem "database_cleaner-active_record", "~> 2.2.0"
+  gem "database_cleaner-active_record", "~> 2.2.2"
 
   # Broser automation framework and ecosystem [https://github.com/SeleniumHQ/selenium/tree/trunk/rb]
-  gem "selenium-webdriver", "~> 4.31.0"
+  gem "selenium-webdriver", "~> 4.35.0"
 
   # Save and open page from test [https://github.com/copiousfreetime/launchy]
   gem "launchy", "~> 3.1"

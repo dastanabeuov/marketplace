@@ -18,7 +18,9 @@ class Admin::ProductsController < Admin::BaseController
     # Исключим уже выбранные компании, если они переданы
     excluded_ids = params[:excluded_ids].present? ? params[:excluded_ids].map(&:to_i) : []
 
-    query = Category.where("name ILIKE ?", "%#{term}%")
+    query = Category.joins(:translations).where(
+      Category::Translation.arel_table[:name].matches("%#{term}%", nil, true)
+    )
     query = query.where.not(id: excluded_ids) if excluded_ids.any?
 
     # Считаем общее количество
@@ -53,7 +55,9 @@ class Admin::ProductsController < Admin::BaseController
     # Исключим уже выбранные компании, если они переданы
     excluded_ids = params[:excluded_ids].present? ? params[:excluded_ids].map(&:to_i) : []
 
-    query = Company.where("name ILIKE ?", "%#{term}%")
+    query = Company.joins(:translations).where(
+      Company::Translation.arel_table[:name].matches("%#{term}%", nil, true)
+    )
     query = query.where.not(id: excluded_ids) if excluded_ids.any?
 
     # Считаем общее количество
@@ -92,40 +96,46 @@ class Admin::ProductsController < Admin::BaseController
           sort_column = params[:sort_column] || "updated_at"
           sort_direction = params[:sort_direction] || "desc"
 
-          # Проверка безопасности для сортировки (защита от SQL-инъекций)
-          allowed_columns = %w[name updated_at created_at price]
+          # Разрешенные колонки для сортировки (чтобы не было SQL-инъекций)
+          allowed_columns = %w[name updated_at created_at]
           sort_column = "updated_at" unless allowed_columns.include?(sort_column)
           sort_direction = sort_direction.to_s.downcase == "asc" ? "asc" : "desc"
 
-          # Основной запрос с сортировкой
+          # Основной запрос
           products = Product.order("#{sort_column} #{sort_direction}")
 
-          # Фильтрация, если есть поисковый запрос
+          # Поиск с учетом Globalize
           if search_value.present?
-            products = products.where("name LIKE ?", "%#{search_value}%")
+            products = products.joins(:translations).where(
+              Product::Translation.arel_table[:name].matches("%#{search_value}%")
+            ).distinct
           end
 
-          # Общее количество записей без фильтрации
+          # Общее количество записей без фильтрации (с кешированием)
           total_records = Rails.cache.fetch("products_count", expires_in: 10.minutes) do
             Product.count
           end
 
-          # Общее количество записей после фильтрации
+          # Количество записей после фильтрации
           filtered_records = search_value.present? ? products.count : total_records
 
           # Пагинация
           products = products.offset(start).limit(length)
 
-          # Формируем данные для ответа
+          # Формируем данные для таблицы
           data = products.map do |product|
             {
               name: product.name,
               updated_at: I18n.l(product.updated_at, format: :long),
-              actions: render_to_string(partial: "admin/products/actions", locals: { product: product }, formats: [ :html ])
+              actions: render_to_string(
+                partial: "admin/products/actions",
+                locals: { product: product },
+                formats: [ :html ]
+              )
             }
           end
 
-          # Формируем ответ в формате, ожидаемом DataTables
+          # Ответ для DataTables
           render json: {
             draw: draw,
             recordsTotal: total_records,
@@ -136,7 +146,7 @@ class Admin::ProductsController < Admin::BaseController
           # Логирование ошибки
           Rails.logger.error("DataTables error: #{e.message}\n#{e.backtrace.join("\n")}")
 
-          # Возвращаем ошибку клиенту
+          # Ошибка клиенту
           render json: {
             draw: params[:draw].to_i,
             recordsTotal: 0,
@@ -200,7 +210,13 @@ class Admin::ProductsController < Admin::BaseController
     end
 
     def product_params
-      params.require(:product).permit(:image, :name, :description, :public_status, category_ids: [], company_ids: [])
+      params.require(:product).permit(
+        :image, :public_status, :producer,
+        *I18n.available_locales.map { |locale| "description_#{locale}" },
+        translations_attributes: [ :id, :locale, :name ],
+        category_ids: [],
+        company_ids: []
+        )
     end
 
     def set_active_main_menu_item

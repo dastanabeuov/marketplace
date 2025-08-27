@@ -6,9 +6,7 @@
           <%= @vacancy.name %>
         </h1>
 
-        <% if @vacancy.description.present? %>
-          <p class="card-text"><%= simple_format(@vacancy.description) %></p>
-        <% end %>
+        <p class="card-text"><%= simple_format(@vacancy.send("description_#{I18n.locale}")) %></p>
       </div>
     </div>
   </div>

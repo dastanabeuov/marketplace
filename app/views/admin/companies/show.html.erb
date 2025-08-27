@@ -6,7 +6,7 @@
     <div class="company-info">
       <%= render "admin/shared/attached_image", object: @company %>
       <h1><%= @company.name %></h1>
-      <p><%= @company.description %></p>
+      <p><%= @company.send("description_#{I18n.locale}") %></p>
     </div>
 
     <div class="btn-group mt-3">

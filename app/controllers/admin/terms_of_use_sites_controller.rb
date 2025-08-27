@@ -21,7 +21,7 @@ class Admin::TermsOfUseSitesController < Admin::BaseController
   end
 
   def create
-    @terms_of_use_site = TermsOfUseSite.new(set_terms_of_use_site_params)
+    @terms_of_use_site = TermsOfUseSite.new(terms_of_use_site_params)
     if @terms_of_use_site.save
       redirect_to admin_terms_of_use_site_path, notice: I18n.t(".created")
     else
@@ -36,7 +36,7 @@ class Admin::TermsOfUseSitesController < Admin::BaseController
   end
 
   def update
-    if @terms_of_use_site.update(set_terms_of_use_site_params)
+    if @terms_of_use_site.update(terms_of_use_site_params)
       redirect_to admin_terms_of_use_site_path, notice: I18n.t(".updated")
     else
       add_breadcrumb "#{I18n.t('.edit')}: #{@terms_of_use_site.name}", admin_terms_of_use_site_path(@terms_of_use_site)
@@ -65,7 +65,10 @@ class Admin::TermsOfUseSitesController < Admin::BaseController
     end
   end
 
-  def set_terms_of_use_site_params
-    params.require(:terms_of_use_site).permit(:name, :description)
+  def terms_of_use_site_params
+    params.require(:terms_of_use_site).permit(
+      *I18n.available_locales.map { |locale| "description_#{locale}" },
+      translations_attributes: [ :id, :locale, :name ]
+    )
   end
 end

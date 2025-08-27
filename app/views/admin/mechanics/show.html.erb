@@ -6,7 +6,7 @@
     <div class="mechanic-info">
       <%= render "admin/shared/attached_image", object: @mechanic %>
       <h1><%= @mechanic.name %></h1>
-      <p><%= @mechanic.description %></p>
+      <p><%= @mechanic.send("description_#{I18n.locale}") %></p>
     </div>
 
     <div class="btn-group mt-3">
@@ -21,6 +21,10 @@
       <%= link_to edit_admin_mechanic_path(@mechanic), class: "btn btn-warning", title: t('edit') do %>
         <i class="bi bi-pencil-fill"></i>
       <% end %>
+
+      <%= link_to admin_mechanics_path, class: "btn btn-secondary", title: t('back') do %>
+        <i class="bi bi-arrow-left-circle-fill"></i>
+      <% end %>      
     </div>
   </main>
 </div>

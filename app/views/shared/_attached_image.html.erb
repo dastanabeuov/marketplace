@@ -1,5 +1,5 @@
 <% if object.image.attached? %>
-  <%= image_tag url_for(object.image), class: "bd-placeholder-img card-img-top border", 
+  <%= image_tag url_for(object.image), class: "img-fluid w-100 h-100 object-fit-cover rounded-start", 
       title: object.name, 
       alt: object.name %>
 <% end %>

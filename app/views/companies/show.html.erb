@@ -6,9 +6,7 @@
   <div class="col-md-6 p-4 ps-md-0">
     <h1 class="card-title h3 mb-3"><%= @company.name %></h1>
 
-    <% if @company.description.present? %>
-      <p class="card-text"><%= @company.description %></p>
-    <% end %>
+    <p class="card-text"><%= @company.send("description_#{I18n.locale}") %></p>
 
     <div class="mt-4">
       <%= link_to companies_path, class: "btn btn-sm btn-outline-secondary" do %>

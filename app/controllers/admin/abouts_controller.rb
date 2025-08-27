@@ -68,6 +68,10 @@ class Admin::AboutsController < Admin::BaseController
   end
 
   def about_params
-    params.require(:about).permit(:image, :name, :description)
+    params.require(:about).permit(
+      :image,
+      *I18n.available_locales.map { |locale| "description_#{locale}" },
+      translations_attributes: [ :id, :locale, :name ]
+    )
   end
 end

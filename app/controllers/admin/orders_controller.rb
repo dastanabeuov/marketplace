@@ -30,12 +30,7 @@ class Admin::OrdersController < Admin::BaseController
 
           # Фильтрация, если есть поисковый запрос
           if search_value.present?
-            orders = orders.includes(:user)
-              .where(
-                "orders.id::text LIKE ? OR users.email LIKE ? OR users.phone_number LIKE ? OR orders.order_status LIKE ?",
-                "%#{search_value}%", "%#{search_value}%", "%#{search_value}%", "%#{search_value}%"
-              )
-              .references(:user)
+            orders = orders.where("CAST(orders.id AS TEXT) LIKE ?", "%#{search_value}%")
           end
 
           # Общее количество записей без фильтрации (используем кэширование)
