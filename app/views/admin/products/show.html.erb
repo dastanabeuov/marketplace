@@ -6,7 +6,9 @@
     <div class="product-info">
       <%= render "admin/shared/attached_image", object: @product %>
       <h1><%= @product.name %></h1>
-      <p><%= @product.description %></p>
+
+      <p><%= @product.send("description_#{I18n.locale}") %></p>
+      
       <p class="card-text"><%= I18n.t('producer') %>: <%= @product.producer %></p>
       <p class="card-text"><%= I18n.t('price') %>: <%= I18n.t('check_with_the_manager') %></p>
       <p class="card-text"><%= I18n.t('delivery_date') %>: <%= I18n.t('check_with_the_manager') %></p>

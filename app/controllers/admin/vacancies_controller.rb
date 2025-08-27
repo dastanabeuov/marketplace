@@ -134,6 +134,10 @@ class Admin::VacanciesController < Admin::BaseController
     end
 
     def vacancy_params
-      params.require(:vacancy).permit(:name, :description, :public_status)
+      params.require(:vacancy).permit(
+        :public_status,
+        *I18n.available_locales.map { |locale| "description_#{locale}" },
+        translations_attributes: [ :id, :locale, :name ]
+      )
     end
 end

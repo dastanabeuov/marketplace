@@ -5,7 +5,7 @@
 
     <div class="category-info">
       <h1><%= @category.name %></h1>
-      <p><%= @category.description %></p>
+      <p><%= @category.send("description_#{I18n.locale}") %></p>
     </div>
 
     <div class="btn-group mt-3">

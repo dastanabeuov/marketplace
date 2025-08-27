@@ -3,9 +3,8 @@
     <div class="card shadow-sm">
       <div class="card-body">
         <h1 class="text-center card-title h3 mb-3"><%= @privacy_policy.name %></h1>
-        <% if @privacy_policy.description.present? %>
-          <p class="card-text"><%= @privacy_policy.description %></p>
-        <% end %>
+
+        <p class="card-text"><%= @privacy_policy.send("description_#{I18n.locale}") %></p>
       </div>
     </div>
   </div>

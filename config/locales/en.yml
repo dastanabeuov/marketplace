@@ -1,4 +1,8 @@
 en:
+  search_by_company_name: "Search by company name"
+  choose_file: "Choose file"
+  current_file: "Current file"
+  image: "Image"
   home_index_h1_title: "Spare parts and components for industrial equipment"
   office_location: "050009, Almaty, Abay Avenue 143, Office 508"
   job_hours: "Mon-Fri 9:00-18:00, lunch 13:00-14:00"

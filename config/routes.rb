@@ -43,7 +43,7 @@ Rails.application.routes.draw do
     end
 
     resources :companies, concerns: :removable_image
-    resources :categories do
+    resources :categories, concerns: :removable_image do
       collection do
         get :search_company
       end
@@ -64,8 +64,8 @@ Rails.application.routes.draw do
     resource :about, concerns: :removable_image
     resources :vacancies
     resources :mechanics, concerns: :removable_image
-    resource :privacy_policy
-    resource :terms_of_use_site
+    resource :privacy_policy, concerns: :removable_image
+    resource :terms_of_use_site, concerns: :removable_image
   end
 
   scope :admin do

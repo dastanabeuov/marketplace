@@ -64,6 +64,9 @@ class Admin::PrivacyPoliciesController < Admin::BaseController
   end
 
   def privacy_policy_params
-    params.require(:privacy_policy).permit(:name, :description)
+    params.require(:privacy_policy).permit(
+      *I18n.available_locales.map { |locale| "description_#{locale}" },
+      translations_attributes: [ :id, :locale, :name ]
+    )
   end
 end

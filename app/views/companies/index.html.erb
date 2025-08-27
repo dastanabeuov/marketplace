@@ -2,7 +2,7 @@
   <form class="search-form" method="get">
     <div class="row g-3 align-items-stretch">
       <!-- Селект компаний -->
-      <div class="col-12 col-md-3">
+      <div class="col-12 col-md-4">
         <select class="form-select h-100 py-2" name="company_id">
           <option value=""><%= I18n.t('.choose_company') %></option>
           <% @company_filters.each do |company| %>
@@ -13,9 +13,17 @@
         </select>
       </div>
 
+      <!-- Поле поиска -->
+      <div class="col-12 col-md-4">
+        <input type="text" name="query" value="<%= params[:query] %>"
+               class="form-control h-100 py-2"
+               placeholder="<%= I18n.t('.search_by_company_name') %>">
+      </div>
+
       <!-- Кнопка поиска -->
-      <div class="col-12 col-md-2">
-        <button type="submit" class="btn btn-primary w-100 h-100 py-2">
+      <div class="col-12 col-md-4">
+        <button type="submit" 
+                class="btn btn-primary w-100 h-100">
           <i class="bi bi-search me-1"></i> <%= I18n.t('.find') %>
         </button>
       </div>
@@ -23,16 +31,30 @@
   </form>
 </div>
 
+<%# Проверка, был ли выполнен поиск %>
+<% search_performed = params[:company_id].present? || params[:query].present? %>
+
 <div class="album py-5 bg-body-tertiary px-2">
   <div class="container">
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
-    <!--div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3"-->
-      <%= render partial: "companies/company", collection: @companies %>
-    </div>
-    <div class="row mt-5">
-      <div class="col d-flex justify-content-center">
-        <%= paginate @companies %>
+    <% if @companies.present? %>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+      <!--div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3"-->
+        <%= render partial: "companies/company", collection: @companies %>
       </div>
-    </div>
+      <div class="row mt-5">
+        <div class="col d-flex justify-content-center">
+          <%= paginate @companies %>
+        </div>
+      </div>
+    <% else search_performed %>
+      <%# Сообщение, если поиск был выполнен, но результатов нет %>
+      <div class="alert alert-info text-center py-4">
+        <i class="bi bi-search me-2"></i>
+        <%= I18n.t('.no_search_results') %>
+      </div>
+      <div class="text-center mt-3">
+        <%= link_to I18n.t('.reset_search'), request.path, class: "btn btn-outline-secondary" %>
+      </div>
+    <% end %>
   </div>
 </div>

@@ -1,23 +1,100 @@
-<%= form_for [:admin, sitename], html: { class: "form" } do |f| %>
+<script>
+  function initializeFileUpload() {
+    const input = document.getElementById("imageInput");
+    const fileName = document.getElementById("fileName");
+
+    if (input && fileName) {
+      // Удаляем старые обработчики если они есть
+      input.removeEventListener("change", handleFileChange);
+      
+      // Добавляем новый обработчик
+      input.addEventListener("change", handleFileChange);
+    }
+  }
+
+  function handleFileChange(event) {
+    const input = event.target;
+    const fileName = document.getElementById("fileName");
+    
+    if (fileName) {
+      fileName.textContent = input.files.length > 0 ? input.files[0].name : "";
+    }
+  }
+
+  // Инициализация при первой загрузке страницы
+  document.addEventListener("DOMContentLoaded", initializeFileUpload);
+  
+  // Инициализация после переходов Turbo
+  document.addEventListener("turbo:load", initializeFileUpload);
+  
+  // Для совместимости со старыми версиями Turbo
+  document.addEventListener("turbo:frame-load", initializeFileUpload);
+</script>
+
+<%= form_for [:admin, sitename], url: admin_sitename_path, html: { class: "form" } do |f| %>  
   <div class="form-group mb-3">
     <%= render "shared/errors", resource: sitename %>
   </div>
-
+  
+  <!-- Поле для загрузки изображения (вне блока переводов) -->
   <div class="form-group mb-3">
-    <%= f.label :image, class: 'form-label' %>
-    <%= f.file_field :image, class: 'form-control' %>
+    <%#= f.label :image, I18n.t('.image'), class: 'form-label' %>
+    <%#= f.file_field :image, class: 'form-control', name: sitename.image.filename.to_s %>
+    <%= f.label :image, I18n.t('.image'), class: "form-label d-block" %>
+
+    <div class="input-group">
+      <label for="imageInput" class="btn btn-primary mb-0">
+        <%= I18n.t('.choose_file', default: 'Загрузить изображение') %>
+      </label>
+      <span id="fileName" class="form-control text-muted bg-light"></span>
+    </div>
+
+    <%= f.file_field :image, id: "imageInput", class: "d-none" %>
   </div>
 
-  <div class="form-group mb-3">
-    <%= f.label :name, I18n.t('.name'), class: 'form-label' %>
-    <%= f.text_field :name, class: 'form-control' %>
+  <!-- Вкладки для переводов (Bootstrap 5) -->
+  <ul class="nav nav-tabs" id="translationTabs" role="tablist">
+    <% I18n.available_locales.each_with_index do |locale, i| %>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link <%= 'active' if i == 0 %>" 
+                id="<%= locale %>-tab" 
+                data-bs-toggle="tab" 
+                data-bs-target="#<%= locale %>" 
+                type="button" 
+                role="tab" 
+                aria-controls="<%= locale %>" 
+                aria-selected="<%= i == 0 %>">
+          <%= locale.to_s.upcase %>
+        </button>
+      </li>
+    <% end %>
+  </ul>
+  
+  <!-- Содержимое вкладок -->
+  <div class="tab-content mt-3" id="translationTabsContent">
+    <% I18n.available_locales.each_with_index do |locale, i| %>
+      <div class="tab-pane fade <%= 'show active' if i == 0 %>" 
+           id="<%= locale %>" 
+           role="tabpanel" 
+           aria-labelledby="<%= locale %>-tab">
+        <!-- Переводимые поля через Globalize -->
+        <%= f.fields_for :translations, sitename.translations.find_or_initialize_by(locale: locale) do |translation_fields| %>
+          <%= translation_fields.hidden_field :locale, value: locale %>
+          
+          <div class="form-group mb-3">
+            <%= translation_fields.label :name, I18n.t('.name'), class: "form-label" %>
+            <%= translation_fields.text_field :name, class: "form-control" %>
+          </div>
+        <% end %>
+          
+        <div class="form-group mb-3">
+          <%= f.label "description_#{locale}", I18n.t('.description'), class: "form-label" %>
+          <%= f.rich_text_area "description_#{locale}", class: "form-control", style: "min-height: 300px;" %>
+        </div>
+      </div>
+    <% end %>
   </div>
-
-  <div class="form-group mb-3">
-    <%= f.label :description, I18n.t('.description'),class: 'form-label' %>
-    <%= f.rich_text_area :description, class: 'form-control', rows: 10 %>
-  </div>
-
+  
   <div class="form-group d-grid">
     <%= f.submit I18n.t('.save'), class: 'btn btn-sm btn-success' %>
   </div>

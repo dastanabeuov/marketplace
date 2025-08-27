@@ -5,7 +5,7 @@
 
     <div class="vacancy-info">
       <h1><%= @vacancy.name %></h1>
-      <p><%= @vacancy.description %></p>
+      <p><%= @vacancy.send("description_#{I18n.locale}") %></p>
     </div>
 
     <div class="btn-group mt-3">

@@ -68,6 +68,10 @@ class Admin::SitenamesController < Admin::BaseController
   end
 
   def sitename_params
-    params.require(:sitename).permit(:image, :name, :description)
+    params.require(:sitename).permit(
+      :image,
+      *I18n.available_locales.map { |locale| "description_#{locale}" },
+      translations_attributes: [ :id, :locale, :name ]
+    )
   end
 end

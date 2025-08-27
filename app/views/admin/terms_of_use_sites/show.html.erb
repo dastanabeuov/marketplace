@@ -5,7 +5,7 @@
 
     <div class="terms-of-use-site-info">
       <h1><%= @terms_of_use_site.name %></h1>
-      <p><%= @terms_of_use_site.description %></p>
+      <p><%= @terms_of_use_site.send("description_#{I18n.locale}") %></p>
     </div>
 
     <div class="btn-group mt-3">

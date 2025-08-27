@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_27_101430) do
-  create_table "abouts", force: :cascade do |t|
-    t.string "name", null: false
+ActiveRecord::Schema[8.0].define(version: 2025_08_26_102114) do
+  create_table "about_translations", force: :cascade do |t|
+    t.integer "about_id", null: false
+    t.string "locale", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
     t.text "description"
+    t.index ["about_id"], name: "index_about_translations_on_about_id"
+    t.index ["locale"], name: "index_about_translations_on_locale"
+  end
+
+  create_table "abouts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -76,12 +85,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_27_101430) do
   end
 
   create_table "categories", force: :cascade do |t|
-    t.string "name", null: false
-    t.text "description"
     t.integer "public_status", default: 1, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_categories_on_name"
     t.index ["public_status"], name: "index_categories_on_public_status"
   end
 
@@ -95,9 +101,18 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_27_101430) do
     t.index ["company_id"], name: "index_category_companies_on_company_id"
   end
 
-  create_table "companies", force: :cascade do |t|
-    t.string "name", null: false
+  create_table "category_translations", force: :cascade do |t|
+    t.integer "category_id", null: false
+    t.string "locale", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
     t.text "description"
+    t.index ["category_id"], name: "index_category_translations_on_category_id"
+    t.index ["locale"], name: "index_category_translations_on_locale"
+  end
+
+  create_table "companies", force: :cascade do |t|
     t.string "email"
     t.string "phone"
     t.string "website"
@@ -105,24 +120,52 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_27_101430) do
     t.integer "public_status", default: 1, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_companies_on_name"
     t.index ["public_status"], name: "index_companies_on_public_status"
+  end
+
+  create_table "company_translations", force: :cascade do |t|
+    t.integer "company_id", null: false
+    t.string "locale", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.text "description"
+    t.index ["company_id"], name: "index_company_translations_on_company_id"
+    t.index ["locale"], name: "index_company_translations_on_locale"
+  end
+
+  create_table "contact_translations", force: :cascade do |t|
+    t.integer "contact_id", null: false
+    t.string "locale", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "working_hours"
+    t.string "address"
+    t.index ["contact_id"], name: "index_contact_translations_on_contact_id"
+    t.index ["locale"], name: "index_contact_translations_on_locale"
   end
 
   create_table "contacts", force: :cascade do |t|
     t.string "name", null: false
-    t.string "working_hours", null: false
     t.string "email", null: false
     t.string "phone", null: false
-    t.string "address", null: false
     t.text "map_iframe", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "mechanics", force: :cascade do |t|
-    t.string "name", null: false
+  create_table "mechanic_translations", force: :cascade do |t|
+    t.integer "mechanic_id", null: false
+    t.string "locale", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
     t.text "description"
+    t.index ["locale"], name: "index_mechanic_translations_on_locale"
+    t.index ["mechanic_id"], name: "index_mechanic_translations_on_mechanic_id"
+  end
+
+  create_table "mechanics", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -146,10 +189,19 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_27_101430) do
   end
 
   create_table "privacy_policies", force: :cascade do |t|
-    t.string "name", null: false
-    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "privacy_policy_translations", force: :cascade do |t|
+    t.integer "privacy_policy_id", null: false
+    t.string "locale", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.text "description"
+    t.index ["locale"], name: "index_privacy_policy_translations_on_locale"
+    t.index ["privacy_policy_id"], name: "index_privacy_policy_translations_on_privacy_policy_id"
   end
 
   create_table "product_categories", force: :cascade do |t|
@@ -172,30 +224,56 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_27_101430) do
     t.index ["product_id"], name: "index_product_companies_on_product_id"
   end
 
+  create_table "product_translations", force: :cascade do |t|
+    t.integer "product_id", null: false
+    t.string "locale", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.text "description"
+    t.index ["locale"], name: "index_product_translations_on_locale"
+    t.index ["product_id"], name: "index_product_translations_on_product_id"
+  end
+
   create_table "products", force: :cascade do |t|
-    t.string "name", null: false
     t.string "price", default: "уточните у менеджера", null: false
     t.string "producer"
     t.string "delivery_date", default: "уточните у менеджера", null: false
-    t.text "description"
     t.integer "public_status", default: 1, null: false
     t.integer "product_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_products_on_name"
     t.index ["public_status"], name: "index_products_on_public_status"
   end
 
-  create_table "sitenames", force: :cascade do |t|
-    t.string "name", null: false
+  create_table "sitename_translations", force: :cascade do |t|
+    t.integer "sitename_id", null: false
+    t.string "locale", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
     t.text "description"
+    t.index ["locale"], name: "index_sitename_translations_on_locale"
+    t.index ["sitename_id"], name: "index_sitename_translations_on_sitename_id"
+  end
+
+  create_table "sitenames", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "terms_of_use_sites", force: :cascade do |t|
-    t.string "name", null: false
+  create_table "terms_of_use_site_translations", force: :cascade do |t|
+    t.integer "terms_of_use_site_id", null: false
+    t.string "locale", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
     t.text "description"
+    t.index ["locale"], name: "index_terms_of_use_site_translations_on_locale"
+    t.index ["terms_of_use_site_id"], name: "index_terms_of_use_site_translations_on_terms_of_use_site_id"
+  end
+
+  create_table "terms_of_use_sites", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -232,11 +310,20 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_27_101430) do
   end
 
   create_table "vacancies", force: :cascade do |t|
-    t.string "name", null: false
-    t.text "description"
     t.integer "public_status", default: 1, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "vacancy_translations", force: :cascade do |t|
+    t.integer "vacancy_id", null: false
+    t.string "locale", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.text "description"
+    t.index ["locale"], name: "index_vacancy_translations_on_locale"
+    t.index ["vacancy_id"], name: "index_vacancy_translations_on_vacancy_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

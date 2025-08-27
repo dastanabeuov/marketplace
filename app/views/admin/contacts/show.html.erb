@@ -4,13 +4,13 @@
     <%= render 'admin/shared/breadcrumbs' %>
 
     <div class="contact-info">
-      <%= render "admin/shared/attached_image", object: @contact %>
       <h1><%= @contact.name %></h1>
       <p><%= @contact.working_hours %></p>
       <p><%= @contact.email %></p>
       <p><%= @contact.phone %></p>
       <p><%= @contact.address %></p>
       <p><%= @contact.map_iframe.html_safe %></p>
+      <%= render "admin/shared/attached_image", object: @contact %>
     </div>
 
     <div class="btn-group mt-3">

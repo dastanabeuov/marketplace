@@ -23,7 +23,7 @@ module ApplicationHelper
   end
 
   def site_description
-    Sitename.first.description unless Sitename.count.zero?
+    Sitename.first.send("description_#{I18n.locale}") unless Sitename.count.zero?
   end
 
   def mechanics

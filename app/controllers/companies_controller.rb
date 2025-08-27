@@ -7,9 +7,13 @@ class CompaniesController < ApplicationController
   def index
     @companies = Company.distinct
 
+    # Фильтр по компании
     if params[:company_id].present?
       @companies = @companies.where(id: params[:company_id])
     end
+
+    # Поиск по названию (кросс-БД)
+    @companies = @companies.search_by_column(params[:query], :name)
 
     @companies = @companies.page(params[:page]).per(8)
   end
