@@ -1,21 +1,118 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <style>
-      .mailbox {
-        border: 3px solid #3c85e0;
-        padding: 10px;
-        border-radius: 5px;
-        width: 70%;
-        margin: 0 auto;
-        margin-top: 25px;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="mailbox">
-      <%= yield %>
-    </div>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title><%= yield(:title) || "Product Notification" %></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    /* Сброс для писем */
+    body, table, td, a {
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+    }
+    table, td {
+      mso-table-rspace: 0pt;
+      mso-table-lspace: 0pt;
+    }
+    img {
+      -ms-interpolation-mode: bicubic;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100% !important;
+      height: 100% !important;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #f8f9fa;
+      color: #212529;
+    }
+
+    /* Контейнер */
+    .email-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,.1);
+    }
+
+    /* Шапка */
+    .email-header {
+      background-color: #0d6efd;
+      color: #ffffff;
+      padding: 20px;
+      text-align: center;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    /* Контент */
+    .email-body {
+      padding: 30px 20px;
+      line-height: 1.6;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      margin-top: 20px;
+      font-size: 16px;
+      color: #fff;
+      background-color: #D1E7DD;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      background-color: #D1E7DD;
+    }
+
+    /* Футер */
+    .email-footer {
+      font-size: 12px;
+      color: #6c757d;
+      text-align: center;
+      padding: 15px;
+      background-color: #f1f3f5;
+    }
+  </style>
+</head>
+
+<body>
+  <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+    <tr>
+      <td align="center">
+        <div class="email-container">
+
+          <!-- Header -->
+          <div class="email-header">
+            <%= yield(:header) || "ProductMailer" %>
+          </div>
+
+          <!-- Body -->
+          <div class="email-body">
+            <%= yield %>
+
+            <% if content_for?(:cta_url) %>
+              <a href="<%= yield(:cta_url) %>" class="btn">
+                <%= yield(:cta_text) || I18n.t('view') %>
+              </a>
+            <% end %>
+          </div>
+
+          <!-- Footer -->
+          <% if defined?(@subscription) && @subscription.present? %>
+            <div class="email-footer">
+              <p><%= I18n.t('info_subscribed') %></p>
+              <p><%= I18n.t('if_unsubscribed') %> <a href="<%= unsubscribe_admin_subscription_url(@subscription.signed_id(purpose: :unsubscribe)) %>"><%= I18n.t('unsubscribe') %></a></p>
+            </div>
+          <% end %>
+
+        </div>
+      </td>
+    </tr>
+  </table>
+</body>
 </html>

@@ -1,0 +1,62 @@
+<script>
+document.addEventListener('turbo:load', () => {
+  document.body.addEventListener('click', function(e) {
+    const el = e.target.closest('a[data-method="delete"]');
+    if (!el) return;
+
+    e.preventDefault();
+    if (confirm(el.dataset.confirm)) {
+      fetch(el.href, {
+        method: 'DELETE',
+        headers: {
+          'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content,
+          'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          // Удаляем строку из таблицы
+          const row = el.closest('tr');
+          if (row) row.remove();
+        } else {
+          alert('Ошибка при удалении');
+        }
+      });
+    }
+  });
+});
+</script>
+
+<div class="row">
+  <%= render 'nav' %>
+  <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 my-4">
+    <%= render 'admin/shared/breadcrumbs' %>
+
+    <h1><%= t('all_list') %></h1>
+
+    <div class="table-responsive"
+      data-controller="datatables"
+      data-datatables-language-value="<%= I18n.locale %>"
+      data-datatables-options-value="<%= {
+        serverSide: true,
+        ajax: admin_subscriptions_path(format: :json),
+        processing: true,
+        pageLength: 10
+      }.to_json %>"
+      data-datatables-columns-value="<%= [
+        { data: 'email', name: 'email', orderable: true },
+        { data: 'created_at', name: 'created_at', orderable: true },
+        { data: 'actions', name: 'actions', orderable: false, searchable: false, className: 'text-end' }
+      ].to_json %>">
+      <table class="table table-bordered border-secondary table-hover" data-datatables-target="table">
+        <thead>
+          <tr>
+            <th><%= t('email') %></th>
+            <th><%= t('created_at') %></th>
+            <th class="text-end"><%= t('.actions') %></th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </main>
+</div>

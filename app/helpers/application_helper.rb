@@ -14,6 +14,14 @@ module ApplicationHelper
     end
   end
 
+  def full_name(user)
+    if user.first_name.present? || user.last_name.present?
+      "#{user.first_name} #{user.last_name}".strip
+    else
+      user.email
+    end
+  end
+
   def current_year
     Time.now.year
   end

@@ -48,22 +48,21 @@
       </div>
 
       <div class="col-md-4 mb-3">
-        <form>
+        <%= form_with url: admin_subscriptions_path, method: :post, local: true, scope: :subscription do |f| %>
           <h6 class="text-uppercase fw-bold mb-3"><%= I18n.t('.subscribe') %></h6>
           <div class="d-flex flex-column flex-sm-row gap-2">
-            <input
-              id="newsletter1"
-              type="email"
-              class="form-control"
-              placeholder="<%= I18n.t('.subscribe_to_our_newsletter') %>"
-              required
-            >
-            <button class="btn btn-secondary" type="submit">
+            <%= f.email_field :email,
+                  class: "form-control",
+                  placeholder: I18n.t('.subscribe_to_our_newsletter'),
+                  required: true,
+                  value: (current_user&.email if user_signed_in?) %>
+
+            <%= f.button :submit, class: "btn btn-secondary" do %>
               <i class="bi bi-send"></i>
-            </button>
+            <% end %>
           </div>
-        </form>
-      </div>
+        <% end %>
+      </div>      
     </div>
 
     <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center py-2 border-top">

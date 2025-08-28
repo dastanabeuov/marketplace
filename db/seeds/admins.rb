@@ -4,8 +4,8 @@ if AdminUser.count.zero?
     email: 'admin@relicom-parts.kz',
     first_name: 'Relicom',
     last_name: 'Parts',
-    password: 'Admin2025!',
-    password_confirmation: 'Admin2025!'
+    password: 'Relicom2025!',
+    password_confirmation: 'Relicom2025!'
   )
 end
 
