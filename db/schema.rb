@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_26_102114) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_27_112148) do
   create_table "about_translations", force: :cascade do |t|
     t.integer "about_id", null: false
     t.string "locale", null: false
@@ -262,6 +262,14 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_26_102114) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "subscriptions", force: :cascade do |t|
+    t.string "email"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_subscriptions_on_user_id"
+  end
+
   create_table "terms_of_use_site_translations", force: :cascade do |t|
     t.integer "terms_of_use_site_id", null: false
     t.string "locale", null: false
@@ -337,4 +345,5 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_26_102114) do
   add_foreign_key "product_categories", "products"
   add_foreign_key "product_companies", "companies"
   add_foreign_key "product_companies", "products"
+  add_foreign_key "subscriptions", "users"
 end

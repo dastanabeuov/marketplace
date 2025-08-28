@@ -33,6 +33,9 @@ Rails.application.routes.draw do
 
   # ⬇️only admin resources⬇️
   namespace :admin do
+    resources :subscriptions, only: [ :index, :create, :destroy ] do
+      get :unsubscribe, on: :member
+    end
     get "orders/index"
     get "orders/show"
     root to: "main#index"

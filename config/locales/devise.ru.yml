@@ -55,14 +55,16 @@ ru:
       unconfirmed: Вы должны подтвердить вашу учетную запись.
     mailer:
       confirmation_instructions:
+        message: 'Вы можете подтвердить свою учетную запись, перейдя по ссылке ниже:'
         action: Активировать
         greeting: Здравствуйте, %{recipient}!
         instruction: 'Вы можете активировать свою учетную запись, нажав ссылку снизу:'
         subject: Инструкции по подтверждению учетной записи
       email_changed:
+        changed_message: Мы пытаемся связаться с вами, что бы сообщить, что ваш email был изменен на %{email}.
         greeting: Здравствуйте, %{recipient}!
         message: Мы пытаемся связаться с вами, что бы сообщить, что ваш email был изменен на %{email}.
-        message_unconfirmed:
+        message_unconfirmed: Мы пытаемся связаться с вами, что бы сообщить, что ваш email был изменен на %{email}.
         subject: Email изменен
       password_change:
         greeting: Приветствуем, %{recipient}!

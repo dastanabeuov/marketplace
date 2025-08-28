@@ -55,11 +55,13 @@ en:
       unconfirmed: You have to confirm your email address before continuing.
     mailer:
       confirmation_instructions:
+        message: 'You can confirm your account email through the link below:'
         action: Confirm my account
         greeting: Welcome %{recipient}!
         instruction: 'You can confirm your account email through the link below:'
         subject: Confirmation instructions
       email_changed:
+        changed_message: We're contacting you to notify you that your email has been changed to %{email}.
         greeting: Hello %{recipient}!
         message: We're contacting you to notify you that your email has been changed to %{email}.
         message_unconfirmed: We're contacting you to notify you that your email is being changed to %{email}.

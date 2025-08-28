@@ -143,6 +143,12 @@ export default class extends Controller {
           { data: 'created_at', name: 'created_at', orderable: true },
           { data: 'actions', orderable: false, searchable: false }
         ];
+        case 'subscriptions': // новый кейс для подписок
+        return [
+          { data: 'email', name: 'email', orderable: true },
+          { data: 'created_at', name: 'created_at', orderable: true },
+          { data: 'actions', orderable: false, searchable: false, className: 'text-end' }
+        ];
       case 'companies':
       default:
         return [
@@ -160,9 +166,11 @@ export default class extends Controller {
       return 'orders';
     } else if (url.includes('/companies')) {
       return 'companies';
+    } else if (url.includes('/subscriptions')) { // добавляем кейс
+      return 'subscriptions';
     }
     return 'default';
-  }
+  }  
 
   // Определяем сортировку по умолчанию
   getDefaultOrder() {

@@ -1,0 +1,9 @@
+<% content_for :title, I18n.t('.new_product') %>
+<% content_for :header, I18n.t('.product_notification') %>
+
+<p><%= I18n.t('.hi') %>, <%= @recipient_name %>!</p>
+<p><%= I18n.t('.we_have_added_a_new_product') %>: <strong><%= @product.name %></strong>.</p>
+<p><%= I18n.t('.description') %>: <%= @product.send("description_#{I18n.locale}") %></p>
+
+<% content_for :cta_url, product_url(@product) %>
+<% content_for :cta_text, "#{I18n.t('.view')}" %>

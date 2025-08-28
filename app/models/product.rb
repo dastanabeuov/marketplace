@@ -1,6 +1,8 @@
 class Product < ApplicationRecord
   include Searchable
 
+  after_create :notify_subscribers
+
   has_many :product_categories, dependent: :destroy
   has_many :categories, through: :product_categories
 
@@ -35,6 +37,13 @@ class Product < ApplicationRecord
       if self.send(field_name).blank? || self.send(field_name).body.blank?
         errors.add(field_name.to_sym, :blank, message: I18n.t("errors.messages.blank"))
       end
+    end
+  end
+
+
+  def notify_subscribers
+    Subscription.find_each do |subscription|
+      ProductMailer.new_product(self, subscription).deliver_later
     end
   end
 end

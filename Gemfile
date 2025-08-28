@@ -75,9 +75,6 @@ gem "cancancan", "~> 3.6"
 # Security data table migration structure [https://github.com/ankane/strong_migrations]
 gem "strong_migrations", "~> 2.3.0"
 
-# Strong veribles from secret key [https://github.com/bkeepers/dotenv]
-gem "dotenv-rails", "~> 3.1.4"
-
 # Breadcrimbs genrated [https://github.com/weppos/breadcrumbs_on_rails]
 gem "breadcrumbs_on_rails", "~> 4.1.0"
 
@@ -94,6 +91,9 @@ gem "active_storage_dashboard", "~> 0.1.7"
 gem "globalize", "~> 7.0"
 
 group :development, :test do
+  # Strong veribles from secret key [https://github.com/bkeepers/dotenv]
+  gem "dotenv-rails", "~> 3.1.4"
+
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw mswin x64_mingw ], require: "debug/prelude"
 
