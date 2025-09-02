@@ -32,7 +32,7 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
-/config/database.ymlcoverage
+/config/database.yml
 
 # path from sphinx search
 /config/*.sphinx.conf
