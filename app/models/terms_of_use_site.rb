@@ -1,6 +1,6 @@
 class TermsOfUseSite < ApplicationRecord
   #----------------added translations----------------#
-  translates :name
+  translates :name, :description, fallbacks_for_empty_translations: true
   accepts_nested_attributes_for :translations
 
   # Валидации только для переводов

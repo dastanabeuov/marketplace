@@ -8,7 +8,7 @@ class Category < ApplicationRecord
   validates :public_status, presence: true
 
   #----------------added translations----------------#
-  translates :name
+  translates :name, :description, fallbacks_for_empty_translations: true
   accepts_nested_attributes_for :translations, allow_destroy: true
 
   # Валидации только для переводов
