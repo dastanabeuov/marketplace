@@ -7,7 +7,7 @@ image: webdevadk/marketplace
 # Deploy to these servers.
 servers:
   web:
-    - deploy@82.115.43.152
+    - 82.115.43.152
   # job:
   #   hosts:
   #     - 192.168.0.1
