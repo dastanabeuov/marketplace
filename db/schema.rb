@@ -11,11 +11,8 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[8.0].define(version: 2025_08_27_112148) do
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "pg_catalog.plpgsql"
-
   create_table "about_translations", force: :cascade do |t|
-    t.bigint "about_id", null: false
+    t.integer "about_id", null: false
     t.string "locale", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -95,8 +92,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_27_112148) do
   end
 
   create_table "category_companies", force: :cascade do |t|
-    t.bigint "category_id", null: false
-    t.bigint "company_id", null: false
+    t.integer "category_id", null: false
+    t.integer "company_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id", "company_id"], name: "index_category_companies_on_category_id_and_company_id", unique: true
@@ -105,7 +102,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_27_112148) do
   end
 
   create_table "category_translations", force: :cascade do |t|
-    t.bigint "category_id", null: false
+    t.integer "category_id", null: false
     t.string "locale", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -127,7 +124,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_27_112148) do
   end
 
   create_table "company_translations", force: :cascade do |t|
-    t.bigint "company_id", null: false
+    t.integer "company_id", null: false
     t.string "locale", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -138,7 +135,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_27_112148) do
   end
 
   create_table "contact_translations", force: :cascade do |t|
-    t.bigint "contact_id", null: false
+    t.integer "contact_id", null: false
     t.string "locale", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -158,7 +155,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_27_112148) do
   end
 
   create_table "mechanic_translations", force: :cascade do |t|
-    t.bigint "mechanic_id", null: false
+    t.integer "mechanic_id", null: false
     t.string "locale", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -174,8 +171,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_27_112148) do
   end
 
   create_table "order_items", force: :cascade do |t|
-    t.bigint "order_id", null: false
-    t.bigint "product_id", null: false
+    t.integer "order_id", null: false
+    t.integer "product_id", null: false
     t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -184,7 +181,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_27_112148) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.integer "user_id", null: false
     t.integer "order_status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -197,7 +194,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_27_112148) do
   end
 
   create_table "privacy_policy_translations", force: :cascade do |t|
-    t.bigint "privacy_policy_id", null: false
+    t.integer "privacy_policy_id", null: false
     t.string "locale", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -208,8 +205,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_27_112148) do
   end
 
   create_table "product_categories", force: :cascade do |t|
-    t.bigint "product_id", null: false
-    t.bigint "category_id", null: false
+    t.integer "product_id", null: false
+    t.integer "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_product_categories_on_category_id"
@@ -218,8 +215,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_27_112148) do
   end
 
   create_table "product_companies", force: :cascade do |t|
-    t.bigint "product_id", null: false
-    t.bigint "company_id", null: false
+    t.integer "product_id", null: false
+    t.integer "company_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_product_companies_on_company_id"
@@ -228,7 +225,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_27_112148) do
   end
 
   create_table "product_translations", force: :cascade do |t|
-    t.bigint "product_id", null: false
+    t.integer "product_id", null: false
     t.string "locale", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -250,7 +247,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_27_112148) do
   end
 
   create_table "sitename_translations", force: :cascade do |t|
-    t.bigint "sitename_id", null: false
+    t.integer "sitename_id", null: false
     t.string "locale", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -267,14 +264,14 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_27_112148) do
 
   create_table "subscriptions", force: :cascade do |t|
     t.string "email"
-    t.bigint "user_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_subscriptions_on_user_id"
   end
 
   create_table "terms_of_use_site_translations", force: :cascade do |t|
-    t.bigint "terms_of_use_site_id", null: false
+    t.integer "terms_of_use_site_id", null: false
     t.string "locale", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -327,7 +324,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_27_112148) do
   end
 
   create_table "vacancy_translations", force: :cascade do |t|
-    t.bigint "vacancy_id", null: false
+    t.integer "vacancy_id", null: false
     t.string "locale", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

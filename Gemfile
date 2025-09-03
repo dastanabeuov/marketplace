@@ -7,7 +7,7 @@ gem "propshaft", "~> 1.1.0"
 # precompile scss sass sintaxis [https://github.com/rails/dartsass-rails]
 gem "dartsass-rails", "~> 0.5.1"
 # Use postgresql as the database for Active Record
-gem "pg", "~> 1.1"
+gem "pg", "~> 1.6", ">= 1.6.2"
 # Use sqlite3 as the database for Active Record
 gem "sqlite3", ">= 2.1"
 # Use the Puma web server [https://github.com/puma/puma]
@@ -116,6 +116,15 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console", "~> 4.2.1"
+
+  # deployers
+  gem "capistrano", "~> 3.19.1", require: false
+  gem "capistrano-bundler", "~> 2.1.1", require: false
+  gem "capistrano-rails", "~> 1.6.3", require: false
+  gem "capistrano-rvm", "~> 0.1.2", require: false
+  gem "capistrano-sidekiq", "~> 2.3.1", require: false
+  # gem 'capistrano3-unicorn', require: false
+  gem "capistrano-passenger", "~> 0.2.1", require: false
 end
 
 group :test do
