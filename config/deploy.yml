@@ -33,7 +33,7 @@ registry:
 
 # Inject ENV variables into containers (secrets come from .kamal/secrets).
 env:
-  secret:
+  secrets:
     - RAILS_MASTER_KEY
   clear:
     SOLID_QUEUE_IN_PUMA: true
