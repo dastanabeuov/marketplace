@@ -8,6 +8,10 @@ image: webdevadk/marketplace
 servers:
   web:
     - 82.115.43.152
+ssh:
+  user: deploy
+  port: "7535"
+
   # job:
   #   hosts:
   #     - 192.168.0.1
@@ -38,9 +42,6 @@ env:
   clear:
     SOLID_QUEUE_IN_PUMA: true
     RAILS_LOG_LEVEL: debug
-    # Используем SQLite для простоты
-    DATABASE_URL: sqlite3:///rails/storage/production.sqlite3
-
 
     # Set number of processes dedicated to Solid Queue (default: 1)
     # JOB_CONCURRENCY: 3
@@ -85,9 +86,9 @@ builder:
   # Pass arguments and secrets to the Docker build process
   # args:
   #   RUBY_VERSION: ruby-3.4.3
-  secrets:
-    # - GITHUB_TOKEN
-    - RAILS_MASTER_KEY
+  # secrets:
+  #   # - GITHUB_TOKEN
+  #   # - RAILS_MASTER_KEY
 
 # Use a different ssh user than root
 # ssh:
