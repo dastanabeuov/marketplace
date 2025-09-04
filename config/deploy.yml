@@ -43,7 +43,8 @@ env:
   clear:
     SOLID_QUEUE_IN_PUMA: true
     RAILS_LOG_LEVEL: debug
-
+    GMAIL_USERNAME: $GMAIL_USERNAME
+    GMAIL_PASSWORD: $GMAIL_PASSWORD
     # Set number of processes dedicated to Solid Queue (default: 1)
     # JOB_CONCURRENCY: 3
 
