@@ -39,7 +39,7 @@ registry:
 env:
   secret:
     - RAILS_MASTER_KEY
-    - SECRET_KEY_BASE
+    #- SECRET_KEY_BASE
   clear:
     SOLID_QUEUE_IN_PUMA: true
     RAILS_LOG_LEVEL: debug
