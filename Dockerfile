@@ -57,6 +57,9 @@ RUN bundle exec bootsnap precompile app/ lib/
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
 RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 
+# Create or update the crontab file
+RUN bundle exec whenever --update-crontab
+
 # Final stage for app image
 FROM base
 
