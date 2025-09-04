@@ -17,6 +17,8 @@ WORKDIR /rails
 # Install base packages
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y \
+    cron \
+    git \
     curl \
     libjemalloc2 \
     libvips \
