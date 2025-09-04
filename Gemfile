@@ -107,7 +107,7 @@ group :development, :test do
   gem "rspec-rails", "~> 8.0.2"
 
   # Fabrica bot [https://github.com/thoughtbot/factory_bot_rails]
-  gem "factory_bot_rails", "~> 6.4"
+  gem "factory_bot_rails", "~> 6.5"
 
   # Open and imulate email send [https://github.com/ryanb/letter_opener]
   gem "letter_opener", "~> 1.10"
