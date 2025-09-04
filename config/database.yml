@@ -22,6 +22,7 @@ test:
 
 production:
   <<: *default
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 10 } %>
   database: storage/production.sqlite3
 
 # Store production database in the storage/ directory, which by default
