@@ -45,6 +45,18 @@
 <div class="row mb-5">
   <div class="col">
     <h4 class="text-center"><%= I18n.t('.main_suppliers') %></h4>
+    <% if @forward_brands.any? %>
+      <p class="fs-3 
+                fw-bold 
+                text-center
+                card
+                shadow-sm
+                p-2
+                rounded-pill
+                bg-secondary-subtle">
+        <%= @forward_brands.map(&:name).join(", ") %>
+      </p>
+    <% end %>
   </div>
 </div>
 
