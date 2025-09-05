@@ -1,8 +1,0 @@
-  #!/bin/bash
-set -e
-
-# Обновляем crontab для Rails-приложения
-bundle exec whenever --update-crontab
-
-# Запускаем cron в форграунде
-exec cron -f
