@@ -10,6 +10,8 @@ class Company < ApplicationRecord
   has_one_attached :image
   validates :image, attached_format: true
 
+  scope :forward_brands, -> { where(forward_brand: true) }
+
   #----------------added translations----------------#
   translates :name, :description, fallbacks_for_empty_translations: true
   accepts_nested_attributes_for :translations, allow_destroy: true

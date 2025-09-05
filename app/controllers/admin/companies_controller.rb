@@ -134,7 +134,7 @@ class Admin::CompaniesController < Admin::BaseController
 
     def company_params
       params.require(:company).permit(
-        :image, :public_status,
+        :image, :public_status, :forward_brand,
         *I18n.available_locales.map { |locale| "description_#{locale}" },
         translations_attributes: [ :id, :locale, :name ]
       )

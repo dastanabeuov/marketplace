@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_27_112148) do
+ActiveRecord::Schema[8.0].define(version: 2025_09_05_103654) do
   create_table "about_translations", force: :cascade do |t|
     t.integer "about_id", null: false
     t.string "locale", null: false
@@ -120,6 +120,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_27_112148) do
     t.integer "public_status", default: 1, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "forward_brand", default: false, null: false
     t.index ["public_status"], name: "index_companies_on_public_status"
   end
 
