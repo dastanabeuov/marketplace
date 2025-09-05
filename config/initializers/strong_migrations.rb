@@ -10,6 +10,7 @@ StrongMigrations.statement_timeout = 1.hour
 # Outdated statistics can sometimes hurt performance
 StrongMigrations.auto_analyze = true
 StrongMigrations.skip_database(:primary) if Rails.env.development?
+StrongMigrations.skip_database(:primary) if Rails.env.production? && ActiveRecord::Base.connection.adapter_name.downcase == "sqlite"
 # Set the version of the production database
 # so the right checks are run in development
 # StrongMigrations.target_version = 10
