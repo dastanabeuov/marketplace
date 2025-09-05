@@ -8,6 +8,8 @@ image: webdevadk/marketplace
 servers:
   web:
     - 82.115.43.152
+  cron:
+    - 82.115.43.152
 ssh:
   user: deploy
   port: "7535"
