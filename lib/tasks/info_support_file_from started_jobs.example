@@ -1,0 +1,14 @@
+# Проверить прогресс
+kamal app exec "bundle exec rake baumuller:show_progress"
+
+# Очистить прогресс (если нужен полный пересбор)
+kamal app exec "bundle exec rake baumuller:clear_progress"
+
+# Запустить парсинг
+kamal app exec "bundle exec rake parse:daily_brands"
+
+# Посмотреть логи
+kamal app exec "bundle exec rake baumuller:show_logs"
+
+# На хосте в crontab
+0 4 * * * cd /path/to/project && kamal app exec "bundle exec rake parse:daily_brands"

@@ -5,7 +5,6 @@ require "uri"
 require "net/http"
 require "securerandom"
 require "json"
-require "fileutils"
 
 module Parsers
   class BaumullerBrandsParser
@@ -28,14 +27,7 @@ module Parsers
     end
 
     def call
-      progress = load_progress
-
-      # Начинаем с последней обработанной страницы брендов + 1
-      start_page = progress.dig("global", "last_brands_page") || 0
-      page = start_page + 1
-
-      log "Начинаем с страницы брендов: #{page}"
-
+      page = 1
       loop do
         brands_url = "#{BASE_URL}/brands?page=#{page}"
         log "Загружаем страницу брендов: #{brands_url}"
@@ -44,22 +36,9 @@ module Parsers
         break unless doc
 
         brand_blocks = doc.css("div.card")
-        if brand_blocks.empty?
-          log "Больше нет страниц брендов. Завершаем работу."
-          break
-        end
+        break if brand_blocks.empty?
 
-        # Обрабатываем бренды на текущей странице
-        processed_any = false
-        brand_blocks.each do |block|
-          if process_brand(block)
-            processed_any = true
-          end
-        end
-
-        # Сохраняем прогресс по страницам брендов
-        save_global_progress(page)
-        log "✅ Обработана страница брендов #{page}"
+        brand_blocks.each { |block| process_brand(block) }
 
         page += 1
         sleep 1
@@ -72,11 +51,11 @@ module Parsers
 
     def process_brand(block)
       brand_name = block.at_css("div.card-body h5")&.text&.strip
-      return false unless brand_name
-      return false unless @target_companies.any? { |t| brand_name.downcase.include?(t) }
+      return unless brand_name
+      return unless @target_companies.any? { |t| brand_name.downcase.include?(t) }
 
       log "→ Обрабатываем бренд: #{brand_name}"
-      @found_companies << brand_name unless @found_companies.include?(brand_name)
+      @found_companies << brand_name
       @processed_brands += 1
 
       company = Company.find_or_create_by!(name: brand_name)
@@ -89,8 +68,6 @@ module Parsers
 
       count = parse_products(company, brand_url)
       @total_products += count
-
-      true # Возвращаем true, если бренд был обработан
     end
 
     def parse_descriptions(company, url)
@@ -130,66 +107,47 @@ module Parsers
       end
     end
 
-    def parse_products(company, brand_url)
+    def parse_products(company, url)
       progress = load_progress
-      last_product_page = progress.dig("companies", company.name, "last_product_page") || 0
-
-      # Начинаем с последней обработанной страницы продуктов + 1
-      page = last_product_page + 1
+      last_page = progress.dig(company.name, "last_page") || 0
+      page = last_page + 1
       total = 0
 
-      loop do
-        product_page_url = page > 1 ? "#{brand_url}?page=#{page}" : brand_url
-        doc = fetch_page(product_page_url)
-        break unless doc
+      brand_page_url = page > 1 ? "#{url}?page=#{page}" : url
+      doc = fetch_page(brand_page_url)
+      return 0 unless doc
 
-        product_cards = doc.css("div.card")
-        if product_cards.empty?
-          log "   ❌ У бренда #{company.name} больше нет продуктов на странице #{page}"
-          break
-        end
-
-        log "   Найдено продуктов на странице #{page}: #{product_cards.size}"
-
-        product_cards.each do |card|
-          name = card.at_css("div.card-body a")&.text&.strip
-          next unless name
-
-          # Проверяем, существует ли уже продукт для этой компании
-          existing_relation = ProductCompany.joins(:product)
-                                           .where(company: company, products: { name: name })
-                                           .first
-
-          if existing_relation
-            log "    Продукт уже существует: #{name} (пропускаем)"
-            next
-          end
-
-          product = Product.find_or_initialize_by(name: name)
-          product.producer ||= company.name
-
-          if product.new_record? || product.changed?
-            parse_product_descriptions(product, product_page_url)
-            product.save!
-            log "    Сохранён продукт: #{product.name}"
-          end
-
-          image_url = absolute_url(card.at_css("a img")&.[]("src"))
-          attach_image(product, image_url, company)
-
-          ProductCompany.find_or_create_by!(product: product, company: company)
-        end
-
-        total += product_cards.size
-
-        # Сохраняем прогресс по продуктам для этой компании
-        save_company_progress(company.name, page)
-        log "   ✅ Прогресс сохранён: #{company.name}, страница продуктов #{page}"
-
-        page += 1
-        sleep 1
+      product_cards = doc.css("div.card")
+      if product_cards.empty?
+        log "   ❌ У бренда #{company.name} страницы #{page} больше нет"
+        return 0
       end
 
+      log "   Найдено продуктов на странице #{page}: #{product_cards.size}"
+
+      product_cards.each do |card|
+        name = card.at_css("div.card-body a")&.text&.strip
+        next unless name
+
+        product = Product.find_or_initialize_by(name: name)
+        product.producer ||= company.name
+
+        if product.new_record? || product.changed?
+          parse_product_descriptions(product, brand_page_url)
+          product.save!
+          log "    Сохранён продукт: #{product.name}"
+        end
+
+        image_url = absolute_url(card.at_css("a img")&.[]("src"))
+        attach_image(product, image_url, company)
+
+        ProductCompany.find_or_create_by!(product: product, company: company)
+      end
+
+      total += product_cards.size
+      save_progress(company.name, page) # <--- запомнили текущую страницу
+
+      log "   ✅ Прогресс сохранён: #{company.name}, страница #{page}"
       total
     end
 
@@ -202,20 +160,10 @@ module Parsers
       {}
     end
 
-    def save_global_progress(brands_page)
+    def save_progress(company_name, page)
       data = load_progress
-      data["global"] ||= {}
-      data["global"]["last_brands_page"] = brands_page
-      data["global"]["last_updated"] = Time.current.iso8601
-      File.open(PROGRESS_FILE, "w") { |f| f.write(JSON.pretty_generate(data)) }
-    end
-
-    def save_company_progress(company_name, product_page)
-      data = load_progress
-      data["companies"] ||= {}
-      data["companies"][company_name] ||= {}
-      data["companies"][company_name]["last_product_page"] = product_page
-      data["companies"][company_name]["last_updated"] = Time.current.iso8601
+      data[company_name] ||= {}
+      data[company_name]["last_page"] = page
       File.open(PROGRESS_FILE, "w") { |f| f.write(JSON.pretty_generate(data)) }
     end
 
