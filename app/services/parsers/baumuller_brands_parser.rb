@@ -79,13 +79,7 @@ module Parsers
       @found_companies << brand_name unless @found_companies.include?(brand_name)
       @processed_brands += 1
 
-      company = Company.with_translations(I18n.locale).find_by(name: brand_name)
-
-      unless company
-        company = Company.new
-        Globalize.with_locale(I18n.locale) { company.name = brand_name }
-        company.save!
-      end
+      company = Company.with_translations(I18n.locale).find_or_create_by!(name: brand_name)
 
       brand_url = absolute_url(block.at_css("a")&.[]("href"))
       image_url = absolute_url(block.at_css("a img")&.[]("src"))
