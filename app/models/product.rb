@@ -19,7 +19,7 @@ class Product < ApplicationRecord
   accepts_nested_attributes_for :translations, allow_destroy: true
 
   # Валидации только для переводов
-  translation_class.validates :name, presence: true, uniqueness: { case_sensitive: false }
+  translation_class.validates :name, presence: true# , uniqueness: { case_sensitive: false }
 
   # Создаем отдельные поля rich text для каждой локали
   I18n.available_locales.each do |locale|
