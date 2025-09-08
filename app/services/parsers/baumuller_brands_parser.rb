@@ -100,47 +100,116 @@ module Parsers
     end
 
     def parse_descriptions(company, url)
+      fallbacks = {
+            ru: "ТОО 'Relicom-Parts' является поставщиком бренда #{company.name}.
+        Мы осуществляем частичную и комплексную поставку запчастей и товаров
+        бренда #{company.name} производственным предприятиям для всех типов оборудования.
+        Наше сотрудничество гарантирует для Вас оптовые цены и интересные скидки.",
+
+            kz: "«Relicom-Parts» ЖШС #{company.name} бренді жеткізушісі болып табылады.
+        Біз барлық жабдық түрлеріне арналған қосалқы бөлшектер мен тауарларды
+        жеке және кешенді жеткізуді жүзеге асырамыз.
+        Біздің ынтымақтастығымыз Сізге көтерме бағалар мен тиімді жеңілдіктерді кепілдейді.",
+
+            en: "LLP 'Relicom-Parts' is a supplier of the #{company.name} brand.
+        We provide partial and comprehensive supply of spare parts and goods
+        of the #{company.name} brand to manufacturing enterprises for all types of equipment.
+        Our cooperation guarantees wholesale prices and attractive discounts for you."
+          }
+
       LOCALES.each do |my_locale, remote_locale|
-        Globalize.with_locale(my_locale) do
-          localized_url = "#{url}?locale=#{remote_locale}"
-          doc = fetch_page(localized_url)
+        localized_url = "#{url}?locale=#{remote_locale}"
+        doc = fetch_page(localized_url)
 
-          description = doc&.at_css(".brand-description")&.text&.strip
-          fallback    = "ТОО 'Relicom-Parts' является поставщиком бренда #{company.name}.
-          Мы осуществляем частичную и комплексную поставку запчастей и товаров
-          бренда Sick производственным предприятиям для всех типов оборудования.
-          Наше сотрудничество гарантирует для Вас оптовые цены и интересные скидки."
+        description = doc&.at_css(".brand-description")&.text&.strip
+        value = description.presence || fallbacks[my_locale]
 
-          # присваиваем напрямую в rich_text поле
-          company.public_send("description_#{my_locale}=", description.presence || fallback)
+        company.public_send("description_#{my_locale}=", value)
 
-          if description.blank?
-            log "   ⚠ Нет описания для #{company.name} (#{my_locale}), установлена заглушка"
-          else
-            log "   ✅ Найдено описание для #{company.name} (#{my_locale})"
-          end
+        if description.blank?
+          log "   ⚠ Нет описания для #{company.name} (#{my_locale}), установлена заглушка"
+        else
+          log "   ✅ Найдено описание для #{company.name} (#{my_locale})"
         end
       end
 
       company.save!
     end
 
+    # def parse_descriptions(company, url)
+    #   LOCALES.each do |my_locale, remote_locale|
+    #     Globalize.with_locale(my_locale) do
+    #       localized_url = "#{url}?locale=#{remote_locale}"
+    #       doc = fetch_page(localized_url)
+
+    #       description = doc&.at_css(".brand-description")&.text&.strip
+    #       fallback    = "ТОО 'Relicom-Parts' является поставщиком бренда #{company.name}.
+    #       Мы осуществляем частичную и комплексную поставку запчастей и товаров
+    #       бренда Sick производственным предприятиям для всех типов оборудования.
+    #       Наше сотрудничество гарантирует для Вас оптовые цены и интересные скидки."
+
+    #       # присваиваем напрямую в rich_text поле
+    #       company.public_send("description_#{my_locale}=", description.presence || fallback)
+
+    #       if description.blank?
+    #         log "   ⚠ Нет описания для #{company.name} (#{my_locale}), установлена заглушка"
+    #       else
+    #         log "   ✅ Найдено описание для #{company.name} (#{my_locale})"
+    #       end
+    #     end
+    #   end
+
+    #   company.save!
+    # end
+
+    # def parse_product_descriptions(product, url)
+    #   LOCALES.each do |my_locale, remote_locale|
+    #     Globalize.with_locale(my_locale) do
+    #       localized_url = "#{url}?locale=#{remote_locale}"
+    #       doc = fetch_page(localized_url)
+
+    #       description = doc&.at_css(".product-description")&.text&.strip
+    #       fallback    = "Доставка по всей территории Казахстана.
+    #       По любым вопросам поставки Вы можете обращаться к нашим
+    #       менеджерам по телефону или по электронной почте на сайте.
+    #       Для оформления заявки на поставку оборудования и запчастей
+    #       добавьте товар в корзину и оформите заказ."
+
+    #       product.public_send("description_#{my_locale}=", description.presence || fallback)
+    #     end
+    #   end
+    # end
+
     def parse_product_descriptions(product, url)
+      fallbacks = {
+            ru: "Доставка по всей территории Казахстана.
+        По любым вопросам поставки Вы можете обращаться к нашим менеджерам
+        по телефону или по электронной почте на сайте.
+        Для оформления заявки на поставку оборудования и запчастей
+        добавьте товар в корзину и оформите заказ.",
+            kz: "Қазақстанның бүкіл аумағына жеткізу.
+        Жеткізу мәселелері бойынша біздің менеджерлерге телефон немесе
+        сайттағы электрондық пошта арқылы хабарласа аласыз.
+        Жабдықтар мен қосалқы бөлшектерді жеткізуге өтінім беру үшін
+        тауарды себетке қосып, тапсырыс беріңіз.",
+            en: "Delivery throughout Kazakhstan.
+        For any questions regarding delivery, you can contact our managers
+        by phone or by email on the website.
+        To place an order for equipment and spare parts,
+        add the item to the cart and complete the checkout."
+          }
+
       LOCALES.each do |my_locale, remote_locale|
-        Globalize.with_locale(my_locale) do
-          localized_url = "#{url}?locale=#{remote_locale}"
-          doc = fetch_page(localized_url)
+        localized_url = "#{url}?locale=#{remote_locale}"
+        doc = fetch_page(localized_url)
 
-          description = doc&.at_css(".product-description")&.text&.strip
-          fallback    = "Доставка по всей территории Казахстана.
-          По любым вопросам поставки Вы можете обращаться к нашим
-          менеджерам по телефону или по электронной почте на сайте.
-          Для оформления заявки на поставку оборудования и запчастей
-          добавьте товар в корзину и оформите заказ."
+        description = doc&.at_css(".product-description")&.text&.strip
+        value = description.presence || fallbacks[my_locale]
 
-          product.public_send("description_#{my_locale}=", description.presence || fallback)
-        end
+        product.public_send("description_#{my_locale}=", value)
       end
+
+      product.save!
     end
 
     def parse_products(company, brand_url)
