@@ -3,58 +3,52 @@
 <footer class="client-footer text-center text-sm-start mt-auto pt-4">
   <div class="container">
     <div class="row">
-      <div class="col-6 col-md-2 mb-3">
-        <h6 class="text-uppercase fw-bold mb-2"><%= I18n.t('.info') %></h6>
+      <div class="col-6 col-md-3 mb-3">
+        <h6 class="text-start text-uppercase fw-bold mb-2"><%= I18n.t('.info') %></h6>
         <ul class="nav flex-column">
           <li class="nav-item mb-2">
-            <a href="<%= products_path %>" class="nav-link p-0"><%= I18n.t('.catalog') %></a>
-            <a href="<%= companies_path %>" class="nav-link p-0"><%= I18n.t('.brands') %></a>
+            <a href="<%= products_path %>" class="text-start nav-link p-0"><%= I18n.t('.catalog') %></a>
+            <a href="<%= companies_path %>" class="text-start nav-link p-0"><%= I18n.t('.brands') %></a>
           </li>
         </ul>
       </div>
 
-      <div class="col-6 col-md-2 mb-3">
-        <h6 class="text-uppercase fw-bold mb-2"><%= I18n.t('.company') %></h6>
+      <div class="col-6 col-md-3 mb-3">
+        <h6 class="text-start text-uppercase fw-bold mb-2"><%= I18n.t('.company') %></h6>
         <ul class="nav flex-column">
           <li class="nav-item mb-2">
-            <a href="<%= about_path %>" class="nav-link p-0"><%= I18n.t('.about') %></a>
-            <a href="<%= vacancies_path %>" class="nav-link p-0"><%= I18n.t('.vacancies') %></a>
+            <a href="<%= about_path %>" class="text-start nav-link p-0"><%= I18n.t('.about') %></a>
+            <a href="<%= vacancies_path %>" class="text-start nav-link p-0"><%= I18n.t('.vacancies') %></a>
           </li>
         </ul>
       </div>
 
-      <div class="col-6 col-md-2 mb-3">
-        <h6 class="text-uppercase fw-bold mb-2"><%= I18n.t('.support') %></h6>
+      <div class="col-6 col-md-3 mb-3">
+        <h6 class="text-start text-uppercase fw-bold mb-2"><%= I18n.t('.support') %></h6>
         <ul class="nav flex-column">
           <li class="nav-item mb-2">
-            <a href="<%= contact_path %>" class="nav-link p-0"><%= I18n.t('.contacts') %></a>
-            <a href="<%= privacy_policy_path %>" class="nav-link p-0"><%= I18n.t('.privacy_policy') %></a>
-            <a href="<%= terms_of_use_site_path %>" class="nav-link p-0"><%= I18n.t('.terms_of_use_site') %></a>
+            <a href="<%= contact_path %>" class="text-start nav-link p-0"><%= I18n.t('.contacts') %></a>
+            <a href="<%= privacy_policy_path %>" class="text-start nav-link p-0"><%= I18n.t('.privacy_policy') %></a>
+            <a href="<%= terms_of_use_site_path %>" class="text-start nav-link p-0"><%= I18n.t('.terms_of_use_site') %></a>
           </li>
         </ul>
       </div>
 
-      <div class="col-6 col-md-2 mb-3">
-        <ul class="nav flex-column">
-          <li class="nav-item mb-2">
-            <% if (sitename = Sitename.first) && sitename.image.attached? %>
-              <li class="nav-item mb-2">
-                <%= link_to root_path, class: 'nav-link p-0' do %>
-                  <%= image_tag sitename.image.variant(resize_to_limit: [150, 120]).processed,
-                                alt: site_name,
-                                title: site_name,
-                                class: "rounded" %>
-                <% end %>
-              </li>
-            <% end %>
-          </li>
-        </ul>
-      </div>
-
-      <div class="col-md-4 mb-3">
+      <div class="col-md-3 mb-3">
         <%= form_with url: admin_subscriptions_path, method: :post, local: true, scope: :subscription do |f| %>
-          <h6 class="text-uppercase fw-bold mb-3"><%= I18n.t('.subscribe') %></h6>
-          <div class="d-flex flex-column flex-sm-row gap-2">
+          
+          <div class="img-subscribe mb-2">
+            <% if (sitename = Sitename.first) && sitename.image.attached? %>
+              <%= link_to root_path do %>
+                <%= image_tag sitename.image.variant(resize_to_limit: [150, 120]).processed,
+                              alt: site_name,
+                              title: site_name,
+                              class: "img-fluid" %>
+              <% end %>
+            <% end %>
+          </div>
+
+          <div class="d-flex flex-column flex-sm-row gap-2 mb-2">
             <%= f.email_field :email,
                   class: "form-control",
                   placeholder: I18n.t('.subscribe_to_our_newsletter'),
