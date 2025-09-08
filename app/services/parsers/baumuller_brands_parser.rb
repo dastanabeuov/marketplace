@@ -79,7 +79,13 @@ module Parsers
       @found_companies << brand_name unless @found_companies.include?(brand_name)
       @processed_brands += 1
 
-      company = Company.find_or_create_by!(name: brand_name)
+      company = Company.with_translations(I18n.locale).find_by(name: brand_name)
+
+      unless company
+        company = Company.new
+        Globalize.with_locale(I18n.locale) { company.name = brand_name }
+        company.save!
+      end
 
       brand_url = absolute_url(block.at_css("a")&.[]("href"))
       image_url = absolute_url(block.at_css("a img")&.[]("src"))
@@ -100,7 +106,10 @@ module Parsers
           doc = fetch_page(localized_url)
 
           description = doc&.at_css(".brand-description")&.text&.strip
-          fallback    = "Описание отсутствует на #{my_locale.upcase}"
+          fallback    = "ТОО 'Relicom-Parts' является поставщиком бренда #{company.name}.
+          Мы осуществляем частичную и комплексную поставку запчастей и товаров
+          бренда Sick производственным предприятиям для всех типов оборудования.
+          Наше сотрудничество гарантирует для Вас оптовые цены и интересные скидки."
 
           # присваиваем напрямую в rich_text поле
           company.public_send("description_#{my_locale}=", description.presence || fallback)
@@ -123,7 +132,11 @@ module Parsers
           doc = fetch_page(localized_url)
 
           description = doc&.at_css(".product-description")&.text&.strip
-          fallback    = "Описание товара отсутствует на #{my_locale.upcase}"
+          fallback    = "Доставка по всей территории Казахстана.
+          По любым вопросам поставки Вы можете обращаться к нашим
+          менеджерам по телефону или по электронной почте на сайте.
+          Для оформления заявки на поставку оборудования и запчастей
+          добавьте товар в корзину и оформите заказ."
 
           product.public_send("description_#{my_locale}=", description.presence || fallback)
         end
@@ -156,16 +169,20 @@ module Parsers
           next unless name
 
           # Проверяем, существует ли уже продукт для этой компании
-          existing_relation = ProductCompany.joins(:product)
-                                           .where(company: company, products: { name: name })
-                                           .first
+          # existing_relation = ProductCompany.joins(:product)
+          #                                  .where(company: company, products: { name: name })
+          #                                  .first
+          existing_relation = ProductCompany.joins(product: :translations)
+            .where(company: company, product_translations: { name: name, locale: I18n.locale })
+            .first
 
           if existing_relation
             log "    Продукт уже существует: #{name} (пропускаем)"
             next
           end
 
-          product = Product.find_or_initialize_by(name: name)
+          product = Product.with_translations(I18n.locale).find_by(name: name) || Product.new
+          Globalize.with_locale(I18n.locale) { product.name = name }
           product.producer ||= company.name
 
           if product.new_record? || product.changed?
