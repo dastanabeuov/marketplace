@@ -46,16 +46,17 @@
   <div class="col">
     <h4 class="text-center"><%= I18n.t('.main_suppliers') %></h4>
     <% if @forward_brands.any? %>
-      <p class="fs-3 
+    <div class="fs-3 
                 fw-bold 
                 text-center
                 card
                 shadow-sm
-                p-2
-                rounded-pill
+                pt-3
+                pb-2
+                px-2
                 bg-secondary-subtle">
-        <%= @forward_brands.map(&:name).join(", ") %>
-      </p>
+      <p><%= @forward_brands.map(&:name).join(", ") %></p>
+    </div>
     <% end %>
   </div>
 </div>
@@ -69,7 +70,7 @@
         <h5 class="card-title text-white">
           <%= I18n.t('.water_supply_systems') %>
         </h5>
-        <p class="card-text small">
+        <p class="card-text small text-truncate">
           REXROTH, VICKERS, BILFINGER, PARKER, MARZOCCHI, 
           SALVATORE ROBUSCHI, ARGAL, CASAPPA, BOHLER, BRINKMANN, 
           EATON, LUTZ, MOOG, HAWE, BUSCHER, PROMINENT, KRAL, POCLAIN, 
@@ -89,7 +90,7 @@
         <h5 class="card-title text-white">
           <%= I18n.t('.vacuum_systems') %>
         </h5>
-        <p class="card-text small">
+        <p class="card-text small text-truncate">
           PFEIFFER, POMPETRAVAINI, VALVITALIA, LEYBOLD, ULVAC, 
           AGILENT TECHNOLOGIES, ARI ARMATUREN, BECKER, EDWARDS, 
           BUSCH, CAMOZZI, EBARA, ELMO RIETSCHLE, 
@@ -106,7 +107,7 @@
         <h5 class="card-title text-white">
           <%= I18n.t('.electro_systems') %>
         </h5>
-        <p class="card-text small">
+        <p class="card-text small text-truncate">
           DANAHER MOTION, ZUMBACH, KEB, MOOG, INDRAMAT, OMRON, 
           LENZE, KEB, BAUMUELLER, CONTROL TECHNIQUES, FANUC, 
           BECKHOFF, LEROY SOMER, MAXON, GROSCHOPP, PRO MOTOR, 
@@ -125,7 +126,7 @@
         <h5 class="card-title text-white">
           <%= I18n.t('.encoder_systems') %>
         </h5>
-        <p class="card-text small">
+        <p class="card-text small text-truncate">
           TELCO, TWK, TURCK, SCHMALZ, HEIDENHAIN, ENDRESS+HAUSER, 
           BALLUFF, BEI IDEACOD, DI-SORIC, SICK, SCHMERSAL , 
           PIZZATO, GEFRAN, IFM, KEYENCE, BERNSTEIN, MICROPRECISION, 
