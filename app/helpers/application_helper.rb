@@ -1,4 +1,40 @@
 module ApplicationHelper
+  def nav_link(name, path, html_options = {})
+    active_class = current_page?(path) ? "active" : ""
+    classes = [ html_options[:class], "nav-link", active_class ].compact.join(" ")
+
+    link_to name, path, html_options.merge(class: classes)
+  end
+
+  def dropdown_nav_link(name, items = [], &block)
+    active = items.any? { |item| current_page?(item[:path]) }
+    classes = [ "nav-link", "dropdown-toggle", (active ? "active" : nil) ].compact.join(" ")
+
+    content_tag(:li, class: "nav-item dropdown") do
+      concat(
+        link_to(name, "#",
+          class: classes,
+          id: "dropdownMenu",
+          role: "button",
+          data: { bs_toggle: "dropdown" },
+          aria: { expanded: active }
+        )
+      )
+      concat(
+        content_tag(:ul, class: "dropdown-menu", aria: { labelledby: "dropdownMenu" }) do
+          capture(&block)
+        end
+      )
+    end
+  end
+
+  def dropdown_item_link(name, path)
+    active_class = current_page?(path) ? "active" : ""
+    classes = [ "dropdown-item", active_class ].compact.join(" ")
+
+    link_to name, path, class: classes
+  end
+
   def flash_key(key)
     case key.to_sym
     when :notice, :success
