@@ -42,9 +42,7 @@
         <%= render partial: "companies/company", collection: @companies %>
       </div>
       <div class="row mt-5">
-        <div class="col d-flex justify-content-center">
-          <%= paginate @companies %>
-        </div>
+        <%= paginate @companies %>
       </div>
     <% else search_performed %>
       <%# Сообщение, если поиск был выполнен, но результатов нет %>

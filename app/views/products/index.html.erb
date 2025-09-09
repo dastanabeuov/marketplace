@@ -51,9 +51,7 @@
         <%= render partial: "products/product", collection: @products %>
       </div>
       <div class="row mt-5">
-        <div class="col d-flex justify-content-center">
-          <%= paginate @products %>
-        </div>
+        <%= paginate @products %>
       </div>
     <% elsif search_performed %>
       <%# Сообщение, если поиск был выполнен, но результатов нет %>

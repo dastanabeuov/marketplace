@@ -27,9 +27,7 @@
       <%= render partial: "companies/product", collection: @products if @products.present? %>
     </div>
     <div class="row mt-5">
-      <div class="col d-flex justify-content-center">
-        <%= paginate @products if @products.present? %>
-      </div>
+      <%= paginate @products if @products.present? %>
     </div>
   </div>
 </div>
