@@ -18,28 +18,28 @@
               <%# if @contact.working_hours.present? %>
                 <li class="list-group-item d-flex justify-content-between">
                   <span class="fw-semibold"><%= t(:working_hours) %>:</span>
-                  <span><%#= t('job_hours') %><%= @contact.working_hours %></span>
+                  <span class="text-end"><%#= t('job_hours') %><%= @contact.working_hours %></span>
                 </li>
               <%# end %>
 
               <% if @contact.email.present? %>
                 <li class="list-group-item d-flex justify-content-between">
                   <span class="fw-semibold"><%= t(:email) %>:</span>
-                  <span><a href="mailto:<%= @contact.email %>"><%= @contact.email %></a></span>
+                  <span class="text-end"><a href="mailto:<%= @contact.email %>"><%= @contact.email %></a></span>
                 </li>
               <% end %>
 
               <% if @contact.phone.present? %>
                 <li class="list-group-item d-flex justify-content-between">
                   <span class="fw-semibold"><%= t(:phone) %>:</span>
-                  <span><a href="tel:<%= @contact.phone %>"><%= @contact.phone %></a></span>
+                  <span class="text-end"><a href="tel:<%= @contact.phone %>"><%= @contact.phone %></a></span>
                 </li>
               <% end %>
 
               <%# if @contact.address.present? %>
                 <li class="list-group-item d-flex justify-content-between">
                   <span class="fw-semibold"><%= t(:address) %>:</span>
-                  <span><%#= t('office_location') %><%= @contact.address %></span>
+                  <span class="text-end"><%#= t('office_location') %><%= @contact.address %></span>
                 </li>
               <%# end %>
             </ul>
