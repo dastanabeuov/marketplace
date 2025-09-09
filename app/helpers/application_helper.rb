@@ -1,7 +1,15 @@
 module ApplicationHelper
   def nav_link(name, path, html_options = {})
-    active_class = current_page?(path) ? "active" : ""
-    classes = [ html_options[:class], "nav-link", active_class ].compact.join(" ")
+    # Извлекаем контроллер из пути
+    path_controller = Rails.application.routes.recognize_path(path)[:controller] rescue nil
+    current_controller = controller_name
+
+    # Проверяем активность по странице, пути или контроллеру
+    active = current_page?(path) ||
+            request.path.start_with?(path) ||
+            (path_controller && path_controller == current_controller)
+
+    classes = [ html_options[:class], "nav-link", ("active" if active) ].compact.join(" ")
 
     link_to name, path, html_options.merge(class: classes)
   end

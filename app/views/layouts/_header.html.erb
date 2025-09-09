@@ -69,29 +69,34 @@
       <!-- Мобильная часть навигации -->      
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex d-lg-none">
         <li class="nav-item">
-          <%= nav_link "🏠 #{ I18n.t('.main_page') }", root_path %>
+          <%= link_to "🏠 #{ I18n.t('.main_page') }", root_path, class: 'nav-link' %>
         </li>
         <li class="nav-item">
-          <%= nav_link "ℹ️ #{ I18n.t('.about') }", about_path %>
+          <%= link_to "ℹ️ #{ I18n.t('.about') }", about_path, class: 'nav-link' %>
         </li>
         <li class="nav-item">
-          <%= nav_link "📂 #{ I18n.t('.catalog') }", products_path %>
+          <%= link_to "📂 #{ I18n.t('.catalog') }", products_path, class: 'nav-link' %>
         </li>
-
-        <div class="pt-1">
-          <%= dropdown_nav_link "🔧 #{ I18n.t('.mechanic') }",
-                mechanics.map { |m| { path: mechanic_path(m) } } do %>
+        <li class="nav-item">
+          <%= link_to "🏢 #{ I18n.t('.brands') }", companies_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="mechanicDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            🔧 <%= I18n.t('.mechanic') %>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="mechanicDropdown">
             <% mechanics.each do |mechanic| %>
-              <li><%= dropdown_item_link mechanic.name, mechanic_path(mechanic) %></li>
+              <li>
+                <%= link_to mechanic.name, mechanic_path(mechanic), class: "dropdown-item" %>
+              </li>
             <% end %>
-          <% end %>
-        </div>
-
-        <li class="nav-item">
-          <%= nav_link "💼 #{ I18n.t('.vacancies') }", vacancies_path %>
+          </ul>
         </li>
         <li class="nav-item">
-          <%= nav_link "📞 #{ I18n.t('.contacts') }", contact_path %>
+          <%= link_to "💼 #{ I18n.t('.vacancies') }", vacancies_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "📞 #{ I18n.t('.contacts') }", contact_path, class: 'nav-link' %>
         </li>
       </ul>
       <!-- Мобильная часть навигации -->      
