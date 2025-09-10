@@ -46,16 +46,10 @@
   <div class="col">
     <h4 class="text-center"><%= I18n.t('.main_suppliers') %></h4>
     <% if @forward_brands.any? %>
-    <div class="fs-3 
-                fw-bold 
-                text-center
-                card
-                shadow-sm
-                pt-3
-                pb-2
-                px-2
-                bg-secondary-subtle">
-      <p><%= @forward_brands.map(&:name).join(", ") %></p>
+    <div class="card shadow-sm pt-3 pb-2 px-2" style="background-color: #64676A;">
+      <p class="fs-3 text-center text-white">
+        <%= @forward_brands.map(&:name).join(", ") %>
+      </p>
     </div>
     <% end %>
   </div>
