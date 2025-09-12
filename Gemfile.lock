@@ -480,6 +480,8 @@ GEM
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.13.1)
     simplecov_json_formatter (0.1.4)
+    sitemap_generator (6.3.0)
+      builder (~> 3.0)
     solid_cable (3.0.12)
       actioncable (>= 7.2)
       activejob (>= 7.2)
@@ -610,6 +612,7 @@ DEPENDENCIES
   selenium-webdriver (~> 4.35.0)
   shoulda-matchers (~> 6.0)
   simplecov (~> 0.22.0)
+  sitemap_generator
   solid_cable (= 3.0.12)
   solid_cache (~> 1.0.7)
   solid_queue (~> 1.1.5)

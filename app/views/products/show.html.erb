@@ -1,3 +1,12 @@
+<% content_for :title, I18n.t('product') %>
+<% set_meta_tags(
+  title: @product.name,
+  description: @product.send("description_#{I18n.locale}").truncate(120, separator: ' '),
+  image: (@product.image.attached? ? url_for(@product.image) : nil),
+  url: product_url(@product),
+  type: "product"
+) %>
+
 <div class="row g-0 bg-body-tertiary position-relative mt-3 shadow">
   <div class="col-md-6 mb-md-0 p-md-4">
     <%= render "shared/attached_image", object: @product %>

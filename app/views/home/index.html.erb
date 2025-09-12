@@ -1,7 +1,8 @@
+<% content_for :title, I18n.t('main_page') %>
 <!-- ======= Заголовок главной страницы ======= -->
 <div class="row mb-5">
   <div class="col">
-    <h1 class="text-center"><%= t('home_index_h1_title') %></h1>
+    <h1 class="text-center"><%= I18n.t('home_index_h1_title') %></h1>
   </div>
 </div>
 
@@ -10,7 +11,7 @@
   <div class="col">
     <div class="card h-100 shadow-sm p-2 text-center bg-warning-subtle">
       <a href="#" class="d-block" style="min-height:150px; line-height:150px;">
-        <%= image_tag "logistic_mono.png", class: "card-img-top mx-auto" %>
+        <%= image_tag "logistic_mono.png", class: "card-img-top mx-auto", alt: "Логистика и транспорт" %>
       </a>
       <div class="card-body d-flex align-items-end justify-content-center">
         <h5 class="card-title"><%= I18n.t('.logistic_description') %></h5>
@@ -21,7 +22,7 @@
   <div class="col">
     <div class="card h-100 shadow-sm p-2 text-center bg-success-subtle">
       <a href="#" class="d-block" style="min-height:150px; line-height:150px;">
-        <%= image_tag "control-panel.png", class: "card-img-top mx-auto", style: "max-width: 110px; max-height: 110px;" %>
+        <%= image_tag "control-panel.png", class: "card-img-top mx-auto", style: "max-width: 110px; max-height: 110px;", alt: "Панель управления оборудованием" %>
       </a>
       <div class="card-body d-flex align-items-end justify-content-center">
         <h5 class="card-title"><%= I18n.t('.control_panel') %></h5>
@@ -32,7 +33,7 @@
   <div class="col">
     <div class="card h-100 shadow-sm p-2 text-center bg-primary-subtle">
       <a href="#" class="d-block" style="min-height:150px; line-height:150px;">
-        <%= image_tag "thinking.png", class: "card-img-top mx-auto", style: "max-width: 110px; max-height: 110px;" %>
+        <%= image_tag "thinking.png", class: "card-img-top mx-auto", style: "max-width: 110px; max-height: 110px;", alt: "Аналитика и планирования" %>
       </a>
       <div class="card-body d-flex align-items-end justify-content-center">
         <h5 class="card-title"><%= I18n.t('.thinking') %></h5>
@@ -44,10 +45,10 @@
 <!-- ======= Заголовок поставщиков ======= -->
 <div class="row mb-5">
   <div class="col">
-    <h4 class="text-center"><%= I18n.t('.main_suppliers') %></h4>
+    <h2 class="fs-4 text text-center"><%= I18n.t('.main_suppliers') %></h2>
     <% if @forward_brands.any? %>
-    <div class="card shadow-sm pt-3 pb-2 px-2" style="background-color: #64676A;">
-      <p class="fs-3 text-center text-white">
+    <div class="card shadow-sm p-3" style="background-color: #64676A;">
+      <p class="fs-3 text-center text-white text-uppercase">
         <%= @forward_brands.map(&:name).join(", ") %>
       </p>
     </div>
@@ -59,7 +60,7 @@
 <div class="row row-cols-1 row-cols-md-2 g-4">
   <div class="col">
     <div class="card h-100 text-white bg-dark">
-      <%= image_tag "vodosnab.webp", class: "card-img", style: "opacity: 0.3;" %>
+      <%= image_tag "vodosnab.webp", class: "card-img", style: "opacity: 0.3;", alt: "Система водоснабжения" %>
       <div class="card-img-overlay d-flex flex-column justify-content-end text-center">
         <h5 class="card-title text-white">
           <%= I18n.t('.water_supply_systems') %>
@@ -79,7 +80,7 @@
 
   <div class="col">
     <div class="card h-100 text-white bg-dark">
-      <%= image_tag "vacuum.webp", class: "card-img", style: "opacity: 0.3;" %>
+      <%= image_tag "vacuum.webp", class: "card-img", style: "opacity: 0.3;", alt: "Вакуумное оборудование" %>
       <div class="card-img-overlay d-flex flex-column justify-content-end text-center">
         <h5 class="card-title text-white">
           <%= I18n.t('.vacuum_systems') %>
@@ -96,7 +97,7 @@
 
   <div class="col">
     <div class="card h-100 text-white bg-dark">
-      <%= image_tag "electric.webp", class: "card-img", style: "opacity: 0.3;" %>
+      <%= image_tag "electric.webp", class: "card-img", style: "opacity: 0.3;", alt: "Электрооборудование" %>
       <div class="card-img-overlay d-flex flex-column justify-content-end text-center">
         <h5 class="card-title text-white">
           <%= I18n.t('.electro_systems') %>
@@ -115,7 +116,7 @@
 
   <div class="col">
     <div class="card h-100 text-white bg-dark">
-      <%= image_tag "encoder.webp", class: "card-img", style: "opacity: 0.3;" %>
+      <%= image_tag "encoder.webp", class: "card-img", style: "opacity: 0.3;", alt: "Энкодер датчик" %>
       <div class="card-img-overlay d-flex flex-column justify-content-end text-center">
         <h5 class="card-title text-white">
           <%= I18n.t('.encoder_systems') %>

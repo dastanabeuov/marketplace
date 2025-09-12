@@ -1,32 +1,49 @@
 <!DOCTYPE html>
 <html lang="<%= I18n.locale %>" data-bs-theme="auto">
   <head>
-    <title><%= content_for(:title) || "#{site_name || I18n.t('.marketplace')}" %></title>
- 
+    <title><%= "#{site_name}(#{content_for(:title)}) - #{I18n.t('home_index_h1_title')}" %></title>
+    <!--<title><%#= "#{site_name} | #{content_for(:title)}" || "#{I18n.t('.marketplace')}" %></title>-->
+    <meta name="description" content="Широкий выбор запасных частей и комплектующих для промышленного оборудования. Надежные поставки, гарантия качества и своевременная доставка по Казахстану и СНГ." />
+    <meta name="keywords" content="запасные части, комплектующие, промышленное оборудование, подшипники, муфты, насосы, компрессоры, редукторы, электродвигатели, ремни, уплотнения, прокладки, фильтры, арматура, Казахстан, поставка запчастей, оборудование для производства" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- ✅ Open Graph -->
+    <meta property="og:title" content="<%= content_for?(:og_title) ? yield(:og_title) : 'Запасные части и комплектующие | Relicom Parts' %>" />
+    <meta property="og:description" content="<%= content_for?(:og_description) ? yield(:og_description) : 'Широкий выбор запасных частей и комплектующих для промышленного оборудования в Казахстане и СНГ.' %>" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="<%= request.original_url %>" />
+    <meta property="og:image" content="<%= content_for?(:og_image) ? yield(:og_image) : url_for('default-og.png') %>" />
+    <meta property="og:site_name" content="Relicom Parts" />
+
+    <!-- ✅ Twitter Card (для совместимости) -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="<%= content_for?(:og_title) ? yield(:og_title) : 'Запасные части и комплектующие | Relicom Parts' %>" />
+    <meta name="twitter:description" content="<%= content_for?(:og_description) ? yield(:og_description) : 'Широкий выбор запасных частей и комплектующих для промышленного оборудования в Казахстане и СНГ.' %>" />
+    <meta name="twitter:image" content="<%= content_for?(:og_image) ? yield(:og_image) : url_for('default-og.png') %>" />
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= yield :head %>
 
     <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
     <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
-
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
 
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
+    <%= javascript_importmap_tags %>    
+
+    <%= render 'shared/schema_org' %>
   </head>
   <body class="data-bs-theme">
     <%= render 'layouts/header' %>
     <div class="container my-5">
-    <div id="flash_messages">
-      <%= render "shared/flash" %>
-    </div>
+      <div id="flash_messages">
+        <%= render "shared/flash" %>
+      </div>
       <%= render 'shared/breadcrumbs' if show_breadcrumbs? %>
       <%= yield %>
     </div>

@@ -90,6 +90,9 @@ gem "active_storage_dashboard", "~> 0.1.7"
 # Additional dynamic fields with globalize [https://github.com/globalize/globalize]
 gem "globalize", "~> 7.0"
 
+# Adds sitmap and robots.txt [https://github.com/kjvarga/sitemap_generator]
+gem "sitemap_generator", "~> 6.3.0"
+
 group :development, :test do
   # Strong veribles from secret key [https://github.com/bkeepers/dotenv]
   gem "dotenv-rails", "~> 3.1.4"

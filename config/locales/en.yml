@@ -57,6 +57,7 @@ en:
   number: "Number"
   status: "Status"
   orders: "Orders"
+  order: "Order"
   cart: "Cart"
   errors:
     messages:
@@ -177,13 +178,13 @@ en:
   sign_out: 'Sign out'
   sign_in: 'Sign in'
   sign_up: 'Sign up'
-  marketplace: 'Alatau-Techno'
+  marketplace: 'Relicom-Parts'
   create_document_with_template: 'Create document with template'
   contacts: 'Contacts'
   terms_and_conditions: 'Terms and conditions'
   privacy_policy: 'Privacy policy'
   subscribe_to_our_newsletter: 'Subscribe to our newsletter'
-  company_name: 'LLP "Alatau-Techno"'
+  company_name: 'LLP "Relicom-Parts"'
 
   ######################
   view_uploaded_files: "View uploaded files"
@@ -233,7 +234,7 @@ en:
   main_page: "Main"
   vacancy: "Vacancy"
   news: "News"
-  about: "About"
+  about: "About us"
   contact: "Contact"
   faqs: "FAQs"
   pricing: "Pricing"
