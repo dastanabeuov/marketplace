@@ -47,7 +47,7 @@
   <div class="col">
     <h2 class="fs-4 text text-center"><%= I18n.t('.main_suppliers') %></h2>
     <% if @forward_brands.any? %>
-    <div class="card shadow-sm p-3" style="background-color: #64676A;">
+    <div class="card shadow-sm pt-4 p-3" style="background-color: #64676A;">
       <p class="fs-3 text-center text-white text-uppercase">
         <%= @forward_brands.map(&:name).join(", ") %>
       </p>
