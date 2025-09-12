@@ -1,7 +1,7 @@
 <% content_for :title, I18n.t('product') %>
 <% set_meta_tags(
   title: @product.name,
-  description: @product.send("description_#{I18n.locale}").truncate(120, separator: ' '),
+  description: strip_tags(@product.send("description_#{I18n.locale}").to_plain_text).truncate(120, separator: ' '),
   image: (@product.image.attached? ? url_for(@product.image) : nil),
   url: product_url(@product),
   type: "product"
