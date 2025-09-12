@@ -14,7 +14,7 @@ kz:
   choose_file: "Файлды таңдаңыз"
   current_file: "Ағымдағы файл"
   image: "Сурет"
-  home_index_h1_title: "Өнеркәсіптік жабдықтардың қосалқы бөлшектері мен бөлшектері"
+  home_index_h1_title: "Өнеркәсіптік жабдықтарға арналған қосалқы бөлшектер мен тораптар"
   office_location: "050009, Алматы қаласы, Абай даңғылы 143, 508 кабинет"
   job_hours: "Дб-Жм 9:00-18:00, түскі ас 13:00-14:00"
   chat: "Сөйлесу"
@@ -57,6 +57,7 @@ kz:
   number: "Нөмірі"
   status: "Күйі"
   orders: "Тапсырыстар"
+  order: "Тапсырыс"
   cart: "Себет"
   errors:
     messages:
@@ -174,13 +175,13 @@ kz:
   sign_out: 'Шығу'
   sign_in: 'Кіру'
   sign_up: 'Тіркелу'
-  marketplace: 'Алатау-Техно'
+  marketplace: 'Relicom-Parts'
   create_document_with_template: 'Үлгі бойынша құжат жасау'
   contacts: 'Байланыстар'
   terms_and_conditions: 'Қолдану шарттары'
   privacy_policy: 'Құпиялылық саясаты'
   subscribe_to_our_newsletter: 'Біздің ақпараттық бюллетеньімізге жазылыңыз'
-  company_name: 'ТОО "Алатау-Техно"'
+  company_name: 'ТОО "Relicom-Parts"'
 
   ###########################
   view_uploaded_files: "Жүктелген файлдарды көру"
@@ -227,7 +228,7 @@ kz:
   categories: "Санаттар"
   catalog: "Каталог"
   mechanic: "Механикке"
-  main_page: "Басты"
+  main_page: "Басты бет"
   vacancy: "Бос орындар"
   news: "Жаңалықтар"
   about: "Біз туралы"

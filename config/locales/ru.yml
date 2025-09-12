@@ -57,6 +57,7 @@ ru:
   number: "Номер"
   status: "Статус"
   orders: "Заказы"
+  order: "Заказ"
   cart: "Корзина"
   errors:
     messages:
@@ -173,13 +174,13 @@ ru:
   sign_out: 'Выйти'
   sign_in: 'Войти'
   sign_up: 'Регистрация'
-  marketplace: 'Алатау-Техно'
+  marketplace: 'Relicom-Parts'
   create_document_with_template: 'Создать документ по шаблону'
   contacts: 'Контакты'
   terms_and_conditions: 'Условия использования'
   privacy_policy: 'Политика конфиденциальности'
   subscribe_to_our_newsletter: 'Подпишитесь на нашу рассылку'
-  company_name: 'ТОО "Алатау-Техно"'
+  company_name: 'ТОО "Relicom-Parts"'
 
   #############################
   view_uploaded_files: "Посмотреть загруженные файлы"
