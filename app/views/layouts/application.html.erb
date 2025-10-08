@@ -39,15 +39,15 @@
 
     <%= render 'shared/schema_org' %>
   </head>
-  <body class="data-bs-theme">
+  <body class="d-flex flex-column min-vh-100 data-bs-theme">
     <%= render 'layouts/header' %>
-    <div class="container my-5">
+    <main class="flex-fill container my-5">
       <div id="flash_messages">
         <%= render "shared/flash" %>
       </div>
       <%= render 'shared/breadcrumbs' if show_breadcrumbs? %>
       <%= yield %>
-    </div>
+    </main>
     <%= render 'layouts/footer' %>
   </body>
 </html>
