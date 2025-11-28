@@ -1,4 +1,5 @@
 <% content_for :title, I18n.t('companies') %>
+
 <div class="searching-form mb-1">
   <form class="search-form" method="get">
     <div class="row g-3 align-items-stretch">
@@ -6,8 +7,12 @@
       <div class="col-12 col-md-4">
         <select class="form-select h-100 py-2" name="company_id">
           <option value=""><%= I18n.t('.choose_company') %></option>
+
           <% @company_filters.each do |company| %>
-            <option value="<%= company[0] %>" <%= 'selected' if params[:company_id].to_s == company[0].to_s %>>
+            <option
+              value="<%= company[0] %>"
+              <%= 'selected' if params[:company_id].to_s == company[0].to_s %>
+            >
               <%= company[1] %>
             </option>
           <% end %>
@@ -16,16 +21,20 @@
 
       <!-- Поле поиска -->
       <div class="col-12 col-md-4">
-        <input type="text" name="query" value="<%= params[:query] %>"
-               class="form-control h-100 py-2"
-               placeholder="<%= I18n.t('.search_by_company_name') %>">
+        <input
+          type="text"
+          name="query"
+          value="<%= params[:query] %>"
+          class="form-control h-100 py-2"
+          placeholder="<%= I18n.t('.search_by_company_name') %>"
+        >
       </div>
 
       <!-- Кнопка поиска -->
       <div class="col-12 col-md-4">
-        <button type="submit" 
-                class="btn btn-primary w-100 h-100">
-          <i class="bi bi-search me-1"></i> <%= I18n.t('.find') %>
+        <button type="submit" class="btn btn-primary w-100 h-100">
+          <i class="bi bi-search me-1"></i>
+          <%= I18n.t('.find') %>
         </button>
       </div>
     </div>
@@ -39,12 +48,10 @@
   <div class="container">
     <% if @companies.present? %>
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
-      <!--div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3"-->
+        <!-- div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" -->
         <%= render partial: "companies/company", collection: @companies %>
       </div>
-      <div class="row mt-5">
-        <%= paginate @companies %>
-      </div>
+      <div class="row mt-5"><%= paginate @companies %></div>
     <% else search_performed %>
       <%# Сообщение, если поиск был выполнен, но результатов нет %>
       <div class="alert alert-info text-center py-4">

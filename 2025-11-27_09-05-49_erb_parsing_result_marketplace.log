@@ -1,0 +1,526 @@
+--- METADATA -------------------------------------------------------------------
+Herb Version: herb gem v0.8.2, libprism v1.6.0, libherb v0.8.2 (Ruby C native extension)
+Reported at: 2025-11-27T09:05:49
+
+--- PROJECT --------------------------------------------------------------------
+Path: /home/adk/rails-studios/marketplace
+Glob: /home/adk/rails-studios/marketplace**/*.{html,rhtml,html.erb,html+*.erb,turbo_stream.erb}
+
+--- PROCESSED FILES ------------------------------------------------------------
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/abouts/show.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/abouts/show.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/active_storage/blobs/_blob.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/active_storage/blobs/_blob.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/abouts/_form.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/abouts/_form.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/abouts/_nav.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/abouts/_nav.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/abouts/edit.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/abouts/edit.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/abouts/new.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/abouts/new.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/abouts/show.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/abouts/show.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/admins/sessions/new.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/admins/sessions/new.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/categories/_actions.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/categories/_actions.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/categories/_form.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/categories/_form.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/categories/_nav.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/categories/_nav.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/categories/edit.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/categories/edit.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/categories/index.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/categories/index.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/categories/new.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/categories/new.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/categories/show.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/categories/show.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/companies/_actions.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/companies/_actions.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/companies/_company.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/companies/_company.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/companies/_form.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/companies/_form.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/companies/_nav.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/companies/_nav.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/companies/edit.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/companies/edit.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/companies/index.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/companies/index.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/companies/new.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/companies/new.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/companies/show.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/companies/show.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/contacts/_form.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/contacts/_form.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/contacts/_nav.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/contacts/_nav.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/contacts/edit.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/contacts/edit.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/contacts/new.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/contacts/new.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/contacts/show.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/contacts/show.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/main/_nav.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/main/_nav.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/main/_reserved.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/main/_reserved.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/main/index.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/main/index.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/mechanics/_actions.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/mechanics/_actions.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/mechanics/_form.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/mechanics/_form.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/mechanics/_nav.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/mechanics/_nav.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/mechanics/edit.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/mechanics/edit.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/mechanics/index.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/mechanics/index.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/mechanics/new.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/mechanics/new.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/mechanics/show.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/mechanics/show.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/orders/_actions.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/orders/_actions.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/orders/_form.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/orders/_form.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/orders/_nav.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/orders/_nav.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/orders/_order_item_fields.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/orders/_order_item_fields.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/orders/edit.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/orders/edit.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/orders/index.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/orders/index.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/orders/show.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/orders/show.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/privacy_policies/_form.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/privacy_policies/_form.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/privacy_policies/_nav.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/privacy_policies/_nav.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/privacy_policies/edit.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/privacy_policies/edit.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/privacy_policies/new.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/privacy_policies/new.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/privacy_policies/show.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/privacy_policies/show.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/products/_actions.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/products/_actions.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/products/_form.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/products/_form.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/products/_nav.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/products/_nav.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/products/edit.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/products/edit.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/products/index.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/products/index.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/products/new.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/products/new.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/products/show.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/products/show.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/shared/_attached_image.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/shared/_attached_image.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/shared/_breadcrumbs.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/shared/_breadcrumbs.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/shared/_color_modes.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/shared/_color_modes.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/shared/_errors.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/shared/_errors.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/shared/_flash.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/shared/_flash.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/shared/_footer.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/shared/_footer.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/shared/_header.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/shared/_header.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/shared/_lang.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/shared/_lang.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/shared/_link_tutorial.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/shared/_link_tutorial.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/shared/_main_menu.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/shared/_main_menu.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/sitenames/_form.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/sitenames/_form.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/sitenames/_nav.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/sitenames/_nav.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/sitenames/edit.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/sitenames/edit.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/sitenames/new.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/sitenames/new.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/sitenames/show.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/sitenames/show.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/subscriptions/_actions.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/subscriptions/_actions.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/subscriptions/_nav.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/subscriptions/_nav.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/subscriptions/index.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/subscriptions/index.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/terms_of_use_sites/_form.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/terms_of_use_sites/_form.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/terms_of_use_sites/_nav.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/terms_of_use_sites/_nav.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/terms_of_use_sites/edit.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/terms_of_use_sites/edit.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/terms_of_use_sites/new.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/terms_of_use_sites/new.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/terms_of_use_sites/show.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/terms_of_use_sites/show.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/vacancies/_actions.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/vacancies/_actions.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/vacancies/_form.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/vacancies/_form.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/vacancies/_nav.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/vacancies/_nav.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/vacancies/edit.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/vacancies/edit.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/vacancies/index.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/vacancies/index.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/vacancies/new.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/vacancies/new.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/admin/vacancies/show.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/admin/vacancies/show.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/carts/_cart_contents.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/carts/_cart_contents.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/carts/_cart_item.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/carts/_cart_item.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/carts/add_item.turbo_stream.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/carts/add_item.turbo_stream.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/carts/clear.turbo_stream.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/carts/clear.turbo_stream.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/carts/remove_item.turbo_stream.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/carts/remove_item.turbo_stream.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/carts/show.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/carts/show.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/companies/_cart_button.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/companies/_cart_button.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/companies/_company.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/companies/_company.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/companies/_product.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/companies/_product.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/companies/index.html.erb successfully
+❌ Unexpected compilation error for /home/adk/rails-studios/marketplace/app/views/companies/index.html.erb: Herb::Engine::SecurityError: /home/adk/rails-studios/marketplace/app/views/companies/index.html.erb:10:46 - ERB output tags (<%= %>) are not allowed in attribute position. - Suggestion: Use control flow (<% %>) with static attributes instead.
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/companies/product.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/companies/product.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/companies/show.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/companies/show.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/contacts/show.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/contacts/show.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/home/index.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/home/index.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/kaminari/_first_page.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/kaminari/_first_page.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/kaminari/_gap.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/kaminari/_gap.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/kaminari/_last_page.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/kaminari/_last_page.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/kaminari/_next_page.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/kaminari/_next_page.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/kaminari/_page.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/kaminari/_page.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/kaminari/_paginator.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/kaminari/_paginator.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/kaminari/_prev_page.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/kaminari/_prev_page.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/layouts/_footer.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/layouts/_footer.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/layouts/_header.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/layouts/_header.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/layouts/action_text/contents/_content.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/layouts/action_text/contents/_content.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/layouts/admin.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/layouts/admin.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/layouts/application.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/layouts/application.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/layouts/mailer.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/layouts/mailer.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/mechanics/show.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/mechanics/show.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/orders/index.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/orders/index.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/orders/show.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/orders/show.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/privacy_policies/show.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/privacy_policies/show.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/product_mailer/new_product.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/product_mailer/new_product.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/products/_cart_button.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/products/_cart_button.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/products/_product.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/products/_product.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/products/index.html.erb successfully
+❌ Unexpected compilation error for /home/adk/rails-studios/marketplace/app/views/products/index.html.erb: Herb::Engine::SecurityError: /home/adk/rails-studios/marketplace/app/views/products/index.html.erb:10:46 - ERB output tags (<%= %>) are not allowed in attribute position. - Suggestion: Use control flow (<% %>) with static attributes instead.
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/products/show.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/products/show.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/shared/_attached_image.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/shared/_attached_image.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/shared/_breadcrumbs.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/shared/_breadcrumbs.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/shared/_color_modes.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/shared/_color_modes.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/shared/_errors.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/shared/_errors.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/shared/_flash.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/shared/_flash.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/shared/_lang.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/shared/_lang.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/shared/_schema_org.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/shared/_schema_org.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/shared/_topbar.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/shared/_topbar.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/shared/_topbar_content.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/shared/_topbar_content.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/terms_of_use_sites/show.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/terms_of_use_sites/show.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/users/confirmations/new.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/users/confirmations/new.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/users/mailer/confirmation_instructions.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/users/mailer/confirmation_instructions.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/users/mailer/email_changed.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/users/mailer/email_changed.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/users/mailer/password_change.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/users/mailer/password_change.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/users/mailer/reset_password_instructions.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/users/mailer/reset_password_instructions.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/users/mailer/unlock_instructions.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/users/mailer/unlock_instructions.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/users/passwords/edit.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/users/passwords/edit.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/users/passwords/new.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/users/passwords/new.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/users/registrations/edit.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/users/registrations/edit.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/users/registrations/new.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/users/registrations/new.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/users/sessions/new.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/users/sessions/new.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/users/shared/_error_messages.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/users/shared/_error_messages.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/users/shared/_links.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/users/shared/_links.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/users/unlocks/new.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/users/unlocks/new.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/vacancies/_actions.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/vacancies/_actions.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/vacancies/index.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/vacancies/index.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/app/views/vacancies/show.html.erb successfully
+✅ Compiled /home/adk/rails-studios/marketplace/app/views/vacancies/show.html.erb successfully
+✅ Parsed /home/adk/rails-studios/marketplace/coverage/index.html successfully
+✅ Compiled /home/adk/rails-studios/marketplace/coverage/index.html successfully
+✅ Parsed /home/adk/rails-studios/marketplace/public/400.html successfully
+✅ Compiled /home/adk/rails-studios/marketplace/public/400.html successfully
+✅ Parsed /home/adk/rails-studios/marketplace/public/404.html successfully
+✅ Compiled /home/adk/rails-studios/marketplace/public/404.html successfully
+✅ Parsed /home/adk/rails-studios/marketplace/public/406-unsupported-browser.html successfully
+✅ Compiled /home/adk/rails-studios/marketplace/public/406-unsupported-browser.html successfully
+✅ Parsed /home/adk/rails-studios/marketplace/public/422.html successfully
+✅ Compiled /home/adk/rails-studios/marketplace/public/422.html successfully
+✅ Parsed /home/adk/rails-studios/marketplace/public/500.html successfully
+✅ Compiled /home/adk/rails-studios/marketplace/public/500.html successfully
+
+--- SUMMARY --------------------------------------------------------------------
+Total files: 156
+✅ Successful (parsed & compiled): 154 (98.7%)
+❌ Compilation errors: 2 (1.3%)
+❌ Failed to parse: 0 (0.0%)
+⚠️ Parse errors: 0 (0.0%)
+⏱️ Timed out: 0 (0.0%)
+
+--- FILES WITH COMPILATION ERRORS ----------------------------------------------
+/home/adk/rails-studios/marketplace/app/views/companies/index.html.erb
+/home/adk/rails-studios/marketplace/app/views/products/index.html.erb
+
+--- FILE CONTENTS AND DETAILS --------------------------------------------------
+
+================================================================================
+/home/adk/rails-studios/marketplace/app/views/companies/index.html.erb
+================================================================================
+
+--- CONTENT --------------------------------------------------------------------
+```erb
+<% content_for :title, I18n.t('companies') %>
+<div class="searching-form mb-1">
+  <form class="search-form" method="get">
+    <div class="row g-3 align-items-stretch">
+      <!-- Селект компаний -->
+      <div class="col-12 col-md-4">
+        <select class="form-select h-100 py-2" name="company_id">
+          <option value=""><%= I18n.t('.choose_company') %></option>
+          <% @company_filters.each do |company| %>
+            <option value="<%= company[0] %>" <%= 'selected' if params[:company_id].to_s == company[0].to_s %>>
+              <%= company[1] %>
+            </option>
+          <% end %>
+        </select>
+      </div>
+
+      <!-- Поле поиска -->
+      <div class="col-12 col-md-4">
+        <input type="text" name="query" value="<%= params[:query] %>"
+               class="form-control h-100 py-2"
+               placeholder="<%= I18n.t('.search_by_company_name') %>">
+      </div>
+
+      <!-- Кнопка поиска -->
+      <div class="col-12 col-md-4">
+        <button type="submit" 
+                class="btn btn-primary w-100 h-100">
+          <i class="bi bi-search me-1"></i> <%= I18n.t('.find') %>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<%# Проверка, был ли выполнен поиск %>
+<% search_performed = params[:company_id].present? || params[:query].present? %>
+
+<div class="album py-5 bg-body-tertiary px-2">
+  <div class="container">
+    <% if @companies.present? %>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+      <!--div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3"-->
+        <%= render partial: "companies/company", collection: @companies %>
+      </div>
+      <div class="row mt-5">
+        <%= paginate @companies %>
+      </div>
+    <% else search_performed %>
+      <%# Сообщение, если поиск был выполнен, но результатов нет %>
+      <div class="alert alert-info text-center py-4">
+        <i class="bi bi-search me-2"></i>
+        <%= I18n.t('.no_search_results') %>
+      </div>
+      <div class="text-center mt-3">
+        <%= link_to I18n.t('.reset_search'), request.path, class: "btn btn-outline-secondary" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+```
+
+--- COMPILATION ERROR ----------------------------------------------------------
+```
+Herb::Engine::SecurityError: /home/adk/rails-studios/marketplace/app/views/companies/index.html.erb:10:46 - ERB output tags (<%= %>) are not allowed in attribute position. - Suggestion: Use control flow (<% %>) with static attributes instead.
+```
+
+--- BACKTRACE ------------------------------------------------------------------
+```
+/home/adk/.rvm/gems/ruby-3.4.3@marketplace/gems/herb-0.8.2-x86_64-linux-gnu/lib/herb/engine.rb:307:in 'Herb::Engine#handle_validation_errors'
+/home/adk/.rvm/gems/ruby-3.4.3@marketplace/gems/herb-0.8.2-x86_64-linux-gnu/lib/herb/engine.rb:110:in 'Herb::Engine#initialize'
+/home/adk/.rvm/gems/ruby-3.4.3@marketplace/gems/herb-0.8.2-x86_64-linux-gnu/lib/herb/project.rb:189:in 'Class#new'
+/home/adk/.rvm/gems/ruby-3.4.3@marketplace/gems/herb-0.8.2-x86_64-linux-gnu/lib/herb/project.rb:189:in 'block (2 levels) in Herb::Project#parse!'
+/home/adk/.rvm/gems/ruby-3.4.3@marketplace/gems/timeout-0.4.3/lib/timeout.rb:185:in 'block in Timeout.timeout'
+/home/adk/.rvm/gems/ruby-3.4.3@marketplace/gems/timeout-0.4.3/lib/timeout.rb:38:in 'Timeout::Error.handle_timeout'
+/home/adk/.rvm/gems/ruby-3.4.3@marketplace/gems/timeout-0.4.3/lib/timeout.rb:194:in 'Timeout.timeout'
+/home/adk/.rvm/gems/ruby-3.4.3@marketplace/gems/herb-0.8.2-x86_64-linux-gnu/lib/herb/project.rb:152:in 'block in Herb::Project#parse!'
+/home/adk/.rvm/gems/ruby-3.4.3@marketplace/gems/herb-0.8.2-x86_64-linux-gnu/lib/herb/project.rb:87:in 'Array#each'
+/home/adk/.rvm/gems/ruby-3.4.3@marketplace/gems/herb-0.8.2-x86_64-linux-gnu/lib/herb/project.rb:87:in 'Enumerable#each_with_index'
+```
+
+
+================================================================================
+/home/adk/rails-studios/marketplace/app/views/products/index.html.erb
+================================================================================
+
+--- CONTENT --------------------------------------------------------------------
+```erb
+<% content_for :title, I18n.t('products') %>
+<div class="searching-form mb-1">
+  <form class="search-form" method="get">
+    <div class="row g-3 align-items-stretch">
+      <!-- Селект компаний -->
+      <div class="col-12 col-md-3">
+        <select class="form-select h-100 py-2" name="company_id">
+          <option value=""><%= I18n.t('.choose_company') %></option>
+          <% @companies.each do |company| %>
+            <option value="<%= company[0] %>" <%= 'selected' if params[:company_id].to_s == company[0].to_s %>>
+              <%= company[1] %>
+            </option>
+          <% end %>
+        </select>
+      </div>
+
+      <!-- Селект категорий -->
+      <div class="col-12 col-md-3">
+        <select class="form-select h-100 py-2" name="category_id">
+          <option value=""><%= I18n.t('.choose_category') %></option>
+          <% @categories.each do |category| %>
+            <option value="<%= category[0] %>" <%= 'selected' if params[:category_id].to_s == category[0].to_s %>>
+              <%= category[1] %>
+            </option>
+          <% end %>
+        </select>
+      </div>
+
+      <!-- Поиск по продуктам -->
+      <div class="col-12 col-md-4">
+        <input type="text" class="form-control h-100 py-2" name="query" placeholder="<%= I18n.t('.search_by_products') %>..." value="<%= params[:query] %>">
+      </div>
+
+      <!-- Кнопка поиска -->
+      <div class="col-12 col-md-2">
+        <button type="submit" class="btn btn-primary w-100 h-100">
+          <i class="bi bi-search me-1"></i> <%= I18n.t('.find') %>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<%# Проверка, был ли выполнен поиск %>
+<% search_performed = params[:company_id].present? || params[:category_id].present? || params[:query].present? %>
+
+<div class="album py-5 bg-body-tertiary px-2">
+  <div class="container">
+    <% if @products.present? %>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+      <!--div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3"-->
+        <%= render partial: "products/product", collection: @products %>
+      </div>
+      <div class="row mt-5">
+        <%= paginate @products %>
+      </div>
+    <% elsif search_performed %>
+      <%# Сообщение, если поиск был выполнен, но результатов нет %>
+      <div class="alert alert-info text-center py-4">
+        <i class="bi bi-search me-2"></i>
+        <%= I18n.t('.no_search_results') %>
+      </div>
+      <div class="text-center mt-3">
+        <%= link_to I18n.t('.reset_search'), request.path, class: "btn btn-outline-secondary" %>
+      </div>
+    <% else %>
+      <%# Опционально: сообщение, если поиск не был выполнен %>
+      <div class="text-center py-4 text-muted">
+        <i class="bi bi-filter-circle me-2"></i>
+        <%= I18n.t('.use_filters_to_search') %>
+      </div>
+    <% end %>
+  </div>
+</div>
+```
+
+--- COMPILATION ERROR ----------------------------------------------------------
+```
+Herb::Engine::SecurityError: /home/adk/rails-studios/marketplace/app/views/products/index.html.erb:10:46 - ERB output tags (<%= %>) are not allowed in attribute position. - Suggestion: Use control flow (<% %>) with static attributes instead.
+```
+
+--- BACKTRACE ------------------------------------------------------------------
+```
+/home/adk/.rvm/gems/ruby-3.4.3@marketplace/gems/herb-0.8.2-x86_64-linux-gnu/lib/herb/engine.rb:307:in 'Herb::Engine#handle_validation_errors'
+/home/adk/.rvm/gems/ruby-3.4.3@marketplace/gems/herb-0.8.2-x86_64-linux-gnu/lib/herb/engine.rb:110:in 'Herb::Engine#initialize'
+/home/adk/.rvm/gems/ruby-3.4.3@marketplace/gems/herb-0.8.2-x86_64-linux-gnu/lib/herb/project.rb:189:in 'Class#new'
+/home/adk/.rvm/gems/ruby-3.4.3@marketplace/gems/herb-0.8.2-x86_64-linux-gnu/lib/herb/project.rb:189:in 'block (2 levels) in Herb::Project#parse!'
+/home/adk/.rvm/gems/ruby-3.4.3@marketplace/gems/timeout-0.4.3/lib/timeout.rb:185:in 'block in Timeout.timeout'
+/home/adk/.rvm/gems/ruby-3.4.3@marketplace/gems/timeout-0.4.3/lib/timeout.rb:38:in 'Timeout::Error.handle_timeout'
+/home/adk/.rvm/gems/ruby-3.4.3@marketplace/gems/timeout-0.4.3/lib/timeout.rb:194:in 'Timeout.timeout'
+/home/adk/.rvm/gems/ruby-3.4.3@marketplace/gems/herb-0.8.2-x86_64-linux-gnu/lib/herb/project.rb:152:in 'block in Herb::Project#parse!'
+/home/adk/.rvm/gems/ruby-3.4.3@marketplace/gems/herb-0.8.2-x86_64-linux-gnu/lib/herb/project.rb:87:in 'Array#each'
+/home/adk/.rvm/gems/ruby-3.4.3@marketplace/gems/herb-0.8.2-x86_64-linux-gnu/lib/herb/project.rb:87:in 'Enumerable#each_with_index'
+```
+
+
+⏱️ Total time: 1.54s
