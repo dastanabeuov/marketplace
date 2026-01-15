@@ -45,3 +45,7 @@
 
 /config/credentials/production.key
 .kamal/secrets
+
+# Ignore all markdown files except README.md
+*.md
+!README.md

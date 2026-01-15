@@ -1,4 +1,8 @@
-html, body {
+html {
+  height: 100%;
+  overflow-y: scroll; /* Всегда показывать скроллбар, чтобы ширина страницы не прыгала */
+}
+body {
   height: 100%;
 }
 body {
