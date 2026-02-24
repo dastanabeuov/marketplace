@@ -5,21 +5,21 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [ :show ]
   before_action :load_filters, only: [ :index ]
 
-def index
-  @cart = session[:cart] || {}
-  @products = Product.distinct
+  def index
+    @cart = session[:cart] || {}
+    @products = Product.distinct
 
-  if params[:company_id].present?
-    @products = @products.joins(:companies).where(companies: { id: params[:company_id] })
+    if params[:company_id].present?
+      @products = @products.joins(:companies).where(companies: { id: params[:company_id] })
+    end
+
+    if params[:category_id].present?
+      @products = @products.joins(:categories).where(categories: { id: params[:category_id] })
+    end
+
+    @products = @products.search_by_column(params[:query], :name)
+    @products = @products.page(params[:page]).per(8)
   end
-
-  if params[:category_id].present?
-    @products = @products.joins(:categories).where(categories: { id: params[:category_id] })
-  end
-
-  @products = @products.search_by_column(params[:query], :name)
-  @products = @products.page(params[:page]).per(8)
-end
 
   def show
     unless @product
