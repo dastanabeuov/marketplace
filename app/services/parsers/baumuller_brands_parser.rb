@@ -10,7 +10,7 @@ require "fileutils"
 module Parsers
   class BaumullerBrandsParser
     PROGRESS_FILE = "log/baumuller_progress.json"
-    BASE_URL    = "https://baumuller.kz".freeze
+    BASE_URL    = "http://baumuller.kz".freeze
     MAX_RETRIES = 3
 
     # маппинг локалей: у сайта kk, у нас kz
@@ -73,7 +73,7 @@ module Parsers
     def process_brand(block)
       brand_name = block.at_css("div.card-body h5")&.text&.strip
       return false unless brand_name
-      return false unless @target_companies.any? { |t| brand_name.downcase.include?(t) }
+      return false unless @target_companies.empty? || @target_companies.any? { |t| brand_name.downcase.include?(t) }
 
       log "→ Обрабатываем бренд: #{brand_name}"
       @found_companies << brand_name unless @found_companies.include?(brand_name)
