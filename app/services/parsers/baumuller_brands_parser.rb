@@ -3,6 +3,7 @@ require "nokogiri"
 require "open-uri"
 require "uri"
 require "net/http"
+require "openssl"
 require "securerandom"
 require "json"
 require "fileutils"
@@ -301,7 +302,7 @@ module Parsers
 
     def fetch_page(url)
       retries ||= 0
-      html = URI.open(url, "User-Agent" => "Mozilla/5.0", read_timeout: 20)
+      html = URI.open(url, "User-Agent" => "Mozilla/5.0", read_timeout: 20, ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE)
       Nokogiri::HTML(html)
     rescue => e
       if (retries += 1) <= MAX_RETRIES
@@ -318,7 +319,7 @@ module Parsers
       return if record.respond_to?(:image) && record.image.attached?
       return unless url
 
-      file = URI.open(url, "User-Agent" => "Mozilla/5.0")
+      file = URI.open(url, "User-Agent" => "Mozilla/5.0", ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE)
       filename = File.basename(URI.parse(url).path.presence || "img_#{SecureRandom.hex(4)}.jpg")
       record.image.attach(io: file, filename: filename) if record.respond_to?(:image)
     rescue
