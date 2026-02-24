@@ -113,6 +113,12 @@ module Parsers
           }
 
       LOCALES.each do |my_locale, remote_locale|
+        existing = company.public_send("description_#{my_locale}")
+        if existing.present?
+          log "   ⏭ Описание для #{company.name} (#{my_locale}) уже есть, пропускаем"
+          next
+        end
+
         localized_url = "#{url}?locale=#{remote_locale}"
         doc = fetch_page(localized_url)
 
