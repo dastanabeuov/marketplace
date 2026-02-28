@@ -66,7 +66,7 @@ gem "whenever", "~> 1.0.0", require: false
 gem "rails-i18n", "~> 8.0.0"
 
 # Authenticate build [https://github.com/heartcombo/devise]
-gem "devise-i18n", "~> 1.12"
+gem "devise-i18n", "~> 1.15"
 gem "devise", "~> 4.9"
 
 # Authorize user to resource [https://github.com/CanCanCommunity/cancancan]
