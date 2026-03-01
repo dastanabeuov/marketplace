@@ -19,7 +19,7 @@ gem "turbo-rails", "~> 2.0.13"
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails", "~> 1.3.4"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
-gem "jbuilder", "~> 2.13.0"
+gem "jbuilder", "~> 2.14.1"
 
 # Bigdecimal set [https://github.com/ruby/bigdecimal]
 gem "bigdecimal", "~> 3.2.3"
