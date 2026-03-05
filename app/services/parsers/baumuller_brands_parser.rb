@@ -12,7 +12,8 @@ module Parsers
   class BaumullerBrandsParser
     PROGRESS_FILE = "log/baumuller_progress.json"
     BASE_URL    = "http://baumuller.kz".freeze
-    MAX_RETRIES = 3
+    MAX_RETRIES = 5
+    MAX_CONSECUTIVE_FAILURES = 3  # сколько подряд неудач до остановки
 
     # маппинг локалей: у сайта kk, у нас kz
     LOCALES = {
@@ -220,17 +221,39 @@ module Parsers
       # Начинаем с последней обработанной страницы продуктов + 1
       page = last_product_page + 1
       total = 0
+      consecutive_failures = 0
 
       loop do
         product_page_url = page > 1 ? "#{brand_url}?page=#{page}" : brand_url
         doc = fetch_page(product_page_url)
-        break unless doc
+
+        unless doc
+          consecutive_failures += 1
+          log "   ⚠ Не удалось загрузить страницу #{page} для #{company.name} (неудач подряд: #{consecutive_failures}/#{MAX_CONSECUTIVE_FAILURES})"
+          if consecutive_failures >= MAX_CONSECUTIVE_FAILURES
+            log "   ❌ Слишком много неудач подряд для #{company.name}, переходим к следующему бренду"
+            break
+          end
+          page += 1
+          sleep 3
+          next
+        end
 
         product_cards = doc.css("div.card")
         if product_cards.empty?
-          log "   ❌ У бренда #{company.name} больше нет продуктов на странице #{page}"
-          break
+          consecutive_failures += 1
+          log "   ⚠ Пустая страница #{page} для #{company.name} (неудач подряд: #{consecutive_failures}/#{MAX_CONSECUTIVE_FAILURES})"
+          if consecutive_failures >= MAX_CONSECUTIVE_FAILURES
+            log "   ❌ #{MAX_CONSECUTIVE_FAILURES} пустых страниц подряд для #{company.name}, переходим к следующему бренду"
+            break
+          end
+          page += 1
+          sleep 2
+          next
         end
+
+        # Успешная загрузка — сбрасываем счётчик неудач
+        consecutive_failures = 0
 
         log "   Найдено продуктов на странице #{page}: #{product_cards.size}"
 
@@ -238,10 +261,6 @@ module Parsers
           name = card.at_css("div.card-body a")&.text&.strip
           next unless name
 
-          # Проверяем, существует ли уже продукт для этой компании
-          # existing_relation = ProductCompany.joins(:product)
-          #                                  .where(company: company, products: { name: name })
-          #                                  .first
           existing_relation = ProductCompany.joins(product: :translations)
             .where(company: company, product_translations: { name: name, locale: I18n.locale })
             .first
@@ -308,12 +327,13 @@ module Parsers
 
     def fetch_page(url)
       retries ||= 0
-      html = URI.open(url, "User-Agent" => "Mozilla/5.0", read_timeout: 20, ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE)
+      html = URI.open(url, "User-Agent" => "Mozilla/5.0", read_timeout: 30, open_timeout: 15, ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE)
       Nokogiri::HTML(html)
     rescue => e
       if (retries += 1) <= MAX_RETRIES
-        log "Ошибка загрузки (попытка #{retries}/#{MAX_RETRIES}): #{url}"
-        sleep 2
+        delay = retries * 3
+        log "Ошибка загрузки (попытка #{retries}/#{MAX_RETRIES}, ждём #{delay}с): #{url} — #{e.message}"
+        sleep delay
         retry
       else
         log "❌ Ошибка при загрузке #{url}: #{e.message}"
