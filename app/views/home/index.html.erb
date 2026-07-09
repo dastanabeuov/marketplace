@@ -49,10 +49,10 @@
 <!-- ======= Заголовок поставщиков ======= -->
 <div class="row mb-5">
   <div class="col">
-    <h3 class="fs-3 text text-center"><%= I18n.t('.main_suppliers') %></h3>
+    <h3 class="fs-3 text-justify"><%= I18n.t('.main_suppliers') %></h3>
     <% if @forward_brands.any? %>
     <div class="card shadow-sm pt-4 p-3" style="background-color: #64676A;">
-      <p class="fs-3 text-center text-white text-uppercase">
+      <p class="fs-3 text-justify text-white text-uppercase">
         <%= @forward_brands.map(&:name).join(", ") %>
       </p>
     </div>
@@ -66,10 +66,10 @@
     <div class="card supplier-card h-100 text-white bg-dark">
       <%= image_tag "vodosnab.webp", class: "card-img", style: "opacity: 0.3;", alt: "Система водоснабжения" %>
       <div class="card-img-overlay d-flex flex-column justify-content-end text-center">
-        <h4 class="card-title text-white">
+        <h4 class="text-justify card-title text-white">
           <%= I18n.t('.water_supply_systems') %>
         </h4>
-        <p class="card-text brand-list">
+        <p class="text-justify card-text brand-list">
           <%= truncate(
             "REXROTH, VICKERS, BILFINGER, PARKER, MARZOCCHI, 
             SALVATORE ROBUSCHI, ARGAL, CASAPPA, BOHLER, BRINKMANN, 
@@ -78,7 +78,7 @@
             HOERBIGER, CASAPPA, VOITH, SETTIMA, SEEPEX, BECKER, 
             SIATA, BIJUR DELIMON, ZIMMER, PERMCO, SERA, HANSA FLEX, 
             EAGLES BURGMANN, FAGIOLATTI, JOSEF EMMERICH, PFEIFER",
-            length: 120, separator: " ", omission: " #{I18n.t('.and_much_more')}"
+            length: 160, separator: " ", omission: " #{I18n.t('.and_much_more')}"
           ) %>
         </p>
       </div>
@@ -89,15 +89,15 @@
     <div class="card supplier-card h-100 text-white bg-dark">
       <%= image_tag "vacuum.webp", class: "card-img", style: "opacity: 0.3;", alt: "Вакуумное оборудование" %>
       <div class="card-img-overlay d-flex flex-column justify-content-end text-center">
-        <h4 class="card-title text-white">
+        <h4 class="text-justify card-title text-white">
           <%= I18n.t('.vacuum_systems') %>
         </h4>
-        <p class="card-text brand-list">
+        <p class="text-justify card-text brand-list">
           <%= truncate(
             "PFEIFFER, POMPETRAVAINI, VALVITALIA, LEYBOLD, ULVAC, 
             AGILENT TECHNOLOGIES, ARI ARMATUREN, BECKER, EDWARDS, 
             BUSCH, CAMOZZI, EBARA, ELMO RIETSCHLE, ULVAC",
-            length: 120, separator: " ", omission: " #{I18n.t('.and_much_more')}"
+            length: 160, separator: " ", omission: " #{I18n.t('.and_much_more')}"
           ) %>
         </p>
       </div>
@@ -108,10 +108,10 @@
     <div class="card supplier-card h-100 text-white bg-dark">
       <%= image_tag "electric.webp", class: "card-img", style: "opacity: 0.3;", alt: "Электрооборудование" %>
       <div class="card-img-overlay d-flex flex-column justify-content-end text-center">
-        <h4 class="card-title text-white">
+        <h4 class="text-justify card-title text-white">
           <%= I18n.t('.electro_systems') %>
         </h4>
-        <p class="card-text brand-list">
+        <p class="text-justify card-text brand-list">
           <%= truncate(
             "DANAHER MOTION, ZUMBACH, KEB, MOOG, INDRAMAT, OMRON, 
             LENZE, KEB, BAUMUELLER, CONTROL TECHNIQUES, FANUC, 
@@ -119,7 +119,7 @@
             OMEC, AC-MOTOREN, ELECTRO ADDA, PERSKE, BROOK CROMPTON, 
             EATON, GMN, HARMONIC DRIVE, BINDER, BELIMO, 
             MARATHON ELECTRIC, CAVOTEC",
-            length: 120, separator: " ", omission: " #{I18n.t('.and_much_more')}"
+            length: 160, separator: " ", omission: " #{I18n.t('.and_much_more')}"
           ) %>
         </p>
       </div>
@@ -130,10 +130,10 @@
     <div class="card supplier-card h-100 text-white bg-dark">
       <%= image_tag "encoder.webp", class: "card-img", style: "opacity: 0.3;", alt: "Энкодер датчик" %>
       <div class="card-img-overlay d-flex flex-column justify-content-end text-center">
-        <h4 class="card-title text-white">
+        <h4 class="text-justify card-title text-white">
           <%= I18n.t('.encoder_systems') %>
         </h4>
-        <p class="card-text brand-list">
+        <p class="text-justify card-text brand-list">
           <%= truncate(
             "TELCO, TWK, TURCK, SCHMALZ, HEIDENHAIN, ENDRESS+HAUSER, 
             BALLUFF, BEI IDEACOD, DI-SORIC, SICK, SCHMERSAL, PIZZATO, 
@@ -142,7 +142,7 @@
             ELAP, AUTOFLAME, ELETTA, BAUMER HUBNER, 4B, ERHARD+LEIMER, 
             SENSTRONIC, LIKA, SIATA, SENSIDIN, FOXBORO, BARKSDALE, 
             MICROPOISE, TECSIS, HBM",
-            length: 120, separator: " ", omission: " #{I18n.t('.and_much_more')}"
+            length: 160, separator: " ", omission: " #{I18n.t('.and_much_more')}"
           ) %>
         </p>
       </div>
