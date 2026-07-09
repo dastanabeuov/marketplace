@@ -25,10 +25,7 @@
           <option value=""><%= I18n.t('.choose_category') %></option>
 
           <% @categories.each do |category| %>
-            <option
-              value="<%= category[0] %>"
-              <%= 'selected' if params[:category_id].to_s == category[0].to_s %>
-            >
+            <option value="<%= category[0] %>" <%= 'selected' if params[:category_id].to_s == category[0].to_s %>>
               <%= category[1] %>
             </option>
           <% end %>
