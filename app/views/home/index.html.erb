@@ -49,10 +49,10 @@
 <!-- ======= Заголовок поставщиков ======= -->
 <div class="row mb-5">
   <div class="col">
-    <h3 class="fs-3 text-justify"><%= I18n.t('.main_suppliers') %></h3>
+    <h3 class="fs-3"><%= I18n.t('.main_suppliers') %></h3>
     <% if @forward_brands.any? %>
     <div class="card shadow-sm pt-4 p-3" style="background-color: #64676A;">
-      <p class="fs-3 text-justify text-white text-uppercase">
+      <p class="fs-3 text-white text-uppercase">
         <%= @forward_brands.map(&:name).join(", ") %>
       </p>
     </div>
@@ -78,7 +78,7 @@
             HOERBIGER, CASAPPA, VOITH, SETTIMA, SEEPEX, BECKER, 
             SIATA, BIJUR DELIMON, ZIMMER, PERMCO, SERA, HANSA FLEX, 
             EAGLES BURGMANN, FAGIOLATTI, JOSEF EMMERICH, PFEIFER",
-            length: 160, separator: " ", omission: " #{I18n.t('.and_much_more')}"
+            length: 200, separator: " ", omission: " #{I18n.t('.and_much_more')}"
           ) %>
         </p>
       </div>
@@ -97,7 +97,7 @@
             "PFEIFFER, POMPETRAVAINI, VALVITALIA, LEYBOLD, ULVAC, 
             AGILENT TECHNOLOGIES, ARI ARMATUREN, BECKER, EDWARDS, 
             BUSCH, CAMOZZI, EBARA, ELMO RIETSCHLE, ULVAC",
-            length: 160, separator: " ", omission: " #{I18n.t('.and_much_more')}"
+            length: 200, separator: " ", omission: " #{I18n.t('.and_much_more')}"
           ) %>
         </p>
       </div>
@@ -119,7 +119,7 @@
             OMEC, AC-MOTOREN, ELECTRO ADDA, PERSKE, BROOK CROMPTON, 
             EATON, GMN, HARMONIC DRIVE, BINDER, BELIMO, 
             MARATHON ELECTRIC, CAVOTEC",
-            length: 160, separator: " ", omission: " #{I18n.t('.and_much_more')}"
+            length: 200, separator: " ", omission: " #{I18n.t('.and_much_more')}"
           ) %>
         </p>
       </div>
@@ -142,7 +142,7 @@
             ELAP, AUTOFLAME, ELETTA, BAUMER HUBNER, 4B, ERHARD+LEIMER, 
             SENSTRONIC, LIKA, SIATA, SENSIDIN, FOXBORO, BARKSDALE, 
             MICROPOISE, TECSIS, HBM",
-            length: 160, separator: " ", omission: " #{I18n.t('.and_much_more')}"
+            length: 200, separator: " ", omission: " #{I18n.t('.and_much_more')}"
           ) %>
         </p>
       </div>
