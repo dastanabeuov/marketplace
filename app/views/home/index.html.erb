@@ -2,7 +2,8 @@
 <!-- ======= Заголовок главной страницы ======= -->
 <div class="row mb-5">
   <div class="col">
-    <h1 class="text-center"><%= I18n.t('home_index_h1_title') %></h1>
+    <h1 class="text-justify"><%= I18n.t('home_index_h1_title') %></h1>
+    <p class="fs-6 fw-light text-justify"><%= I18n.t('home_index_h1_description') %></p>
   </div>
 </div>
 
@@ -13,8 +14,9 @@
       <a href="#" class="d-block" style="min-height:150px; line-height:150px;">
         <%= image_tag "logistic_mono.png", class: "card-img-top mx-auto", alt: "Логистика и транспорт" %>
       </a>
-      <div class="card-body d-flex align-items-end justify-content-center">
-        <h5 class="card-title"><%= I18n.t('.logistic_description') %></h5>
+      <div class="card-body d-flex flex-column align-items-end justify-content-center">
+        <h2 class="card-title fs-3"><%= I18n.t('.logistic_title') %></h2>
+        <p class="card-text fs-6 fw-light"><%= I18n.t('.logistic_description') %></p>
       </div>
     </div>
   </div>
@@ -24,8 +26,9 @@
       <a href="#" class="d-block" style="min-height:150px; line-height:150px;">
         <%= image_tag "control-panel.png", class: "card-img-top mx-auto", style: "max-width: 110px; max-height: 110px;", alt: "Панель управления оборудованием" %>
       </a>
-      <div class="card-body d-flex align-items-end justify-content-center">
-        <h5 class="card-title"><%= I18n.t('.control_panel') %></h5>
+      <div class="card-body d-flex flex-column align-items-end justify-content-center">
+        <h2 class="card-title fs-3"><%= I18n.t('.control_panel_title') %></h2>
+        <p class="card-text fs-6 fw-light"><%= I18n.t('.control_panel_description') %></p>
       </div>
     </div>
   </div>
@@ -35,8 +38,9 @@
       <a href="#" class="d-block" style="min-height:150px; line-height:150px;">
         <%= image_tag "thinking.png", class: "card-img-top mx-auto", style: "max-width: 110px; max-height: 110px;", alt: "Аналитика и планирования" %>
       </a>
-      <div class="card-body d-flex align-items-end justify-content-center">
-        <h5 class="card-title"><%= I18n.t('.thinking') %></h5>
+      <div class="card-body d-flex flex-column align-items-end justify-content-center">
+        <h2 class="card-title fs-3"><%= I18n.t('.thinking_title') %></h2>
+        <p class="card-text fs-6 fw-light"><%= I18n.t('.thinking_description') %></p>
       </div>
     </div>
   </div>
@@ -45,7 +49,7 @@
 <!-- ======= Заголовок поставщиков ======= -->
 <div class="row mb-5">
   <div class="col">
-    <h2 class="fs-4 text text-center"><%= I18n.t('.main_suppliers') %></h2>
+    <h3 class="fs-3 text text-center"><%= I18n.t('.main_suppliers') %></h3>
     <% if @forward_brands.any? %>
     <div class="card shadow-sm pt-4 p-3" style="background-color: #64676A;">
       <p class="fs-3 text-center text-white text-uppercase">
@@ -59,76 +63,87 @@
 <!-- ======= Блоги/Поставщики ======= -->
 <div class="row row-cols-1 row-cols-md-2 g-4">
   <div class="col">
-    <div class="card h-100 text-white bg-dark">
+    <div class="card supplier-card h-100 text-white bg-dark">
       <%= image_tag "vodosnab.webp", class: "card-img", style: "opacity: 0.3;", alt: "Система водоснабжения" %>
       <div class="card-img-overlay d-flex flex-column justify-content-end text-center">
-        <h5 class="card-title text-white">
+        <h4 class="card-title text-white">
           <%= I18n.t('.water_supply_systems') %>
-        </h5>
-        <p class="card-text small text-truncate">
-          REXROTH, VICKERS, BILFINGER, PARKER, MARZOCCHI, 
-          SALVATORE ROBUSCHI, ARGAL, CASAPPA, BOHLER, BRINKMANN, 
-          EATON, LUTZ, MOOG, HAWE, BUSCHER, PROMINENT, KRAL, POCLAIN, 
-          KSB, EBARA, BRAN LUEBBE, KRACHT, HYDRAFORCE, HOERBIGER, 
-          CASAPPA, VOITH, SETTIMA, SEEPEX, BECKER, SIATA, BIJUR DELIMON, 
-          ZIMMER, PERMCO, SERA, HANSA FLEX, EAGLES BURGMANN, FAGIOLATTI, 
-          JOSEF EMMERICH, PFEIFER <%= I18n.t('.and_much_more') %>
+        </h4>
+        <p class="card-text brand-list">
+          <%= truncate(
+            "REXROTH, VICKERS, BILFINGER, PARKER, MARZOCCHI, 
+            SALVATORE ROBUSCHI, ARGAL, CASAPPA, BOHLER, BRINKMANN, 
+            EATON, LUTZ, MOOG, HAWE, BUSCHER, PROMINENT, KRAL, 
+            POCLAIN, KSB, EBARA, BRAN LUEBBE, KRACHT, HYDRAFORCE, 
+            HOERBIGER, CASAPPA, VOITH, SETTIMA, SEEPEX, BECKER, 
+            SIATA, BIJUR DELIMON, ZIMMER, PERMCO, SERA, HANSA FLEX, 
+            EAGLES BURGMANN, FAGIOLATTI, JOSEF EMMERICH, PFEIFER",
+            length: 120, separator: " ", omission: " #{I18n.t('.and_much_more')}"
+          ) %>
         </p>
       </div>
     </div>
   </div>
 
   <div class="col">
-    <div class="card h-100 text-white bg-dark">
+    <div class="card supplier-card h-100 text-white bg-dark">
       <%= image_tag "vacuum.webp", class: "card-img", style: "opacity: 0.3;", alt: "Вакуумное оборудование" %>
       <div class="card-img-overlay d-flex flex-column justify-content-end text-center">
-        <h5 class="card-title text-white">
+        <h4 class="card-title text-white">
           <%= I18n.t('.vacuum_systems') %>
-        </h5>
-        <p class="card-text small text-truncate">
-          PFEIFFER, POMPETRAVAINI, VALVITALIA, LEYBOLD, ULVAC, 
-          AGILENT TECHNOLOGIES, ARI ARMATUREN, BECKER, EDWARDS, 
-          BUSCH, CAMOZZI, EBARA, ELMO RIETSCHLE, 
-          ULVAC <%= I18n.t('.and_much_more') %>
+        </h4>
+        <p class="card-text brand-list">
+          <%= truncate(
+            "PFEIFFER, POMPETRAVAINI, VALVITALIA, LEYBOLD, ULVAC, 
+            AGILENT TECHNOLOGIES, ARI ARMATUREN, BECKER, EDWARDS, 
+            BUSCH, CAMOZZI, EBARA, ELMO RIETSCHLE, ULVAC",
+            length: 120, separator: " ", omission: " #{I18n.t('.and_much_more')}"
+          ) %>
         </p>
       </div>
     </div>
   </div>
 
   <div class="col">
-    <div class="card h-100 text-white bg-dark">
+    <div class="card supplier-card h-100 text-white bg-dark">
       <%= image_tag "electric.webp", class: "card-img", style: "opacity: 0.3;", alt: "Электрооборудование" %>
       <div class="card-img-overlay d-flex flex-column justify-content-end text-center">
-        <h5 class="card-title text-white">
+        <h4 class="card-title text-white">
           <%= I18n.t('.electro_systems') %>
-        </h5>
-        <p class="card-text small text-truncate">
-          DANAHER MOTION, ZUMBACH, KEB, MOOG, INDRAMAT, OMRON, 
-          LENZE, KEB, BAUMUELLER, CONTROL TECHNIQUES, FANUC, 
-          BECKHOFF, LEROY SOMER, MAXON, GROSCHOPP, PRO MOTOR, 
-          OMEC, AC-MOTOREN, ELECTRO ADDA, PERSKE, BROOK CROMPTON, 
-          EATON, GMN, HARMONIC DRIVE, BINDER, BELIMO, MARATHON ELECTRIC, 
-          CAVOTEC <%= I18n.t('.and_much_more') %>
+        </h4>
+        <p class="card-text brand-list">
+          <%= truncate(
+            "DANAHER MOTION, ZUMBACH, KEB, MOOG, INDRAMAT, OMRON, 
+            LENZE, KEB, BAUMUELLER, CONTROL TECHNIQUES, FANUC, 
+            BECKHOFF, LEROY SOMER, MAXON, GROSCHOPP, PRO MOTOR, 
+            OMEC, AC-MOTOREN, ELECTRO ADDA, PERSKE, BROOK CROMPTON, 
+            EATON, GMN, HARMONIC DRIVE, BINDER, BELIMO, 
+            MARATHON ELECTRIC, CAVOTEC",
+            length: 120, separator: " ", omission: " #{I18n.t('.and_much_more')}"
+          ) %>
         </p>
       </div>
     </div>
   </div>
 
   <div class="col">
-    <div class="card h-100 text-white bg-dark">
+    <div class="card supplier-card h-100 text-white bg-dark">
       <%= image_tag "encoder.webp", class: "card-img", style: "opacity: 0.3;", alt: "Энкодер датчик" %>
       <div class="card-img-overlay d-flex flex-column justify-content-end text-center">
-        <h5 class="card-title text-white">
+        <h4 class="card-title text-white">
           <%= I18n.t('.encoder_systems') %>
-        </h5>
-        <p class="card-text small text-truncate">
-          TELCO, TWK, TURCK, SCHMALZ, HEIDENHAIN, ENDRESS+HAUSER, 
-          BALLUFF, BEI IDEACOD, DI-SORIC, SICK, SCHMERSAL , 
-          PIZZATO, GEFRAN, IFM, KEYENCE, BERNSTEIN, MICROPRECISION, 
-          TELEMECANIQUE, ADZ NAGANO, AUTROL, DYNISCO, HBM, OPKON, 
-          ELAP, AUTOFLAME, ELETTA, BAUMER HUBNER, 4B, ERHARD+LEIMER, 
-          SENSTRONIC, LIKA, SIATA, SENSIDIN, FOXBORO, BARKSDALE, 
-          MICROPOISE, TECSIS, HBM <%= I18n.t('.and_much_more') %>
+        </h4>
+        <p class="card-text brand-list">
+          <%= truncate(
+            "TELCO, TWK, TURCK, SCHMALZ, HEIDENHAIN, ENDRESS+HAUSER, 
+            BALLUFF, BEI IDEACOD, DI-SORIC, SICK, SCHMERSAL, PIZZATO, 
+            GEFRAN, IFM, KEYENCE, BERNSTEIN, MICROPRECISION, 
+            TELEMECANIQUE, ADZ NAGANO, AUTROL, DYNISCO, HBM, OPKON, 
+            ELAP, AUTOFLAME, ELETTA, BAUMER HUBNER, 4B, ERHARD+LEIMER, 
+            SENSTRONIC, LIKA, SIATA, SENSIDIN, FOXBORO, BARKSDALE, 
+            MICROPOISE, TECSIS, HBM",
+            length: 120, separator: " ", omission: " #{I18n.t('.and_much_more')}"
+          ) %>
         </p>
       </div>
     </div>

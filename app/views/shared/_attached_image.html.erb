@@ -1,5 +1,6 @@
 <% if object.image.attached? %>
-  <%= image_tag url_for(object.image), class: "img-fluid w-100 h-100 object-fit-cover rounded-start", 
-      title: object.name, 
+  <%= image_tag url_for(object.image),
+      class: local_assigns.fetch(:image_class, "img-fluid w-100 h-100 object-fit-cover rounded-start"),
+      title: object.name,
       alt: object.name %>
 <% end %>

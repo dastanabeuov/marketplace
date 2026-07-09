@@ -83,7 +83,7 @@ module ApplicationHelper
   end
 
   def show_breadcrumbs?
-    return false if current_page?(root_path)
+    return false if request.path == root_path.split("?").first
     return false if controller_path.start_with?("devise/")
     return false if defined?(Devise) && controller.is_a?(DeviseController)
     true

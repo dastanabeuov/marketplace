@@ -13,9 +13,9 @@
       <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#mobileTopbar" aria-controls="mobileTopbar" aria-expanded="false" aria-label="Показать контакты">
         <i class="bi bi-info-circle"></i>
       </button>
-      
+
       <!-- Основная кнопка навигации -->
-      <button class="navbar-toggler" type="button"
+      <button class="btn btn-sm btn-outline-secondary" type="button"
               data-bs-toggle="collapse"
               data-bs-target="#mainNavbar"
               aria-controls="mainNavbar"
@@ -69,7 +69,7 @@
       </ul>
       <!-- Desktop tabs -->
 
-      <!-- Мобильная часть навигации -->      
+      <!-- Мобильная часть навигации -->
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex d-lg-none">
         <li class="nav-item">
           <%= link_to "🏠 #{ I18n.t('.main_page') }", root_path, class: 'nav-link' %>
@@ -102,7 +102,7 @@
           <%= link_to "📞 #{ I18n.t('.contacts') }", contact_path, class: 'nav-link' %>
         </li>
       </ul>
-      <!-- Мобильная часть навигации -->      
+      <!-- Мобильная часть навигации -->
 
       <ul class="navbar-nav ms-auto d-flex align-items-lg-center gap-2">
         <li class="nav-item">
