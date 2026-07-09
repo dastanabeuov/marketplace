@@ -1,0 +1,15 @@
+<% contact = Contact.first %>
+<% if contact&.phone.present? %>
+  <% digits = contact.phone.gsub(/\D/, "") %>
+  <div class="floating-contacts">
+    <a href="https://wa.me/<%= digits %>" class="fc-btn fc-whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp">
+      <i class="bi bi-whatsapp"></i>
+    </a>
+    <a href="https://t.me/+<%= digits %>" class="fc-btn fc-telegram" target="_blank" rel="noopener" aria-label="Telegram" title="Telegram">
+      <i class="bi bi-telegram"></i>
+    </a>
+    <a href="tel:<%= contact.phone %>" class="fc-btn fc-phone" aria-label="<%= t(:phone) %>" title="<%= contact.phone %>">
+      <i class="bi bi-telephone-fill"></i>
+    </a>
+  </div>
+<% end %>
