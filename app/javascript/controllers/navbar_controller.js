@@ -6,20 +6,22 @@ export default class extends Controller {
 
   connect() {
     this.collapse = document.getElementById("mainNavbar")
+    if (!this.collapse) return
 
-    if (this.collapse) {
-      this.collapse.addEventListener("show.bs.collapse", this.toggleIcon.bind(this, true))
-      this.collapse.addEventListener("hide.bs.collapse", this.toggleIcon.bind(this, false))
-    }
+    this.showHandler = () => this.toggleIcon(true)
+    this.hideHandler = () => this.toggleIcon(false)
+    this.collapse.addEventListener("show.bs.collapse", this.showHandler)
+    this.collapse.addEventListener("hide.bs.collapse", this.hideHandler)
+  }
+
+  disconnect() {
+    if (!this.collapse) return
+    this.collapse.removeEventListener("show.bs.collapse", this.showHandler)
+    this.collapse.removeEventListener("hide.bs.collapse", this.hideHandler)
   }
 
   toggleIcon(isOpen) {
-    if (isOpen) {
-      this.iconTarget.classList.remove("bi-list")
-      this.iconTarget.classList.add("bi-x")
-    } else {
-      this.iconTarget.classList.remove("bi-x")
-      this.iconTarget.classList.add("bi-list")
-    }
+    this.iconTarget.classList.toggle("bi-list", !isOpen)
+    this.iconTarget.classList.toggle("bi-x-lg", isOpen)
   }
 }
