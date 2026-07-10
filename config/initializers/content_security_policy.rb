@@ -14,6 +14,9 @@ Rails.application.configure do
 
     policy.object_src :none
 
+    # Встроенная карта на странице контактов — Google Maps embed.
+    policy.frame_src :self, "https://www.google.com", "https://maps.google.com"
+
     # Скрипты: локальные (importmap) + внешний CDN jspm (chart.js, @kurkle/color).
     # Инлайн-скрипты разрешаются через nonce (см. ниже), а не unsafe-inline.
     policy.script_src :self, "https://ga.jspm.io"
