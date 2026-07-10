@@ -12,3 +12,9 @@ set :chronic_options, hours24: true
 every 1.day, at: "4:00" do
   rake "parse:daily_brands"
 end
+
+# Пересобираем карту сайта после парсинга — парсер добавляет
+# новые компании и продукты, они должны попасть в sitemap.
+every 1.day, at: "5:00" do
+  rake "sitemap:refresh:no_ping"
+end

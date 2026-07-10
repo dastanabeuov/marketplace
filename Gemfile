@@ -93,6 +93,12 @@ gem "globalize", "~> 7.0"
 # Adds sitmap and robots.txt [https://github.com/kjvarga/sitemap_generator]
 gem "sitemap_generator", "~> 6.3.0"
 
+# Add canonical tag to your Rails application [https://github.com/jumph4x/canonical-rails]
+gem "canonical-rails", ">= 0.2.17"
+
+# Throttling, IP-blocking, fail2ban для Rack [https://github.com/rack/rack-attack]
+gem "rack-attack", ">= 6.7"
+
 group :development, :test do
   # Strong veribles from secret key [https://github.com/bkeepers/dotenv]
   gem "dotenv-rails", "~> 3.1.4"
@@ -114,6 +120,9 @@ group :development, :test do
 
   # Open and imulate email send [https://github.com/ryanb/letter_opener]
   gem "letter_opener", "~> 1.10"
+
+  # Check code for best practices [https://github.com/flyerhzm/rails_best_practices]
+  gem "rails_best_practices", ">= 1.23.4"
 end
 
 group :development do

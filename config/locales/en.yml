@@ -1,4 +1,13 @@
 en:
+  meta:
+    default_description: "A wide range of spare parts and components for industrial equipment. Reliable supply, quality guarantee and timely delivery across Kazakhstan and the CIS."
+    home_description: "Relicom Parts — spare parts and components for industrial equipment: bearings, pumps, gearboxes, electric motors and sensors. Delivery across Kazakhstan and the CIS."
+    companies_description: "Catalog of suppliers and manufacturers of industrial equipment. Find the brand you need and its products."
+    products_description: "Catalog of spare parts and components for industrial equipment with delivery across Kazakhstan and the CIS."
+    mechanics_description: "Specialists and mechanics for maintenance and repair of industrial equipment."
+    vacancies_description: "Current job openings at Relicom Parts. Join our team of professionals."
+    about_description: "About Relicom Parts: supply of spare parts and components for industrial equipment across Kazakhstan and the CIS."
+    contacts_description: "Relicom Parts contacts: address, phone numbers and email. Get in touch to order spare parts."
   forward_brand: "Forward brand"
   if_unsubscribed: "If you do not want to receive emails —"
   info_subscribed: "You are subscribed to receive notifications about new products."
