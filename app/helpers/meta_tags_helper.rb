@@ -14,7 +14,7 @@ module MetaTagsHelper
   # Если страница не задала свой заголовок — берётся общий по умолчанию.
   def meta_title
     page = content_for?(:title) ? content_for(:title) : default_meta_title
-    [ page.presence, site_name.presence ].compact.uniq.join(" | ")
+    [ title_name.presence, page.presence ].compact.uniq.join(" - ")
   end
 
   # Итоговое описание страницы: то, что задала страница

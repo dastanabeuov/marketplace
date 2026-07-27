@@ -4,32 +4,32 @@
   <div class="container">
     <div class="row">
       <div class="col-6 col-md-3 mb-3">
-        <h6 class="text-start text-uppercase fw-bold mb-2"><%= I18n.t('.info') %></h6>
+        <h2 class="h6 text-start text-uppercase fw-bold mb-2"><%= I18n.t('.info') %></h2>
         <ul class="nav flex-column">
           <li class="nav-item mb-2">
-            <a href="<%= products_path %>" class="text-start nav-link p-0"><%= I18n.t('.catalog') %></a>
-            <a href="<%= companies_path %>" class="text-start nav-link p-0"><%= I18n.t('.brands') %></a>
+            <a href="<%= products_path %>" class="text-start nav-link py-2 px-0"><%= I18n.t('.catalog') %></a>
+            <a href="<%= companies_path %>" class="text-start nav-link py-2 px-0"><%= I18n.t('.brands') %></a>
           </li>
         </ul>
       </div>
 
       <div class="col-6 col-md-3 mb-3">
-        <h6 class="text-start text-uppercase fw-bold mb-2"><%= I18n.t('.company') %></h6>
+        <h2 class="h6 text-start text-uppercase fw-bold mb-2"><%= I18n.t('.company') %></h2>
         <ul class="nav flex-column">
           <li class="nav-item mb-2">
-            <a href="<%= about_path %>" class="text-start nav-link p-0"><%= I18n.t('.about') %></a>
-            <a href="<%= vacancies_path %>" class="text-start nav-link p-0"><%= I18n.t('.vacancies') %></a>
+            <a href="<%= about_path %>" class="text-start nav-link py-2 px-0"><%= I18n.t('.about') %></a>
+            <a href="<%= vacancies_path %>" class="text-start nav-link py-2 px-0"><%= I18n.t('.vacancies') %></a>
           </li>
         </ul>
       </div>
 
       <div class="col-6 col-md-3 mb-3">
-        <h6 class="text-start text-uppercase fw-bold mb-2"><%= I18n.t('.support') %></h6>
+        <h2 class="h6 text-start text-uppercase fw-bold mb-2"><%= I18n.t('.support') %></h2>
         <ul class="nav flex-column">
           <li class="nav-item mb-2">
-            <a href="<%= contact_path %>" class="text-start nav-link p-0"><%= I18n.t('.contacts') %></a>
-            <a href="<%= privacy_policy_path %>" class="text-start nav-link p-0"><%= I18n.t('.privacy_policy') %></a>
-            <a href="<%= terms_of_use_site_path %>" class="text-start nav-link p-0"><%= I18n.t('.terms_of_use_site') %></a>
+            <a href="<%= contact_path %>" class="text-start nav-link py-2 px-0"><%= I18n.t('.contacts') %></a>
+            <a href="<%= privacy_policy_path %>" class="text-start nav-link py-2 px-0"><%= I18n.t('.privacy_policy') %></a>
+            <a href="<%= terms_of_use_site_path %>" class="text-start nav-link py-2 px-0"><%= I18n.t('.terms_of_use_site') %></a>
           </li>
         </ul>
       </div>
@@ -55,8 +55,8 @@
                   required: true,
                   value: (current_user&.email if user_signed_in?) %>
 
-            <%= f.button :submit, class: "btn btn-secondary" do %>
-              <i class="bi bi-send"></i>
+            <%= f.button :submit, class: "btn btn-secondary", "aria-label": I18n.t('.subscribe') do %>
+              <i class="bi bi-send" aria-hidden="true"></i>
             <% end %>
           </div>
         <% end %>
@@ -69,13 +69,13 @@
       </p>
       <ul class="list-unstyled d-flex mb-0">
         <li class="ms-3">
-          <a href="#" class="nav-link p-0"><i class="bi bi-twitter fs-5"></i></a>
+          <a href="#" class="nav-link p-2" aria-label="Twitter"><i class="bi bi-twitter fs-5" aria-hidden="true"></i></a>
         </li>
         <li class="ms-3">
-          <a href="#" class="nav-link p-0"><i class="bi bi-instagram fs-5"></i></a>
+          <a href="#" class="nav-link p-2" aria-label="Instagram"><i class="bi bi-instagram fs-5" aria-hidden="true"></i></a>
         </li>
         <li class="ms-3">
-          <a href="#" class="nav-link p-0"><i class="bi bi-facebook fs-5"></i></a>
+          <a href="#" class="nav-link p-2" aria-label="Facebook"><i class="bi bi-facebook fs-5" aria-hidden="true"></i></a>
         </li>
       </ul>
     </div>

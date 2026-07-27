@@ -70,6 +70,10 @@ module ApplicationHelper
     Time.now.year
   end
 
+  def title_name
+    I18n.t("main_page") unless I18n.t("base_name").nil?
+  end
+
   def site_name
     Sitename.first.name unless Sitename.count.zero?
   end
