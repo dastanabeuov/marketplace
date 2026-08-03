@@ -40,8 +40,8 @@
           <div class="img-subscribe mb-2">
             <% if (sitename = Sitename.first) && sitename.image.attached? %>
               <%= link_to root_path do %>
-                <%= sized_variant_image_tag sitename.image,
-                              resize_to_limit: [ 150, 120 ],
+                <%= responsive_image_tag sitename.image,
+                              size: :logo,
                               alt: img_alt(site_name),
                               title: img_title(site_name),
                               class: "img-fluid" %>

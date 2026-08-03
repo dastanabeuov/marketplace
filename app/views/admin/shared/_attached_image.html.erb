@@ -1,6 +1,6 @@
 <% if object.image.attached? %>
   <div class="position-relative mb-3">
     <%# try — партиал зовут для разных моделей, не у всех есть name %>
-    <%= image_tag object.image, class: "bd-placeholder-img card-img-top w-50", alt: img_alt(object.try(:name)), title: img_title(object.try(:name)) %>
+    <%= responsive_image_tag object.image, size: :admin, class: "bd-placeholder-img card-img-top w-50", alt: img_alt(object.try(:name)), title: img_title(object.try(:name)) %>
   </div>
 <% end %>

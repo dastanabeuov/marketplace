@@ -9,3 +9,5 @@ require './db/seeds/contact'
 require './db/seeds/about'
 require './db/seeds/vacancy'
 require './db/seeds/mechanics'
+# Демо-каталог для проверки вёрстки. Внутри стоит защита: выполняется только в development.
+require './db/seeds/demo_catalog'

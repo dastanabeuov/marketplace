@@ -1,6 +1,8 @@
-<% if object.image.attached? %>
-  <%= sized_attachment_image_tag object.image,
-      class: local_assigns.fetch(:image_class, "img-fluid w-100 h-100 object-fit-cover rounded-start"),
-      title: img_title(object.name),
-      alt: img_alt(object.name) %>
-<% end %>
+<%# size: :thumb — карточка в списке с фиксированной высотой, :detail — страница show.
+    Условия «есть ли картинка» здесь нет намеренно: без вложения хелпер отдаёт заглушку
+    того же размера, иначе карточка стала бы короче и сетка поехала бы. %>
+<%= responsive_image_tag object.image,
+    size: local_assigns.fetch(:size, :detail),
+    class: local_assigns.fetch(:image_class, "img-fluid w-100 h-100 object-fit-cover rounded-start"),
+    title: img_title(object.name),
+    alt: img_alt(object.name) %>
