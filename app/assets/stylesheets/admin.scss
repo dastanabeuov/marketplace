@@ -1,0 +1,13 @@
+// Точка сборки стилей АДМИНКИ -> app/assets/builds/admin.css
+// Общие файлы лежат в корне, свои — в папке admin/.
+@use "bootstrap";
+@use "style";
+@use "print";
+@use "color-modes";
+@use "actiontext";
+@use "admin-contact-map-iframe";
+@use "lib/bootstrap-icons.min";
+
+@use "admin/sidebar";
+@use "admin/datatables";
+@use "admin/select2";

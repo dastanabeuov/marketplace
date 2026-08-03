@@ -1,10 +1,12 @@
 import { Controller } from "@hotwired/stimulus"
-import "jquery"
-import "datatables"
-// Импортируем языковые файлы
-import ruLanguage from "datatables-i18n-ru"
-import enLanguage from "datatables-i18n-en"
-import kzLanguage from "datatables-i18n-kz"
+import { loadDataTables } from "lib/load_vendor"
+
+// Языковые файлы: грузим только ту локаль, которая нужна странице
+const LANGUAGE_MODULES = {
+  ru: "datatables-i18n-ru",
+  en: "datatables-i18n-en",
+  kz: "datatables-i18n-kz"
+}
 
 // Контроллер DataTables
 export default class extends Controller {
@@ -18,14 +20,19 @@ export default class extends Controller {
     columns: { type: Array, default: [] } // Добавляем параметр для колонок
   }
 
-  // Словарь доступных языков
-  languages = {
-    ru: ruLanguage,
-    en: enLanguage,
-    kz: kzLanguage
-  }
+  async connect() {
+    // jQuery, DataTables и языковой файл подтягиваем только сейчас — на странице есть таблица
+    try {
+      await loadDataTables()
+      this.language = await this.loadLanguage()
+    } catch (error) {
+      console.error("Не удалось загрузить DataTables:", error)
+      return
+    }
 
-  connect() {
+    // Пока грузились библиотеки, элемент мог покинуть DOM (например, переход Turbo)
+    if (!this.element.isConnected) return
+
     // Проверяем, что jQuery и DataTables доступны
     if (typeof $ === 'undefined') {
       console.error("jQuery не найден. DataTables не может быть инициализирована.")
@@ -51,12 +58,21 @@ export default class extends Controller {
     document.addEventListener("turbo:before-cache", () => this.disconnect())
   }
 
+  // Загружаем языковой файл только для текущей локали
+  async loadLanguage() {
+    const path = LANGUAGE_MODULES[this.languageValue.toLowerCase()]
+    if (!path) return {}
+
+    const module = await import(path)
+    return module.default || {}
+  }
+
   // Метод для инициализации таблицы с выбором языка
   initializeDataTable() {
     try {
       const language = this.languageValue.toLowerCase()
-      const languageData = this.languages[language] || {}
-      
+      const languageData = this.language || {}
+
       // Получаем опции из значения атрибута
       let options = this.optionsValue;
       

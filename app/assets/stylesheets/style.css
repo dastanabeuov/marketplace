@@ -72,14 +72,11 @@ body {
 .padding-layout {
   padding-top: 80px;
 }
+/* Контент админки уходит под фиксированную шапку: отступ равен её реальной высоте
+   (--admin-navbar-height ставит контроллер navbar-offset), 120px — запасное значение. */
 @media (max-width: 767.98px) {
   .padding-layout {
-    padding-top: 120px;
-  }
-}
-@media (max-width: 276.98px) {
-  .padding-layout {
-    padding-top: 165px;
+    padding-top: var(--admin-navbar-height, 120px);
   }
 }
 
@@ -253,4 +250,18 @@ main {
     height: 2.6rem;
     font-size: 1.2rem;
   }
+}
+/* Перенесено из sidebar.css: правила общие для клиентской части и админки */
+.navbar {
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .1);
+}
+@media (min-width: 767.98px) {
+  .navbar {
+    top: 0;
+    z-index: 999;
+  }
+}
+hr {
+  margin: 0px;
+  border-top: none;
 }

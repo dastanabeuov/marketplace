@@ -1,0 +1,39 @@
+.sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    padding: 90px 0 0;
+    box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+    z-index: 99;
+}
+
+/* На мобильных меню выезжает под шапкой. Высоту шапки в --admin-navbar-height
+   пишет контроллер navbar-offset, 7.4rem — запасное значение, если JS не отработал. */
+@media (max-width: 767.98px) {
+    .sidebar {
+        top: var(--admin-navbar-height, 7.4rem);
+        padding: 0;
+        /* Меню выше экрана — без прокрутки нижние пункты недоступны */
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+    }
+    /* Компактнее, чтобы на экран телефона влезало больше пунктов */
+    .sidebar .nav-link {
+        padding-top: 14px;
+        padding-bottom: 14px;
+    }
+    .sidebar .tutorial-links {
+        margin-top: 1rem !important;
+        margin-bottom: 1rem !important;
+    }
+}
+.sidebar .nav-link {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.sidebar .nav-item {
+  margin-top: -10px;
+}

@@ -1,6 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
-import "jquery"
-import "select2"
+import { loadSelect2 } from "lib/load_vendor"
 
 export default class extends Controller {
   static targets = ["field"]
@@ -24,12 +23,25 @@ export default class extends Controller {
     language: { type: String, default: 'en' }
   }
 
-  connect() {
+  async connect() {
+    // jQuery и Select2 грузим только на страницах с такими полями
+    try {
+      await loadSelect2()
+    } catch (error) {
+      console.error("Не удалось загрузить Select2:", error)
+      return
+    }
+
+    if (!this.element.isConnected) return
+
+    this.initialized = true
     this.initializeSelect2()
     console.log('✅ Select2 initialized')
   }
 
   disconnect() {
+    if (!this.initialized) return
+
     this.destroySelect2()
     console.log('🛑 Select2 destroyed')
   }

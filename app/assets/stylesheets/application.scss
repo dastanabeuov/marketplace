@@ -1,13 +1,13 @@
+// Точка сборки стилей КЛИЕНТСКОЙ части сайта -> app/assets/builds/application.css
+// Общие файлы лежат в корне, свои — в папке client/. Стили админки здесь не подключаются.
 @use "bootstrap";
 //@import 'bootstrap/scss/bootstrap';
 //@import 'bootstrap-icons/font/bootstrap-icons';
 @use "style";
-@use "topbar";
-@use "sidebar";
 @use "print";
 @use "color-modes";
 @use "actiontext";
+@use "admin-contact-map-iframe";
 @use "lib/bootstrap-icons.min";
-@use "lib/chartist.min";
-@use "lib/datatables";
-@use "lib/select2";
+
+@use "client/topbar";

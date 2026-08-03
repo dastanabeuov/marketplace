@@ -1,8 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
-import { Chart, registerables } from "chart.js"
-
-// Регистрируем компоненты Chart.js
-Chart.register(...registerables)
+import { loadChart } from "lib/load_vendor"
 
 export default class extends Controller {
   static targets = ["canvas"]
@@ -10,7 +7,17 @@ export default class extends Controller {
   // Приватное свойство для хранения экземпляра графика
   #chart = null
 
-  connect() {
+  async connect() {
+    // Chart.js грузится с CDN только на страницах, где есть график
+    try {
+      this.Chart = await loadChart()
+    } catch (error) {
+      console.error("Не удалось загрузить Chart.js:", error)
+      return
+    }
+
+    if (!this.element.isConnected) return
+
     this.initializeChart()
   }
 
@@ -32,7 +39,7 @@ export default class extends Controller {
       const pointHoverGradient = this.createHoverGradient(ctx)
 
       // Создание и сохранение экземпляра графика
-      this.#chart = new Chart(ctx, {
+      this.#chart = new this.Chart(ctx, {
         type: 'line',
         data: {
           labels: labels,
