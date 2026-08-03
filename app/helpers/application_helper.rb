@@ -86,6 +86,19 @@ module ApplicationHelper
     @mechanics = Mechanic.first(10)
   end
 
+  # Текст alt/title для картинок. Без аргумента отдаёт общий текст — его можно
+  # поменять здесь, и он обновится сразу везде. С аргументом подставляет своё
+  # значение (название товара, язык), а на пустое значение падает в общий текст.
+  IMG_TEXT = "Запасные части для промышленного оборудования".freeze
+
+  def img_alt(text = nil)
+    text.presence || IMG_TEXT
+  end
+
+  def img_title(text = nil)
+    text.presence || IMG_TEXT
+  end
+
   def show_breadcrumbs?
     return false if request.path == root_path.split("?").first
     return false if controller_path.start_with?("devise/")

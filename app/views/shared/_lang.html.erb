@@ -14,7 +14,8 @@
     <% [:kz, :ru, :en].each do |locale| %>
       <li>
         <%= link_to "?locale=#{locale}", class: "dropdown-item d-flex align-items-center gap-2" do %>
-          <%= image_tag "flags/#{locale}.png", alt: "#{locale.upcase} Flag", class: "flag-icon" %>
+          <%# Размеры совпадают с .flag-icon в style.css; разные пропорции флагов гасит object-fit: cover %>
+          <%= image_tag "flags/#{locale}.png", width: 20, height: 15, alt: img_alt(t("languages.#{locale}")), title: img_title(t("languages.#{locale}")), class: "flag-icon" %>
           <span><%= t("languages.#{locale}") %></span>
         <% end %>
       </li>

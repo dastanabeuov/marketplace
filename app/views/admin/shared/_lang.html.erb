@@ -14,7 +14,7 @@
     <% [:kz, :ru, :en].each do |locale| %>
       <li>
         <%= link_to "?locale=#{locale}", class: "dropdown-item d-flex align-items-center gap-2" do %>
-          <%= image_tag "flags/#{locale}.png", alt: "#{locale.upcase} Flag", class: "flag-icon" %>
+          <%= image_tag "flags/#{locale}.png", alt: img_alt(t("languages.#{locale}")), title: img_title(t("languages.#{locale}")), class: "flag-icon" %>
           <span><%= t("languages.#{locale}") %></span>
         <% end %>
       </li>
