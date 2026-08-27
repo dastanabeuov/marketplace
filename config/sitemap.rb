@@ -14,17 +14,17 @@ SitemapGenerator::Sitemap.create do
   add helpers.cart_url(default_options),        priority: 0.5, changefreq: "weekly"
 
   # Компании
-  Company.find_each do |company|
+  Company.publicly_visible.find_each do |company|
     add helpers.company_url(company, default_options), lastmod: company.updated_at
 
-    company.products.find_each do |product|
+    company.products.publicly_visible.find_each do |product|
       add helpers.product_company_url(company, product_id: product.id, **default_options),
           lastmod: product.updated_at
     end
   end
 
   # Продукты
-  Product.find_each do |product|
+  Product.publicly_visible.find_each do |product|
     add helpers.product_url(product, default_options), lastmod: product.updated_at
   end
 

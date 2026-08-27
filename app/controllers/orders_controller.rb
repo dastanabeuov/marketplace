@@ -17,7 +17,7 @@ class OrdersController < ApplicationController
       product_ids = @cart.keys.map(&:to_i).compact
 
       # Проверка существования продуктов
-      products = Product.where(id: product_ids)
+      products = Product.publicly_visible.where(id: product_ids)
 
       if products.count != product_ids.count
         missing_products = product_ids - products.pluck(:id)

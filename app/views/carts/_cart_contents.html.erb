@@ -3,7 +3,7 @@
     <% colors = %w[primary secondary success danger warning info light dark] %>
     <ul class="list-group mt-5">
       <% cart.each_with_index do |(product_id, quantity), index| %>
-        <% product = Product.find_by(id: product_id) %>
+        <% product = Product.publicly_visible.find_by(id: product_id) %>
         <% next unless product %>
         <% color_class = colors[index % colors.length] %>
 

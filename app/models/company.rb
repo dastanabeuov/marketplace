@@ -1,5 +1,6 @@
 class Company < ApplicationRecord
   include Searchable
+  include Publishable
 
   has_many :category_companies, dependent: :destroy
   has_many :categories, through: :category_companies

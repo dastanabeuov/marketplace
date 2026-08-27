@@ -1,5 +1,6 @@
 class Product < ApplicationRecord
   include Searchable
+  include Publishable
 
   after_create :notify_subscribers
 
@@ -42,6 +43,8 @@ class Product < ApplicationRecord
 
 
   def notify_subscribers
+    return unless publicly_visible?
+
     Subscription.find_each do |subscription|
       ProductMailer.new_product(self, subscription).deliver_later
     end

@@ -5,7 +5,7 @@ class CompaniesController < ApplicationController
   before_action :set_company, only: [ :show, :product ]
 
   def index
-    @companies = Company.distinct
+    @companies = Company.publicly_visible.distinct
 
     # Фильтр по компании
     if params[:company_id].present?
@@ -23,7 +23,7 @@ class CompaniesController < ApplicationController
       redirect_to companies_path and return
     end
 
-    @products = @company.products.page(params[:page]).per(8) if @company
+    @products = @company.products.publicly_visible.page(params[:page]).per(8) if @company
 
     add_breadcrumb @company.name, "#"
   end
@@ -33,7 +33,7 @@ class CompaniesController < ApplicationController
       redirect_to companies_path and return
     end
 
-    @product = @company.products.find_by_id(params[:product_id])
+    @product = @company.products.publicly_visible.find_by(id: params[:product_id])
 
     unless @product
       redirect_to company_path(@company) and return
@@ -52,10 +52,10 @@ class CompaniesController < ApplicationController
   private
 
   def set_company
-    @company = Company.find_by_id(params[:id])
+    @company = Company.publicly_visible.find_by(id: params[:id])
   end
 
   def load_filters
-    @company_filters  = Company.pluck(:id, :name)
+    @company_filters  = Company.publicly_visible.pluck(:id, :name)
   end
 end

@@ -7,6 +7,12 @@ class CartsController < ApplicationController
 
   def add_item
     product_id = params[:product_id].to_s
+    @product = Product.publicly_visible.find_by(id: product_id)
+
+    unless @product
+      redirect_to products_path, alert: I18n.t("products_not_found") and return
+    end
+
     @cart[product_id] ||= 0
     @cart[product_id] += 1
     save_cart
@@ -15,7 +21,6 @@ class CartsController < ApplicationController
 
     respond_to do |format|
       format.turbo_stream do
-        @product = Product.find(product_id)
         @cart = session[:cart] || {}
 
         render turbo_stream: [
@@ -31,9 +36,23 @@ class CartsController < ApplicationController
     product_id = params[:product_id].to_s
     quantity = params[:quantity].to_i.clamp(1, 999)
 
+    @product = Product.publicly_visible.find_by(id: product_id)
+
+    unless @product
+      session[:cart]&.delete(product_id)
+      @cart = session[:cart] || {}
+
+      respond_to do |format|
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.replace("cart_contents", partial: "carts/cart_contents", locals: { cart: @cart }), layout: false
+        end
+        format.html { redirect_to cart_path, alert: I18n.t("products_not_found") }
+      end
+      return
+    end
+
     session[:cart][product_id] = quantity
     @cart = session[:cart]
-    @product = Product.find_by(id: product_id)
 
     respond_to do |format|
       format.turbo_stream do

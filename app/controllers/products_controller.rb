@@ -7,10 +7,12 @@ class ProductsController < ApplicationController
 
   def index
     @cart = session[:cart] || {}
-    @products = Product.distinct
+    @products = Product.publicly_visible.distinct
 
     if params[:company_id].present?
-      @products = @products.joins(:companies).where(companies: { id: params[:company_id] })
+      @products = @products.joins(:companies)
+                           .merge(Company.publicly_visible)
+                           .where(companies: { id: params[:company_id] })
     end
 
     if params[:category_id].present?
@@ -23,7 +25,7 @@ class ProductsController < ApplicationController
 
   def show
     unless @product
-      redirect_to catalogs_path and return
+      redirect_to products_path and return
     end
 
     add_breadcrumb "#{I18n.t('.product')}: #{@product.name}"
@@ -32,11 +34,11 @@ class ProductsController < ApplicationController
   private
 
   def set_product
-    @product = Product.find_by_id(params[:id])
+    @product = Product.publicly_visible.find_by(id: params[:id])
   end
 
   def load_filters
-    @companies  = Company.pluck(:id, :name)
+    @companies  = Company.publicly_visible.pluck(:id, :name)
     @categories = Category.pluck(:id, :name)
   end
 end
