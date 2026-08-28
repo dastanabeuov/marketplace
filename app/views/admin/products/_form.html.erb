@@ -130,7 +130,7 @@
 
   <div class="form-group mb-3">
     <%= f.label :public_status, I18n.t('public_status.status'), class: 'form-label' %>
-    <%= f.select :public_status, [[t('public_status.public'), 1], [t('public_status.private'), 0]], { selected: 1 }, { class: 'form-control' } %>
+    <%= f.select :public_status, [[t('public_status.public'), 1], [t('public_status.private'), 0]], { selected: f.object.public_status }, { class: 'form-control' } %>
   </div>
 
   <div class="form-group mb-3">
